@@ -1,0 +1,41 @@
+id: R06
+nazwa: Indeksacja cen dla AGRANDO po wzroście cen blach
+poziom: L2
+kategoria: rozumowanie
+obszar: klauzula waloryzacyjna, obliczenia procentowe
+pulapki: []
+dokumenty_kluczowe: [UMW-K01, DOSTAWY-STALI-2026, UMW-D01]
+polecenie: >
+  Ceny blach od Stalvero mocno wzrosły w lipcu. Czy umowa z AGRANDO pozwala nam podnieść ceny ram KR-220
+  i osłon OB-220? O ile wzrosły ceny blach i co formalnie musimy zrobić? Czy w dokumentach jest ślad,
+  że już to zrobiliśmy?
+format_odpowiedzi:
+  mozna_podniesc_ceny: "true/false"
+  warunek_umowny: "postanowienie umowy i jego warunki"
+  wzrost_cen_blach: "wzrost w % z podaniem cen (zł/t)"
+  wymagana_forma: "jaka forma jest wymagana do zmiany cen"
+  wniosek_w_dokumentach: "true/false — czy w dokumentach jest złożony wniosek o zmianę cen"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: mozna, typ: rowne, pole: mozna_podniesc_ceny, wartosc: true, waga: 2, krytyczne: true}
+  - {id: warunek, typ: zawiera, pole: warunek_umowny, wszystkie: true, wzorce: ['5 ?%|5 proc|pięć proc', 'pisemn'], waga: 2}
+  - {id: kwartal, typ: zawiera, pole: warunek_umowny, wzorce: ['kwarta'], waga: 1}
+  - {id: wzrost, typ: zawiera, pole: wzrost_cen_blach, wzorce: ['\b1[12]([,.]\d+)?\s?%'], waga: 1}
+  - {id: ceny, typ: zawiera, pole: wzrost_cen_blach, wszystkie: true, wzorce: ['4[ .]?385', '3[ .]?9[05]0'], waga: 1}
+  - {id: aneks, typ: zawiera, pole: wymagana_forma, wzorce: ['aneks'], waga: 2, krytyczne: true}
+  - {id: brak_wniosku, typ: rowne, pole: wniosek_w_dokumentach, wartosc: false, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-K01], waga: 1}
+wzorcowa:
+  mozna_podniesc_ceny: true
+  warunek_umowny: "§ 3 ust. 2 umowy UR/2025/03: ceny mogą być zmieniane raz na kwartał, na pisemny wniosek Strony, jeżeli indeks cen blach S355 zmieni się o więcej niż 5% w stosunku do kwartału bazowego"
+  wzrost_cen_blach: "S355MC ze Stalvero: 3 950 zł/t (II kw.) → 4 385 zł/t od lipca, wzrost ok. 11,0% (o 12,4% względem 3 900 zł/t z I kw.)"
+  wymagana_forma: "pisemny wniosek, a zmiana cen wymaga zawarcia aneksu (forma pisemna pod rygorem nieważności, § 9 ust. 1)"
+  wniosek_w_dokumentach: false
+  zrodla: ["Umowa_ramowa_UR-2025-03_Agrando.pdf", "Dostawy_blach_2026.xlsx"]
+pulapka:
+  mozna_podniesc_ceny: false
+  warunek_umowny: "ceny stałe przez cały okres umowy"
+  wzrost_cen_blach: "około 3%"
+  wymagana_forma: "e-mail z nowym cennikiem"
+  wniosek_w_dokumentach: true
+  zrodla: []

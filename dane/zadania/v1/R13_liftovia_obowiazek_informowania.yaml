@@ -1,0 +1,40 @@
+id: R13
+nazwa: Czy powinniśmy byli uprzedzić Liftovię o wadliwej partii farby
+poziom: L2
+kategoria: rozumowanie
+obszar: obowiązki informacyjne z umowy, analiza skutków
+pulapki: [T12]
+dokumenty_kluczowe: [UMW-K02, EML-D03-01, ZLECENIA-2026-09, PROC-PZ03-W2]
+polecenie: >
+  Czy po otrzymaniu komunikatu Pulverion o partii farby PV-7016-2608 mieliśmy obowiązek poinformować Liftovię,
+  zanim zgłosiła reklamację? Na jakiej podstawie i których dostaw/zleceń dla Liftovii to dotyczy?
+format_odpowiedzi:
+  obowiazek_informowania: "true/false"
+  podstawa: "postanowienie umowy"
+  od_kiedy: "od kiedy wiedzieliśmy o problemie (RRRR-MM-DD)"
+  dotyczy_zlecen: "lista zleceń dla Liftovii malowanych tą partią i ich status"
+  co_zrobic_teraz: "lista działań"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: obowiazek, typ: rowne, pole: obowiazek_informowania, wartosc: true, waga: 3, krytyczne: true}
+  - {id: podstawa, typ: zawiera, pole: podstawa, wzorce: ['§ ?2', 'niezwłocznie informować', 'zmian\w* materiał', 'okoliczności\w* mogąc'], waga: 2}
+  - {id: od_kiedy, typ: rowne, pole: od_kiedy, wartosc: 2026-09-24, waga: 1}
+  - {id: zlecenie_0903, typ: zawiera, pole: dotyczy_zlecen, wzorce: ['0903'], waga: 1}
+  - {id: zlecenie_0951, typ: zawiera, pole: dotyczy_zlecen, wzorce: ['0951'], waga: 2}
+  - {id: zlecenie_0874, typ: zawiera, pole: dotyczy_zlecen, wzorce: ['0874'], waga: 1}
+  - {id: dzialania, typ: zawiera, pole: co_zrobic_teraz, wzorce: ['wstrzym', 'zatrzym', 'poinformow', 'próbę? przyczepno'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-K02], waga: 1}
+wzorcowa:
+  obowiazek_informowania: true
+  podstawa: "§ 2 ust. 4 umowy UD/2024/11 — Dostawca niezwłocznie informuje Zamawiającego o zmianie materiałów, w tym farb, i o okolicznościach mogących wpłynąć na jakość Wyrobów"
+  od_kiedy: "2026-09-24"
+  dotyczy_zlecen: ["ZP/2026/0874 — 140 szt. OK-12, wysłane 08.09 (reklamacja R/2026/017)", "ZP/2026/0903 — 60 szt. PK-08, zakończone i wysłane", "ZP/2026/0951 — 80 szt. OK-12, w realizacji — można zatrzymać"]
+  co_zrobic_teraz: ["wstrzymać wysyłkę ZP/2026/0951", "poinformować Liftovię o partii i o panelach PK-08 z ZP/2026/0903", "wykonać próby przyczepności"]
+  zrodla: ["Umowa_dostawy_UD-2024-11_Liftovia.pdf", "2026-09-24_1405_Komunikat_jakosciowy_Pulverion.eml", "Zlecenia_produkcyjne_2026-09.xlsx"]
+pulapka:
+  obowiazek_informowania: false
+  podstawa: "brak obowiązku — wada dostawcy farby"
+  od_kiedy: "2026-10-02"
+  dotyczy_zlecen: ["ZP/2026/0874"]
+  co_zrobic_teraz: []
+  zrodla: []

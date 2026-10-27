@@ -1,0 +1,31 @@
+id: W11
+nazwa: Kto prowadzi sprawę reklamacji Liftovii
+poziom: L1
+kategoria: wyszukiwanie
+obszar: role w procesie reklamacyjnym
+pulapki: [T02]
+dokumenty_kluczowe: [EML-K02-01, PROC-PR07-W2, NOT-ZARZAD-2026-10-12]
+polecenie: >
+  Kto po stronie Liftovii zgłosił reklamację R/2026/017 i do kogo kierujemy odpowiedź? Kto u nas przygotowuje
+  stanowisko merytoryczne, a kto prowadzi komunikację z klientem?
+format_odpowiedzi:
+  zglaszajacy: "imię, nazwisko, stanowisko i e-mail osoby zgłaszającej"
+  stanowisko_merytoryczne: "kto u nas przygotowuje stanowisko"
+  komunikacja_z_klientem: "kto u nas prowadzi komunikację z klientem"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: szymanska, typ: zawiera, pole: zglaszajacy, wzorce: ['szymańsk'], waga: 2, krytyczne: true}
+  - {id: email, typ: zawiera, pole: zglaszajacy, wzorce: ['m\.szymanska@liftovia\.pl'], waga: 1}
+  - {id: mazur, typ: zawiera, pole: stanowisko_merytoryczne, wzorce: ['mazur', 'pełnomocnik\w* ds\.? jakości'], waga: 2, krytyczne: true}
+  - {id: opiekun, typ: zawiera, pole: komunikacja_z_klientem, wzorce: ['nowick', 'opiekun'], waga: 2}
+  - {id: zrodlo, typ: cytuje, dokumenty: [PROC-PR07-W2, NOT-ZARZAD-2026-10-12], tryb: dowolny, waga: 1}
+wzorcowa:
+  zglaszajacy: "Marta Szymańska, Inżynier Jakości Dostaw Liftovia, m.szymanska@liftovia.pl"
+  stanowisko_merytoryczne: "Jakub Mazur, Pełnomocnik ds. Jakości (PR-07 wyd. 2, pkt 3.1)"
+  komunikacja_z_klientem: "opiekun klienta — Katarzyna Nowicka (notatka zarządu z 12.10)"
+  zrodla: ["2026-10-02_1047_Reklamacja_oslony_OK-12.eml", "PR-07_Rozpatrywanie_reklamacji_wyd2.docx", "2026-10-12_Notatka_ze_spotkania_zarzadu.txt"]
+pulapka:
+  zglaszajacy: "Michał Domański, Prezes Zarządu Liftovia"
+  stanowisko_merytoryczne: "Monika Duda"
+  komunikacja_z_klientem: "Jakub Mazur"
+  zrodla: []

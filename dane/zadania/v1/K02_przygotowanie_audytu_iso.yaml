@@ -1,0 +1,49 @@
+id: K02
+nazwa: Plan przygotowania do audytu nadzoru ISO 9001
+poziom: L3
+kategoria: zlozone
+obszar: system jakości — dowody, ryzyka, plan działań
+pulapki: [T12, T02]
+dokumenty_kluczowe: [AUDYT-ISO-2025, NOT-ZARZAD-2026-09-28, KT-OK12, UMW-K02, EML-D03-01, PROC-PR07-W2, PROC-PZ03-W2, REJ-REKL, EML-K02-03, PROT-KJ-0905-03]
+polecenie: >
+  Przygotuj dla Jakuba Mazura plan przygotowania do audytu nadzoru Certivis: stan spostrzeżeń z audytu 2025 z dowodami,
+  ryzyka (także z bieżących reklamacji) i działania do wykonania przed audytem.
+format_odpowiedzi:
+  data_audytu: "RRRR-MM-DD"
+  stan_spostrzezen: "lista {nr, status, dowody}"
+  ryzyka: "lista ryzyk na audycie"
+  dzialania_przed_audytem: "lista {dzialanie, odpowiedzialny, termin}"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: data, typ: rowne, pole: data_audytu, wartosc: 2026-11-17, waga: 1}
+  - {id: kt_ok12, typ: zawiera, pole: [stan_spostrzezen, ryzyka], wzorce: ['KT-OK12'], waga: 2, krytyczne: true}
+  - {id: komunikaty, typ: zawiera, pole: [stan_spostrzezen, ryzyka], wzorce: ['pulverion', 'PV-7016', 'komunikat'], waga: 2}
+  - {id: reklamacja, typ: zawiera, pole: ryzyka, wzorce: ['R/2026/017', 'liftovi'], waga: 2}
+  - {id: karty, typ: zawiera, pole: dzialania_przed_audytem, wzorce: ['aktualiz\w* kart', 'przegląd\w* kart', 'kart\w* technologiczn'], waga: 1}
+  - {id: rejestr_komunikatow, typ: zawiera, pole: dzialania_przed_audytem, wzorce: ['rejestr\w* komunikat', 'ewidencj\w* komunikat', 'komunikat\w* (jakościow\w* )?dostawc'], waga: 1}
+  - {id: s3_naglowek, typ: zawiera, pole: [stan_spostrzezen, ryzyka, dzialania_przed_audytem], wzorce: ['nagłówek', '21 dni', 'dział\w* sprzedaży'], waga: 1}
+  - {id: analiza, typ: zawiera, pole: [dzialania_przed_audytem, ryzyka], wzorce: ['5 ?[×x] ?dlaczego', '\b5x\b', 'analiz\w* przyczyn'], waga: 1}
+kryteria_oceny:
+  - "S1 — otwarte: KT-OK12 rew. B (rysunek rew. A, min. 50 µm) wobec umowy i rysunku rew. C (80–120 µm); przyczyna reklamacji R/2026/017. S2 — nieskuteczne: komunikat Pulverion z 24.09 nie trafił do PJ, brak rejestru komunikatów. S3 — formalnie zamknięte PR-07 wyd. 2, ale nagłówek rejestru nadal wskazuje dział sprzedaży i 21 dni."
+  - "Ryzyka: reklamacja Liftovii z przyczyną systemową, protokół KJ/2026/0905/03 zatwierdzony wg nieaktualnej karty, pierwotna propozycja odrzucenia reklamacji, terminy w rejestrze wg uchylonej procedury."
+  - "Plan działań z odpowiedzialnymi i terminami przed 17.11 (aktualizacja KT-OK12 i przegląd kart, rejestr komunikatów dostawców, analiza 5×Dlaczego, poprawa rejestru)."
+wzorcowa:
+  data_audytu: "2026-11-17"
+  stan_spostrzezen:
+    - {nr: "S1", status: "otwarte", dowody: "KT-OK12 rew. B oparta na rysunku rew. A (min. 50 µm), umowa i rysunek rew. C wymagają 80–120 µm"}
+    - {nr: "S2", status: "nieskuteczne", dowody: "komunikat Pulverion PV/KJ/09/2026 o partii PV-7016-2608 utknął w zakupach; brak rejestru komunikatów"}
+    - {nr: "S3", status: "zamknięte formalnie (PR-07 wyd. 2)", dowody: "nagłówek rejestru nadal: „Termin 21 dni… prowadzi Dział Sprzedaży” — do poprawy"}
+  ryzyka: ["reklamacja Liftovii R/2026/017 z przyczyną systemową (karta technologiczna + komunikat dostawcy)", "protokół KJ/2026/0905/03 zatwierdzony wg nieaktualnej karty, bez próby przyczepności", "terminy w rejestrze liczone wg uchylonej PR-07 wyd. 1"]
+  dzialania_przed_audytem:
+    - {dzialanie: "aktualizacja KT-OK12 do rew. C i przegląd wszystkich kart technologicznych", odpowiedzialny: "Rafał Kaczmarek / Jakub Mazur", termin: "2026-11-10"}
+    - {dzialanie: "wdrożenie rejestru komunikatów jakościowych dostawców", odpowiedzialny: "Joanna Pawlak / Jakub Mazur", termin: "2026-11-10"}
+    - {dzialanie: "analiza 5×Dlaczego dla R/2026/017 i działania korygujące", odpowiedzialny: "Jakub Mazur", termin: "2026-10-30"}
+    - {dzialanie: "poprawa nagłówka i terminów w rejestrze reklamacji", odpowiedzialny: "Jakub Mazur", termin: "2026-10-20"}
+  zrodla: ["2025-11-20_Raport_audytu_nadzoru_ISO_9001_Certivis.pdf", "KT-OK12_rew_B.pdf", "Rejestr_reklamacji.xlsx", "2026-09-24_1405_Komunikat_jakosciowy_Pulverion.eml"]
+pulapka:
+  data_audytu: "2026-11-17"
+  stan_spostrzezen:
+    - {nr: "S1", status: "zamknięte", dowody: ""}
+  ryzyka: []
+  dzialania_przed_audytem: []
+  zrodla: []

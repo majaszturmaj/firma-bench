@@ -1,0 +1,48 @@
+id: E04
+nazwa: Przegląd specyfikacji FlowMES v3 przed akceptacją
+poziom: L3
+kategoria: redakcja
+obszar: weryfikacja dokumentu — spójność wewnętrzna, zgodność z umową i polityką ochrony danych
+pulapki: [T08, T20, T24]
+dokumenty_kluczowe: [MES-SPEC-V3, UMW-D06, POL-RODO-W2, MES-CR, EML-D06-01]
+polecenie: >
+  Grzegorz Kowalczyk ma zaakceptować specyfikację FlowMES v3. Sprawdź ją przed podpisem: czy jest wewnętrznie
+  spójna, zgodna z umową UW/2026/01 i z naszymi zasadami ochrony danych? Czy można ją zaakceptować w obecnej postaci?
+format_odpowiedzi:
+  mozna_zaakceptowac: "true/false"
+  sprzecznosci_wewnetrzne: "lista"
+  niezgodnosci_z_umowa: "lista"
+  kwestie_ochrony_danych: "lista"
+  inne_uwagi: "lista"
+  rekomendacja: "co zrobić przed akceptacją"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: nie_akceptowac, typ: rowne, pole: mozna_zaakceptowac, wartosc: false, waga: 3, krytyczne: true}
+  - {id: r1_chmura, typ: zawiera, pole: sprzecznosci_wewnetrzne, wszystkie: true, wzorce: ['\bR1\b', 'chmur'], waga: 2, krytyczne: true}
+  - {id: r9_kopie, typ: zawiera, pole: sprzecznosci_wewnetrzne, wzorce: ['\bR9\b', '\bNAS\b', 'kopi\w* zapas'], waga: 1}
+  - {id: umowa_par4, typ: zawiera, pole: niezgodnosci_z_umowa, wzorce: ['§ ?4', 'infrastruktur'], waga: 2}
+  - {id: powierzenie, typ: zawiera, pole: kwestie_ochrony_danych, wzorce: ['powierzeni', 'art\.? ?28'], waga: 1}
+  - {id: czas_pracy, typ: zawiera, pole: kwestie_ochrony_danych, wzorce: ['czas\w* pracy'], waga: 1}
+  - {id: r4, typ: zawiera, pole: [inne_uwagi, sprzecznosci_wewnetrzne, rekomendacja], wzorce: ['\bR4\b', 'szybk', 'mierzaln'], waga: 1}
+  - {id: cr02, typ: zawiera, pole: [inne_uwagi, niezgodnosci_z_umowa, kwestie_ochrony_danych, rekomendacja], wzorce: ['CR-02'], waga: 1}
+kryteria_oceny:
+  - "Wskazuje sprzeczności v3: R1 (dane tylko lokalnie) vs rozdz. 4 (chmura Flowmetic) oraz R9 (kopie na NAS u Zamawiającego) vs kopie u Wykonawcy."
+  - "Wskazuje niezgodność z § 4 umowy (instalacja i dane na infrastrukturze Zamawiającego) i to, że mail prezesa z 9.07 nie zastępuje change requestu ani aneksu."
+  - "Ocena ochrony danych: R7 to dane o czasie pracy (wg polityki tylko system kadrowo-płacowy i serwer lokalny), chmura wymaga umowy powierzenia (art. 28 RODO) i zgody Prezesa; CR-02 niezaakceptowany."
+  - "Rekomenduje nieakceptowanie v3 w obecnej postaci i konkretne poprawki (w tym mierzalne R4)."
+wzorcowa:
+  mozna_zaakceptowac: false
+  sprzecznosci_wewnetrzne: ["R1 (dane wyłącznie na serwerze lokalnym) vs rozdz. 4 — środowisko produkcyjne w chmurze Flowmetic", "R9 (kopie na NAS w siedzibie Zamawiającego) vs rozdz. 4 — kopie w infrastrukturze Wykonawcy"]
+  niezgodnosci_z_umowa: ["§ 4 umowy UW/2026/01: system na infrastrukturze Zamawiającego, dane (w tym osobowe) nie mogą być przetwarzane poza nią", "zmiana zakresu tylko przez zaakceptowany change request (§ 6) — mail prezesa z 9.07 i CR-02 (oczekujący) tego nie spełniają"]
+  kwestie_ochrony_danych: ["R7 — dane o czasie pracy wolno przetwarzać tylko w systemie kadrowo-płacowym i na serwerze lokalnym", "przetwarzanie w chmurze wymaga umowy powierzenia (art. 28 RODO) i pisemnej zgody Prezesa"]
+  inne_uwagi: ["R4 „System ma być szybki” — niemierzalne, nie do odebrania", "CR-02 (14 500 zł) nadal oczekuje na akceptację"]
+  rekomendacja: "Nie akceptować v3; zażądać przywrócenia architektury lokalnej (lub formalnej decyzji zarządu z CR, aneksem i umową powierzenia), usunięcia R7 do czasu decyzji w sprawie CR-02 i doprecyzowania R4"
+  zrodla: ["Specyfikacja_wymagan_FlowMES_v3.docx", "Umowa_wdrozeniowa_UW-2026-01_Flowmetic.pdf", "Polityka_ochrony_danych_osobowych_wyd2.pdf"]
+pulapka:
+  mozna_zaakceptowac: true
+  sprzecznosci_wewnetrzne: []
+  niezgodnosci_z_umowa: []
+  kwestie_ochrony_danych: []
+  inne_uwagi: []
+  rekomendacja: "zaakceptować"
+  zrodla: []

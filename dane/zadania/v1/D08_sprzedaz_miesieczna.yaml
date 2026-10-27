@@ -1,0 +1,38 @@
+id: D08
+nazwa: Najsłabszy i najlepszy miesiąc sprzedaży 2026
+poziom: L1
+kategoria: analiza_danych
+obszar: odczyt i porównanie danych z arkusza
+pulapki: []
+dokumenty_kluczowe: [SPRZEDAZ-2026]
+polecenie: >
+  W którym miesiącu 2026 r. przychody netto były najniższe, a w którym najwyższe (podaj kwoty)? O ile procent
+  przychody III kwartału były niższe niż II kwartału?
+format_odpowiedzi:
+  miesiac_najnizszy: "miesiąc"
+  przychody_najnizsze_zl: "liczba"
+  miesiac_najwyzszy: "miesiąc"
+  przychody_najwyzsze_zl: "liczba"
+  spadek_q3_vs_q2_procent: "liczba"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: najnizszy, typ: zawiera, pole: miesiac_najnizszy, wzorce: ['sierp', '\b0?8\b', '2026-08'], waga: 2, krytyczne: true}
+  - {id: najnizszy_kwota, typ: rowne, pole: przychody_najnizsze_zl, wartosc: 1300000, waga: 2}
+  - {id: najwyzszy, typ: zawiera, pole: miesiac_najwyzszy, wzorce: ['czerw', '\b0?6\b', '2026-06'], waga: 1}
+  - {id: najwyzszy_kwota, typ: rowne, pole: przychody_najwyzsze_zl, wartosc: 1680000, waga: 1}
+  - {id: spadek, typ: zawiera, pole: spadek_q3_vs_q2_procent, wzorce: ['\b9[,.]6'], waga: 2}
+  - {id: zrodlo, typ: cytuje, dokumenty: [SPRZEDAZ-2026], waga: 1}
+wzorcowa:
+  miesiac_najnizszy: "sierpień 2026"
+  przychody_najnizsze_zl: 1300000
+  miesiac_najwyzszy: "czerwiec 2026"
+  przychody_najwyzsze_zl: 1680000
+  spadek_q3_vs_q2_procent: 9.6
+  zrodla: ["Sprzedaz_i_marza_2026.xlsx"]
+pulapka:
+  miesiac_najnizszy: "styczeń 2026"
+  przychody_najnizsze_zl: 1420000
+  miesiac_najwyzszy: "maj 2026"
+  przychody_najwyzsze_zl: 1640000
+  spadek_q3_vs_q2_procent: 4.2
+  zrodla: []

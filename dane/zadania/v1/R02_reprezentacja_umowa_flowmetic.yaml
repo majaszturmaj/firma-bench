@@ -1,0 +1,39 @@
+id: R02
+nazwa: Prawidłowość podpisania umowy z Flowmetic
+poziom: L2
+kategoria: rozumowanie
+obszar: reprezentacja spółki, ważność umowy
+pulapki: [T18]
+dokumenty_kluczowe: [UMW-D06, KRS-ODPIS, UMOWA-SPOLKI, INSTR-OBIEG]
+polecenie: >
+  Zanim zaczniemy egzekwować od Flowmetic kary za opóźnienie etapu E2, sprawdź, czy umowa UW/2026/01 została
+  po naszej stronie prawidłowo podpisana. Jeżeli nie — co z tym zrobić?
+format_odpowiedzi:
+  prawidlowo_podpisana: "true/false"
+  kto_podpisal: "kto podpisał umowę po naszej stronie"
+  wartosc_umowy_netto_zl: "liczba"
+  wymagana_reprezentacja: "jak powinna być podpisana i dlaczego"
+  rekomendacja: "co zrobić"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: nieprawidlowa, typ: rowne, pole: prawidlowo_podpisana, wartosc: false, waga: 3, krytyczne: true}
+  - {id: tylko_prezes, typ: zawiera, pole: kto_podpisal, wzorce: ['wierzbick', 'prezes'], waga: 1}
+  - {id: wartosc, typ: rowne, pole: wartosc_umowy_netto_zl, wartosc: 186000, waga: 1}
+  - {id: dwoch, typ: zawiera, pole: wymagana_reprezentacja, wszystkie: true, wzorce: ['dw[óo]ch|dwaj|obu|łączn|współdział', '50[ .]?000'], waga: 2}
+  - {id: rekomendacja, typ: zawiera, pole: rekomendacja, wzorce: ['potwierdz', 'zatwierdz', '\blis\b', 'drugi\w* członk', 'aneks', 'praw|radc|malinowsk'], waga: 1}
+  - {id: zrodlo_umowa, typ: cytuje, dokumenty: [UMW-D06], waga: 1}
+  - {id: zrodlo_krs, typ: cytuje, dokumenty: [KRS-ODPIS, UMOWA-SPOLKI, INSTR-OBIEG], tryb: dowolny, waga: 1}
+wzorcowa:
+  prawidlowo_podpisana: false
+  kto_podpisal: "tylko Tomasz Wierzbicki, Prezes Zarządu"
+  wartosc_umowy_netto_zl: 186000
+  wymagana_reprezentacja: "Powyżej 50 000 zł netto wymagane współdziałanie dwóch członków zarządu (KRS, § 13 umowy spółki, Instrukcja obiegu pkt 3.1) — umowa na 186 000 zł wymagała podpisów T. Wierzbickiego i A. Lis"
+  rekomendacja: "Uzyskać pisemne potwierdzenie (zatwierdzenie) umowy przez drugiego członka zarządu — Agnieszkę Lis — i skonsultować z r.pr. Malinowskim przed dochodzeniem kar"
+  zrodla: ["Umowa_wdrozeniowa_UW-2026-01_Flowmetic.pdf", "KRS_odpis_aktualny_2026-02-27.pdf"]
+pulapka:
+  prawidlowo_podpisana: true
+  kto_podpisal: "Prezes Zarządu"
+  wartosc_umowy_netto_zl: 93000
+  wymagana_reprezentacja: "Prezes reprezentuje spółkę samodzielnie"
+  rekomendacja: "naliczyć kary"
+  zrodla: []

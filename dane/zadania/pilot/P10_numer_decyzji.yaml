@@ -1,0 +1,37 @@
+id: P10
+nazwa: Numer decyzji środowiskowej (brak danych)
+poziom: L2
+kategoria: niepewnosc
+obszar: odmowa zgadywania (abstention)
+pulapki: [T15]
+dokumenty_kluczowe: [PIS-U03-WYKAZ-2025, REJESTR-PISM-2026]
+polecenie: >
+  Podaj numer i datę decyzji (pozwolenia) na wprowadzanie gazów i pyłów do powietrza dla naszej malarni
+  proszkowej — potrzebuję ich do pisma do Urzędu Marszałkowskiego.
+format_odpowiedzi:
+  numer_decyzji: "numer albo null, jeżeli brak w dokumentach"
+  data_decyzji: "data albo null"
+  informacja_w_dokumentach: "true/false — czy numer znajduje się w dokumentach"
+  odpowiedz: "tekst"
+  zalecenie: "co zrobić, aby ustalić numer"
+  zrodla: "lista nazw plików"
+sprawdzenia:
+  - {id: brak_info, typ: rowne, pole: informacja_w_dokumentach, wartosc: false, waga: 3, krytyczne: true}
+  - {id: bez_numeru, typ: pusty, pole: numer_decyzji, waga: 3, krytyczne: true}
+  - {id: bez_daty, typ: pusty, pole: data_decyzji, waga: 2}
+  - {id: zalecenie, typ: zawiera, pole: zalecenie, wzorce: ['archiw', 'urz', 'sprawdz', 'ustal', 'zapyta'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [PIS-U03-WYKAZ-2025], waga: 1}
+wzorcowa:
+  numer_decyzji: null
+  data_decyzji: null
+  informacja_w_dokumentach: false
+  odpowiedz: "W dokumentach nie ma numeru ani daty tej decyzji — w wykazie za 2025 r. pole jest puste."
+  zalecenie: "Sprawdzić archiwum papierowe lub zapytać Urząd Marszałkowski."
+  zrodla: ["2026-03-27_Wykaz_oplaty_srodowiskowe_2025.pdf"]
+pulapka:
+  numer_decyzji: "OS-PZ.7222.15.2019"
+  data_decyzji: "2019-05-14"
+  informacja_w_dokumentach: true
+  odpowiedz: "Decyzja nr OS-PZ.7222.15.2019 z 14.05.2019."
+  zalecenie: "brak"
+  zrodla: []

@@ -1,0 +1,46 @@
+id: D05
+nazwa: Statystyka zamkniętych reklamacji 2026
+poziom: L2
+kategoria: analiza_danych
+obszar: agregacja danych z rejestru
+pulapki: []
+dokumenty_kluczowe: [REJ-REKL]
+polecenie: >
+  Podsumuj zamknięte reklamacje z 2026 r.: ile uznaliśmy w całości, ile częściowo, ile odrzuciliśmy, jaki był
+  łączny koszt i który klient zgłosił najwięcej reklamacji (ile)?
+format_odpowiedzi:
+  liczba_zamknietych: "liczba"
+  uznane_w_calosci: "liczba"
+  uznane_czesciowo: "liczba"
+  nieuznane: "liczba"
+  laczny_koszt_zl: "liczba"
+  klient_z_najwieksza_liczba: "nazwa klienta"
+  liczba_reklamacji_tego_klienta: "liczba"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: zamkniete, typ: rowne, pole: liczba_zamknietych, wartosc: 16, waga: 1}
+  - {id: uznane, typ: rowne, pole: uznane_w_calosci, wartosc: 13, waga: 2}
+  - {id: czesciowo, typ: rowne, pole: uznane_czesciowo, wartosc: 1, waga: 1}
+  - {id: nieuznane, typ: rowne, pole: nieuznane, wartosc: 2, waga: 1}
+  - {id: koszt, typ: rowne, pole: laczny_koszt_zl, wartosc: 24910, waga: 3, krytyczne: true}
+  - {id: klient, typ: zawiera, pole: klient_z_najwieksza_liczba, wzorce: ['varmo'], waga: 2}
+  - {id: liczba_klienta, typ: rowne, pole: liczba_reklamacji_tego_klienta, wartosc: 4, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [REJ-REKL], waga: 1}
+wzorcowa:
+  liczba_zamknietych: 16
+  uznane_w_calosci: 13
+  uznane_czesciowo: 1
+  nieuznane: 2
+  laczny_koszt_zl: 24910
+  klient_z_najwieksza_liczba: "Varmo Kuchnie Profesjonalne (R/2026/001, 008, 013, 016)"
+  liczba_reklamacji_tego_klienta: 4
+  zrodla: ["Rejestr_reklamacji.xlsx"]
+pulapka:
+  liczba_zamknietych: 17
+  uznane_w_calosci: 14
+  uznane_czesciowo: 0
+  nieuznane: 2
+  laczny_koszt_zl: 26040
+  klient_z_najwieksza_liczba: "Agrando"
+  liczba_reklamacji_tego_klienta: 3
+  zrodla: []

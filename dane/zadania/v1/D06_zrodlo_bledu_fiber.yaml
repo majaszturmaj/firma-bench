@@ -1,0 +1,34 @@
+id: D06
+nazwa: Skąd w piśmie do DCWP wzięło się 1,62 mln zł
+poziom: L2
+kategoria: analiza_danych
+obszar: uzgadnianie danych z arkuszem źródłowym
+pulapki: [T19]
+dokumenty_kluczowe: [FIBER-2025, PIS-IP-02]
+polecenie: >
+  W piśmie W-104/2026 podaliśmy przychody z usług cięcia fiber za 2025 r. w kwocie 1 620 000 zł. Skąd wzięła się
+  ta liczba i jaka jest prawidłowa? W ilu miesiącach 2025 r. wykonanie było niższe od planu i o ile łącznie?
+format_odpowiedzi:
+  przychody_prawidlowe_zl: "liczba"
+  zrodlo_bledu: "skąd pochodzi 1 620 000 zł"
+  miesiace_ponizej_planu: "liczba miesięcy"
+  roznica_do_planu_zl: "liczba"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: prawidlowe, typ: rowne, pole: przychody_prawidlowe_zl, wartosc: 1410000, waga: 2, krytyczne: true}
+  - {id: plan, typ: zawiera, pole: zrodlo_bledu, wzorce: ['plan', 'prognoz'], waga: 2, krytyczne: true}
+  - {id: miesiace, typ: rowne, pole: miesiace_ponizej_planu, wartosc: 12, waga: 2}
+  - {id: roznica, typ: rowne, pole: roznica_do_planu_zl, wartosc: 210000, dopuszczalne: [-210000], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [FIBER-2025], waga: 1}
+wzorcowa:
+  przychody_prawidlowe_zl: 1410000
+  zrodlo_bledu: "1 620 000 zł to suma planu przychodów na 2025 r. (prognoza z wniosku o dofinansowanie z 2023 r.) z drugiej tabeli arkusza, a nie wykonania"
+  miesiace_ponizej_planu: 12
+  roznica_do_planu_zl: 210000
+  zrodla: ["Przychody_ciecie_fiber_2025.xlsx", "2026-09-25_Odpowiedz_do_DCWP_W-104-2026.pdf"]
+pulapka:
+  przychody_prawidlowe_zl: 1620000
+  zrodlo_bledu: "brak błędu"
+  miesiace_ponizej_planu: 0
+  roznica_do_planu_zl: 0
+  zrodla: []

@@ -1,0 +1,40 @@
+id: W04
+nazwa: Spostrzeżenia z audytu ISO 2025 przed audytem 2026
+poziom: L2
+kategoria: wyszukiwanie
+obszar: system zarządzania jakością, status działań poaudytowych
+pulapki: [T12]
+dokumenty_kluczowe: [AUDYT-ISO-2025, NOT-ZARZAD-2026-09-28, PROC-PR07-W2, KT-OK12, EML-D03-01, REJESTR-PISM-2026]
+polecenie: >
+  Co wykazał ostatni audyt nadzoru Certivis (niezgodności, spostrzeżenia) i kiedy jest następny audyt?
+  Które spostrzeżenia nadal wymagają działań — oceń to na podstawie aktualnych dokumentów firmy.
+format_odpowiedzi:
+  liczba_niezgodnosci: "liczba"
+  spostrzezenia: "lista spostrzeżeń z audytu 2025 (numer i treść)"
+  wymagaja_dzialan: "lista: numer spostrzeżenia i dowód z dokumentów, że problem nie został rozwiązany"
+  zamkniete: "lista spostrzeżeń rozwiązanych i na jakiej podstawie"
+  nastepny_audyt: "RRRR-MM-DD"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: niezgodnosci, typ: rowne, pole: liczba_niezgodnosci, wartosc: 0, waga: 1}
+  - {id: termin, typ: rowne, pole: nastepny_audyt, wartosc: 2026-11-17, waga: 2, krytyczne: true}
+  - {id: s1, typ: zawiera, pole: wymagaja_dzialan, wzorce: ['\bs ?1\b', 'spostrzeżeni\w* (nr )?1\b'], waga: 2}
+  - {id: s2, typ: zawiera, pole: wymagaja_dzialan, wzorce: ['\bs ?2\b', 'spostrzeżeni\w* (nr )?2\b'], waga: 2}
+  - {id: dowod_s1, typ: zawiera, pole: wymagaja_dzialan, wzorce: ['KT-OK12', 'kart\w* technologiczn'], waga: 1}
+  - {id: dowod_s2, typ: zawiera, pole: wymagaja_dzialan, wzorce: ['pulverion', 'PV-7016', 'komunikat'], waga: 1}
+  - {id: s3, typ: zawiera, pole: zamkniete, wzorce: ['\bs ?3\b', 'spostrzeżeni\w* (nr )?3\b'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [AUDYT-ISO-2025], waga: 1}
+wzorcowa:
+  liczba_niezgodnosci: 0
+  spostrzezenia: ["S1 — brak systemowego przeglądu kart technologicznych po zmianach rysunków i wymagań klientów (Liftovia)", "S2 — komunikaty jakościowe dostawców nie są ewidencjonowane ani przekazywane do działu jakości", "S3 — rejestr reklamacji nadzoruje dział sprzedaży"]
+  wymagaja_dzialan: ["S1 — karta KT-OK12 nadal w rew. B (rysunek rew. A, min. 50 µm), choć umowa i rysunek rew. C wymagają 80–120 µm; zarząd 28.09 polecił zamknąć S1 przed audytem", "S2 — komunikat Pulverion PV/KJ/09/2026 z 24.09 trafił tylko do zakupów i nie dotarł do Pełnomocnika ds. Jakości; brak rejestru komunikatów"]
+  zamkniete: ["S3 — PR-07 wyd. 2 (od 01.05.2026) przekazała rejestr reklamacji Pełnomocnikowi ds. Jakości"]
+  nastepny_audyt: "2026-11-17"
+  zrodla: ["2025-11-20_Raport_audytu_nadzoru_ISO_9001_Certivis.pdf", "2026-09-28_Notatka_ze_spotkania_zarzadu.txt", "KT-OK12_rew_B.pdf"]
+pulapka:
+  liczba_niezgodnosci: 3
+  spostrzezenia: ["S1", "S2", "S3"]
+  wymagaja_dzialan: []
+  zamkniete: ["S1", "S2", "S3"]
+  nastepny_audyt: "2026-11-18"
+  zrodla: []

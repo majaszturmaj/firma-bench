@@ -1,0 +1,37 @@
+id: D04
+nazwa: Opóźnione dostawy blach i należne kary od Stalvero
+poziom: L2
+kategoria: analiza_danych
+obszar: analiza arkusza dostaw, kary umowne
+pulapki: []
+dokumenty_kluczowe: [DOSTAWY-STALI-2026, UMW-D01]
+polecenie: >
+  Które dostawy blach od Stalvero w 2026 r. były opóźnione względem umowy i jaką łączną karę umowną mogliśmy
+  z tego tytułu naliczyć? Czy jakąkolwiek z tych kar naliczyliśmy?
+format_odpowiedzi:
+  opoznione_dostawy: "lista {zamowienie, dni_robocze, wartosc_netto, kara}"
+  laczna_kara_zl: "liczba"
+  naliczono_kary: "true/false"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: dni_0188, typ: element_listy, pole: opoznione_dostawy, klucz: zamowienie, wzorzec: '0188', pole_elementu: dni_robocze, wartosc: 8, waga: 2}
+  - {id: dni_0081, typ: element_listy, pole: opoznione_dostawy, klucz: zamowienie, wzorzec: '0081', pole_elementu: dni_robocze, wartosc: 1, waga: 1}
+  - {id: kara_0188, typ: element_listy, pole: opoznione_dostawy, klucz: zamowienie, wzorzec: '0188', pole_elementu: kara, wartosc: 2273.18, waga: 1}
+  - {id: kara_0081, typ: element_listy, pole: opoznione_dostawy, klucz: zamowienie, wzorzec: '0081', pole_elementu: kara, wartosc: 221.52, waga: 1}
+  - {id: laczna, typ: rowne, pole: laczna_kara_zl, wartosc: 2494.70, waga: 3, krytyczne: true}
+  - {id: nienaliczone, typ: rowne, pole: naliczono_kary, wartosc: false, waga: 1}
+  - {id: bez_terminowych, typ: nie_zawiera, pole: opoznione_dostawy, wzorce: ['0012', '0031', '0049', '0066', '0097', '0112', '0124', '0139', '0151', '0163', '0176', '0203', '0219', '0231', '0246', '0258'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [DOSTAWY-STALI-2026], waga: 1}
+wzorcowa:
+  opoznione_dostawy:
+    - {zamowienie: "ZS/2026/0081", dni_robocze: 1, wartosc_netto: 110760, kara: 221.52}
+    - {zamowienie: "ZS/2026/0188", dni_robocze: 8, wartosc_netto: 142074, kara: 2273.18}
+  laczna_kara_zl: 2494.70
+  naliczono_kary: false
+  zrodla: ["Dostawy_blach_2026.xlsx", "Umowa_dostaw_UZ-2025-01_Stalvero.pdf"]
+pulapka:
+  opoznione_dostawy:
+    - {zamowienie: "ZS/2026/0188", dni_robocze: 10, wartosc_netto: 142074, kara: 2841.48}
+  laczna_kara_zl: 2841.48
+  naliczono_kary: false
+  zrodla: []

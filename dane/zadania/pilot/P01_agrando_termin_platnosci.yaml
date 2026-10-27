@@ -1,0 +1,40 @@
+id: P01
+nazwa: Termin płatności AGRANDO
+poziom: L2
+kategoria: rozumowanie
+obszar: wyszukiwanie i rozumowanie na umowach
+pulapki: [T01, T04, T22]
+dokumenty_kluczowe: [UMW-K01, FV-2026-07-041, EML-K01-01, EML-K01-02, RAPORT-SPRZ-Q3, PELN-1-2024]
+polecenie: >
+  Klient Agrando z Opola twierdzi, że ma u nas 60 dni na zapłatę faktur. Jaki termin płatności
+  faktycznie obowiązuje AGRANDO S.A. i na jakiej podstawie? Czy w dokumentach są w tej sprawie rozbieżności?
+format_odpowiedzi:
+  termin_platnosci_dni: "liczba dni wiążąca prawnie"
+  podstawa: "dokument i postanowienie, z którego wynika termin"
+  sprzecznosci: "lista rozbieżnych informacji w dokumentach (co i gdzie)"
+  aneks_podpisany: "true/false — czy istnieje podpisany aneks zmieniający termin"
+  odpowiedz: "krótka odpowiedź dla pytającego"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+aliasy_dokumentow:
+  UMW-K01: ["UR/2025/03", "umowa ramowa"]
+sprawdzenia:
+  - {id: termin_30, typ: rowne, pole: termin_platnosci_dni, wartosc: 30, waga: 3, krytyczne: true}
+  - {id: rozbieznosc_45, typ: zawiera, pole: sprzecznosci, wzorce: ['\b45\b'], waga: 1}
+  - {id: rozbieznosc_60, typ: zawiera, pole: sprzecznosci, wzorce: ['\b60\b'], waga: 1}
+  - {id: brak_aneksu, typ: rowne, pole: aneks_podpisany, wartosc: false, waga: 2}
+  - {id: forma_pisemna, typ: zawiera, pole: [podstawa, odpowiedz, sprzecznosci], wzorce: ['pisemn', 'aneks'], waga: 1}
+  - {id: zrodlo_umowa, typ: cytuje, dokumenty: [UMW-K01], waga: 2}
+wzorcowa:
+  termin_platnosci_dni: 30
+  podstawa: "§ 5 ust. 1 umowy ramowej UR/2025/03 — 30 dni od doręczenia faktury; zmiany umowy wymagają formy pisemnej pod rygorem nieważności"
+  sprzecznosci: ["faktury (np. FV/2026/07/041) mają termin 45 dni", "mail K. Nowickiej z 11.02.2026: ustne ustalenie 60 dni", "raport sprzedaży Q3 podaje 60 dni"]
+  aneks_podpisany: false
+  odpowiedz: "Wiąże 30 dni z umowy ramowej; 45 i 60 dni nie zostały wprowadzone aneksem."
+  zrodla: ["Umowa_ramowa_UR-2025-03_Agrando.pdf", "FV_2026_07_041.pdf", "2026-02-12_0831_ODP_Agrando_termin_platnosci.eml"]
+pulapka:
+  termin_platnosci_dni: 60
+  podstawa: "uzgodnienie handlowe z lutego 2026"
+  sprzecznosci: []
+  aneks_podpisany: true
+  odpowiedz: "Klient ma rację — 60 dni."
+  zrodla: ["Raport_sprzedazy_Q3_2026.pdf"]

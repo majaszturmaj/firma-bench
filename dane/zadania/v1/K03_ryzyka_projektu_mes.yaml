@@ -1,0 +1,45 @@
+id: K03
+nazwa: Raport ryzyk projektu MES dla prezesa
+poziom: L3
+kategoria: zlozone
+obszar: synteza ryzyk projektowych, umownych i prawnych, niespójności dokumentacji
+pulapki: [T06, T08, T18, T20, T24]
+dokumenty_kluczowe: [UMW-D06, KRS-ODPIS, MES-SPEC-V3, MES-CR, EML-D06-01, EML-D06-02, MES-NOT-2026-08-19, MES-NOT-2026-04-08, POL-RODO-W2]
+polecenie: >
+  Prezes prosi o krótki raport ryzyk projektu MES przed rozmową z Flowmetic: stan harmonogramu, kwestie umowne
+  i prawne, wymagania. Wskaż też niespójności w dokumentacji projektu.
+format_odpowiedzi:
+  stan_harmonogramu: "tekst"
+  ryzyka_umowne_prawne: "lista"
+  ryzyka_wymagan: "lista"
+  niespojnosci_dokumentacji: "lista"
+  rekomendacje: "lista"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: reprezentacja, typ: zawiera, pole: ryzyka_umowne_prawne, wszystkie: true, wzorce: ['podpis|reprezentac', 'dw[óo]ch|50[ .]?000|drugi\w* członk|\blis\b'], waga: 2}
+  - {id: chmura, typ: zawiera, pole: [ryzyka_umowne_prawne, ryzyka_wymagan, niespojnosci_dokumentacji], wszystkie: true, wzorce: ['chmur', '\bR1\b|§ ?4'], waga: 2, krytyczne: true}
+  - {id: cr02, typ: zawiera, pole: [ryzyka_umowne_prawne, ryzyka_wymagan, niespojnosci_dokumentacji], wzorce: ['CR-02', '\bR7\b'], waga: 2}
+  - {id: r4, typ: zawiera, pole: [ryzyka_wymagan, niespojnosci_dokumentacji], wzorce: ['\bR4\b', 'szybk'], waga: 1}
+  - {id: data_notatki, typ: zawiera, pole: niespojnosci_dokumentacji, wzorce: ['19\.08', '20\.08'], waga: 2}
+  - {id: go_live, typ: zawiera, pole: stan_harmonogramu, wzorce: ['15\.01\.2027', '2027'], waga: 1}
+  - {id: e2, typ: zawiera, pole: stan_harmonogramu, wzorce: ['30\.09', '\bE2\b'], waga: 1}
+  - {id: kary, typ: zawiera, pole: [ryzyka_umowne_prawne, rekomendacje, stan_harmonogramu], wzorce: ['\b186(,00)? ?zł', '0[,.]2 ?%', '9[ .]?300'], waga: 1}
+kryteria_oceny:
+  - "Harmonogram: E2 niezakończony w terminie 30.09 (terminale), prośba o przesunięcie go-live na 15.01.2027, przysługujące kary (0,2% × 93 000 zł dziennie, maks. 9 300 zł)."
+  - "Kwestie prawne: umowa 186 000 zł podpisana tylko przez prezesa (wymagane dwa podpisy); chmura sprzeczna z § 4 umowy i R1 — decyzja mailowa bez CR; R7/CR-02 niezaakceptowany i dane o czasie pracy (polityka, art. 28 RODO)."
+  - "Wymagania i dokumentacja: R4 niemierzalne; notatka ze spotkania 20.08 datowana 19.08; specyfikacja v3 wewnętrznie sprzeczna (R1/R9 vs rozdz. 4)."
+  - "Rekomendacje konkretne i wykonalne przed rozmową z Flowmetic."
+wzorcowa:
+  stan_harmonogramu: "E1 odebrany; E2 (termin 30.09.2026) nieukończony — opóźniona dostawa terminali; Flowmetic prosi o przesunięcie wdrożenia (E3) z 30.11.2026 na 15.01.2027."
+  ryzyka_umowne_prawne: ["umowa UW/2026/01 (186 000 zł) podpisana tylko przez prezesa — powyżej 50 000 zł wymagane współdziałanie dwóch członków zarządu (KRS)", "środowisko w chmurze sprzeczne z § 4 umowy (dane tylko na infrastrukturze Zamawiającego) — decyzja mailowa prezesa bez change requestu i bez umowy powierzenia", "kary za zwłokę E2: 0,2% × 93 000 zł = 186 zł dziennie, maks. 9 300 zł"]
+  ryzyka_wymagan: ["R7 (czas pracy) dopisane w v3 bez akceptacji CR-02 (14 500 zł); dane o czasie pracy tylko w systemie kadrowo-płacowym i lokalnie (polityka)", "R4 „System ma być szybki” — niemierzalne"]
+  niespojnosci_dokumentacji: ["specyfikacja v3: R1 i R9 (lokalnie, NAS) vs rozdz. 4 (chmura, kopie u Wykonawcy)", "notatka ze spotkania z 20.08 datowana 19.08.2026"]
+  rekomendacje: ["potwierdzić umowę przez A. Lis", "nie akceptować v3 i przesunięcia bez aneksu", "rozstrzygnąć hosting formalnie (CR, aneks, umowa powierzenia) albo wrócić do R1", "zastrzec kary za E2"]
+  zrodla: ["Umowa_wdrozeniowa_UW-2026-01_Flowmetic.pdf", "Specyfikacja_wymagan_FlowMES_v3.docx", "2026-08-19_status_MES.txt", "Rejestr_zmian_CR.xlsx"]
+pulapka:
+  stan_harmonogramu: "projekt zgodnie z planem"
+  ryzyka_umowne_prawne: []
+  ryzyka_wymagan: []
+  niespojnosci_dokumentacji: []
+  rekomendacje: ["zaakceptować nowy termin"]
+  zrodla: []

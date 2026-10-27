@@ -1,0 +1,38 @@
+id: W12
+nazwa: Numer KSeF i zapłata faktury dla Filtreny
+poziom: L1
+kategoria: wyszukiwanie
+obszar: dokumenty finansowe
+pulapki: [T03]
+dokumenty_kluczowe: [FV-2026-07-018, BANK-2026-08-13]
+polecenie: >
+  Podaj numer KSeF i kwotę brutto faktury FV/2026/07/018 oraz datę i kwotę zapłaty przez Filtrenę.
+  Czy zapłacili w terminie?
+format_odpowiedzi:
+  numer_ksef: "numer KSeF faktury"
+  kwota_brutto_zl: "liczba"
+  data_zaplaty: "RRRR-MM-DD"
+  kwota_zaplaty_zl: "liczba"
+  zaplacono_w_terminie: "true/false"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: ksef, typ: zawiera, pole: numer_ksef, wzorce: ['8395716991-20260715-06C8F2402F30-6B'], waga: 2, krytyczne: true}
+  - {id: brutto, typ: rowne, pole: kwota_brutto_zl, wartosc: 261252, waga: 1}
+  - {id: data, typ: rowne, pole: data_zaplaty, wartosc: 2026-08-13, waga: 1}
+  - {id: kwota, typ: rowne, pole: kwota_zaplaty_zl, wartosc: 261252, waga: 1}
+  - {id: w_terminie, typ: rowne, pole: zaplacono_w_terminie, wartosc: true, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [FV-2026-07-018, BANK-2026-08-13], waga: 1}
+wzorcowa:
+  numer_ksef: "8395716991-20260715-06C8F2402F30-6B"
+  kwota_brutto_zl: 261252
+  data_zaplaty: "2026-08-13"
+  kwota_zaplaty_zl: 261252
+  zaplacono_w_terminie: true
+  zrodla: ["FV_2026_07_018.pdf", "Potwierdzenie_uznania_2026-08-13_Filtrena.pdf"]
+pulapka:
+  numer_ksef: "8395716991-20260622-FE07F666EA49-81"
+  kwota_brutto_zl: 212400
+  data_zaplaty: "2026-08-14"
+  kwota_zaplaty_zl: 212400
+  zaplacono_w_terminie: false
+  zrodla: []

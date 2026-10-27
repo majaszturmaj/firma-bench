@@ -1,0 +1,39 @@
+id: G07
+nazwa: Stanowisko do Flowmetic w sprawie przesunięcia wdrożenia
+poziom: L3
+kategoria: pisma
+obszar: pismo do wykonawcy z uwzględnieniem praw umownych i ryzyk projektu
+pulapki: [T08, T24]
+dokumenty_kluczowe: [UMW-D06, EML-D06-02, MES-SPEC-V3, MES-CR, EML-D06-01, POL-RODO-W2, MES-NOT-2026-08-19]
+polecenie: >
+  Przygotuj projekt pisma do Flowmetic w odpowiedzi na prośbę o przesunięcie wdrożenia produkcyjnego na 15.01.2027 r.
+  Uwzględnij nasze prawa z umowy i otwarte kwestie projektu. Nie wysyłaj — przygotuj treść do akceptacji zarządu.
+format_odpowiedzi:
+  adresat: "adresat"
+  kluczowe_stanowisko: "jedno zdanie: nasze stanowisko"
+  tresc_pisma: "pełna treść pisma"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: kary_zastrzezone, typ: zawiera, pole: [tresc_pisma, kluczowe_stanowisko], wzorce: ['kar\w* umown', '0[,.]2 ?%', '\b186(,00)? ?zł', '9[ .]?300'], waga: 2, krytyczne: true}
+  - {id: etap, typ: zawiera, pole: tresc_pisma, wzorce: ['93[ .]?000'], waga: 1}
+  - {id: kara_dzienna, typ: zawiera, pole: tresc_pisma, wzorce: ['\b186(,00)? ?zł'], waga: 1}
+  - {id: aneks, typ: zawiera, pole: tresc_pisma, wzorce: ['aneks', 'form\w* pisemn'], waga: 2, krytyczne: true}
+  - {id: dane_lokalnie, typ: zawiera, pole: tresc_pisma, wzorce: ['§ ?4', 'infrastruktur', '\bR1\b', 'chmur'], waga: 2}
+  - {id: cr02, typ: zawiera, pole: tresc_pisma, wzorce: ['CR-02', '\bR7\b'], waga: 1}
+  - {id: bez_akceptacji_terminu, typ: nie_zawiera, pole: [tresc_pisma, kluczowe_stanowisko], wzorce: ['(?<!nie )(akceptujemy|zgadzamy się na|przyjmujemy)[^.]{0,40}(15\.01\.2027|nowy termin|nowy harmonogram|przesunięci)'], waga: 2}
+  - {id: stanowisko, typ: zawiera, pole: kluczowe_stanowisko, wzorce: ['nie akcept', 'aneks', 'warunk', 'zastrzeg', 'nie zgadza'], waga: 1}
+kryteria_oceny:
+  - "Stwierdza zwłokę w etapie E2 (termin 30.09.2026) i zastrzega prawo do kar umownych (0,2% wynagrodzenia za etap 93 000 zł dziennie, maks. 10%)."
+  - "Nie akceptuje nowego terminu jednostronnie — zmiana harmonogramu wyłącznie aneksem po uzgodnieniu warunków."
+  - "Porządkuje otwarte kwestie: środowisko w chmurze sprzeczne z § 4 umowy i wymaganiem R1 (wymaga decyzji, CR i umowy powierzenia), CR-02/R7 niezaakceptowany, dane o czasie pracy wg polityki ochrony danych."
+  - "Ton profesjonalny i stanowczy, bez eskalacji; pismo do akceptacji zarządu (umowa podpisana tylko przez prezesa — zarząd powinien wypowiadać się zgodnie z reprezentacją)."
+wzorcowa:
+  adresat: "Flowmetic Sp. z o.o., Kamil Rutkowski, pl. Grunwaldzki 23, 50-363 Wrocław"
+  kluczowe_stanowisko: "Nie akceptujemy przesunięcia bez aneksu i uzgodnienia warunków; zastrzegamy kary za zwłokę w E2."
+  tresc_pisma: "Etap E2 nie został zakończony w terminie 30.09.2026 r. Zgodnie z § 7 umowy UW/2026/01 przysługuje nam kara 0,2% wynagrodzenia za etap (93 000 zł), tj. 186 zł za każdy dzień zwłoki, nie więcej niż 10%. Zmiana harmonogramu wymaga aneksu w formie pisemnej (§ 9) — nie akceptujemy nowego terminu przed uzgodnieniem warunków. Przypominamy, że zgodnie z § 4 umowy i wymaganiem R1 system ma działać na naszej infrastrukturze; środowisko w chmurze ze specyfikacji v3 wymaga odrębnej decyzji i change requestu, podobnie jak R7/CR-02, który nie został zaakceptowany."
+  zrodla: ["Umowa_wdrozeniowa_UW-2026-01_Flowmetic.pdf", "2026-10-01_1620_FlowMES_opoznienie_E2.eml", "Specyfikacja_wymagan_FlowMES_v3.docx"]
+pulapka:
+  adresat: "Flowmetic"
+  kluczowe_stanowisko: "Akceptujemy nowy termin."
+  tresc_pisma: "Akceptujemy nowy termin 15.01.2027 i prosimy o aneks."
+  zrodla: []

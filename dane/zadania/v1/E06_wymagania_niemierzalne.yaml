@@ -1,0 +1,33 @@
+id: E06
+nazwa: Niemierzalne wymagania w specyfikacji MES
+poziom: L1
+kategoria: redakcja
+obszar: jakość wymagań, przeredagowanie
+pulapki: [T20]
+dokumenty_kluczowe: [MES-SPEC-V3]
+polecenie: >
+  Które wymagania w specyfikacji FlowMES v3 są niemierzalne albo nieweryfikowalne przy odbiorze? Zaproponuj
+  mierzalne brzmienie.
+format_odpowiedzi:
+  niemierzalne: "lista {id, tresc, problem}"
+  propozycje: "lista {id, nowe_brzmienie}"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: r4, typ: zawiera, pole: niemierzalne, wzorce: ['\bR4\b'], waga: 3, krytyczne: true}
+  - {id: liczbowo, typ: zawiera, pole: propozycje, wzorce: ['\d+ ?(s|sek|ms)\b', 'sekund'], waga: 2}
+  - {id: propozycja_r4, typ: zawiera, pole: propozycje, wzorce: ['\bR4\b'], waga: 1}
+  - {id: r10_mierzalne, typ: nie_zawiera, pole: niemierzalne, wzorce: ['\bR10\b'], waga: 1}
+kryteria_oceny:
+  - "Wskazuje R4 „System ma być szybki” jako niemierzalne; nie oznacza jako niemierzalnych wymagań z jednoznacznym kryterium (np. R10 — 99%)."
+  - "Proponowane brzmienie jest mierzalne i weryfikowalne przy odbiorze (czas odpowiedzi, warunki pomiaru, odsetek operacji)."
+wzorcowa:
+  niemierzalne:
+    - {id: "R4", tresc: "System ma być szybki.", problem: "brak kryterium i warunków pomiaru — nie da się odebrać"}
+  propozycje:
+    - {id: "R4", nowe_brzmienie: "Czas odpowiedzi ekranów planowania i rejestracji ≤ 2 s dla 95% operacji przy 20 jednoczesnych użytkownikach w godzinach pracy zmian"}
+  zrodla: ["Specyfikacja_wymagan_FlowMES_v3.docx"]
+pulapka:
+  niemierzalne:
+    - {id: "R10", tresc: "Dostępność 99%", problem: "nie wiadomo"}
+  propozycje: []
+  zrodla: []

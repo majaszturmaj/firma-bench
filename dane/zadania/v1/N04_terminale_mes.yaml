@@ -1,0 +1,37 @@
+id: N04
+nazwa: Kiedy Flowmetic dostarczy terminale (termin nieznany)
+poziom: L2
+kategoria: niepewnosc
+obszar: rozróżnienie informacji pewnej od nieaktualnej
+pulapki: []
+dokumenty_kluczowe: [MES-NOT-2026-06-17, MES-NOT-2026-08-19, EML-D06-02, RAPORT-PROD-2026-09]
+polecenie: >
+  Kiedy Flowmetic dostarczy terminale operatorskie do systemu MES?
+format_odpowiedzi:
+  termin_znany: "true/false"
+  termin: "RRRR-MM-DD albo null"
+  historia_informacji: "co i kiedy mówiono o dostawie terminali"
+  zalecenie: "co zrobić"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: nieznany, typ: rowne, pole: termin_znany, wartosc: false, waga: 3, krytyczne: true}
+  - {id: bez_daty, typ: pusty, pole: termin, waga: 2}
+  - {id: lipiec, typ: zawiera, pole: historia_informacji, wzorce: ['lip'], waga: 1}
+  - {id: opoznienie, typ: zawiera, pole: historia_informacji, wzorce: ['0?1\.10', 'październik', 'opóźni', 'poddostawc'], waga: 1}
+  - {id: zalecenie, typ: zawiera, pole: zalecenie, wzorce: ['harmonogram', 'zapyta', 'potwierdz', 'wezw', 'termin'], waga: 1}
+kryteria_oceny:
+  - "Stwierdza, że aktualnego terminu dostawy terminali nie ma w dokumentach; nie podaje „lipca” jako aktualnego terminu."
+  - "Odtwarza historię: 17.06 — dostawa w lipcu; 20.08 — Flowmetic ma przedstawić nowy harmonogram; 01.10 — opóźnienie u poddostawcy bez nowej daty; 05.10 — terminale nadal niedostarczone."
+  - "Zaleca zażądanie od Flowmetic wiążącego harmonogramu (np. w stanowisku do 19.10)."
+wzorcowa:
+  termin_znany: false
+  termin: null
+  historia_informacji: "17.06: dostawa planowana w lipcu; 20.08: dostawa opóźniona, Flowmetic ma przedstawić nowy harmonogram; 01.10: opóźnienie u poddostawcy Flowmetic, bez nowego terminu; raport z 05.10: terminale nadal niedostarczone"
+  zalecenie: "Zażądać od Flowmetic wiążącego terminu dostawy terminali — np. w stanowisku G. Kowalczyka do 19.10"
+  zrodla: ["2026-06-17_status_MES.txt", "2026-08-19_status_MES.txt", "2026-10-01_1620_FlowMES_opoznienie_E2.eml", "Raport_miesieczny_produkcji_2026-09.pdf"]
+pulapka:
+  termin_znany: true
+  termin: "2026-07-31"
+  historia_informacji: "dostawa w lipcu"
+  zalecenie: "brak"
+  zrodla: []

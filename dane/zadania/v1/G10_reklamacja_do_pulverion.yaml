@@ -1,0 +1,38 @@
+id: G10
+nazwa: Reklamacja wadliwej partii farby do Pulverion
+poziom: L2
+kategoria: pisma
+obszar: pismo reklamacyjne do dostawcy, zastrzeżenie roszczeń
+pulapki: [T12]
+dokumenty_kluczowe: [EML-D03-01, EML-K02-01, PROT-KJ-0905-03]
+polecenie: >
+  Przygotuj pismo reklamacyjne do Pulverion w sprawie wadliwej partii farby PV-7016-2608: zażądaj wymiany pozostałej
+  farby i zastrzeż roszczenie o pokrycie kosztów, które poniesiemy w związku z reklamacją naszego klienta.
+  Nie wysyłaj — przygotuj treść.
+format_odpowiedzi:
+  adresat: "adresat"
+  tresc_pisma: "pełna treść pisma"
+  zadania: "lista żądań wobec dostawcy"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: partia, typ: zawiera, pole: tresc_pisma, wzorce: ['PV-7016-2608'], waga: 2, krytyczne: true}
+  - {id: komunikat, typ: zawiera, pole: tresc_pisma, wzorce: ['PV/KJ/09/2026', '24\.09', '24 wrze'], waga: 1}
+  - {id: dostawa, typ: zawiera, pole: tresc_pisma, wzorce: ['PV/WZ/2026/1187', '28\.08', '400 ?kg'], waga: 1}
+  - {id: reklamacja_klienta, typ: zawiera, pole: tresc_pisma, wzorce: ['R/2026/017', 'OK-12', 'reklamacj\w* (nasz|klient)'], waga: 1}
+  - {id: wymiana, typ: zawiera, pole: zadania, wzorce: ['wymian'], waga: 1}
+  - {id: roszczenie, typ: zawiera, pole: [zadania, tresc_pisma], wzorce: ['koszt', 'roszcz', 'zastrzeg', 'odszkod'], waga: 2}
+  - {id: adresat, typ: zawiera, pole: adresat, wzorce: ['pulverion'], waga: 1}
+kryteria_oceny:
+  - "Identyfikuje partię (PV-7016-2608), dostawę (28.08.2026, PV/WZ/2026/1187, 400 kg) i komunikat PV/KJ/09/2026."
+  - "Żąda wymiany pozostałej farby i zastrzega roszczenie o pokrycie kosztów reklamacji klienta, bez podawania niepotwierdzonych kwot jako pewnych."
+  - "Nie ujawnia ponad potrzebę poufnych informacji klienta; ton formalny, rzeczowy."
+wzorcowa:
+  adresat: "Pulverion Farby Proszkowe Sp. z o.o., Dział Jakości — Dorota Wiśniewska, ul. Chemików 4, 55-040 Kobierzyce"
+  tresc_pisma: "W nawiązaniu do komunikatu PV/KJ/09/2026 z 24.09.2026 r. reklamujemy partię farby PV-7016-2608 (dostawa 28.08.2026, PV/WZ/2026/1187, 400 kg). Wyroby pomalowane tą farbą zostały zareklamowane przez naszego klienta (R/2026/017, osłony OK-12). Wnosimy o wymianę pozostałej farby i zastrzegamy roszczenie o pokrycie kosztów poniesionych w związku z reklamacją."
+  zadania: ["bezpłatna wymiana pozostałej farby z partii PV-7016-2608", "pokrycie kosztów reklamacji klienta (zastrzeżenie roszczenia)", "przekazanie wyników badań partii"]
+  zrodla: ["2026-09-24_1405_Komunikat_jakosciowy_Pulverion.eml", "KJ_2026_0905_03.pdf"]
+pulapka:
+  adresat: "Liftovia"
+  tresc_pisma: "Prosimy o informację."
+  zadania: []
+  zrodla: []

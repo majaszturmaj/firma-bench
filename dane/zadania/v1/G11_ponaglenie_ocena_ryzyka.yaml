@@ -1,0 +1,32 @@
+id: G11
+nazwa: Ponaglenie do służby BHP w sprawie oceny ryzyka
+poziom: L1
+kategoria: pisma
+obszar: krótka korespondencja z terminem
+pulapki: [T21]
+dokumenty_kluczowe: [EML-P10-01, PIS-U02]
+polecenie: >
+  Napisz krótkie, stanowcze ponaglenie do Zbigniewa Ostrowskiego w sprawie aktualizacji oceny ryzyka zawodowego
+  (wniosek nr 5 PIP). Nie wysyłaj — przygotuj treść.
+format_odpowiedzi:
+  adresat: "imię, nazwisko, e-mail"
+  tresc: "treść wiadomości"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: adresat, typ: zawiera, pole: adresat, wzorce: ['ostrowsk'], waga: 2}
+  - {id: ocena, typ: zawiera, pole: tresc, wzorce: ['ocen\w* ryzyka'], waga: 1}
+  - {id: stanowisko, typ: zawiera, pole: tresc, wzorce: ['laser\w* fiber', 'operator\w* lasera'], waga: 1}
+  - {id: termin_minal, typ: zawiera, pole: tresc, wzorce: ['0?9\.10', '9 paźdz'], waga: 1}
+  - {id: termin_pip, typ: zawiera, pole: tresc, wzorce: ['15\.10', '15 paźdz'], waga: 2, krytyczne: true}
+  - {id: pip, typ: zawiera, pole: tresc, wzorce: ['\bPIP\b', 'inspek'], waga: 1}
+kryteria_oceny:
+  - "Krótka, stanowcza, uprzejma wiadomość: czego dotyczy (ocena ryzyka operatora lasera fiber, wniosek 5 PIP), że termin 9.10 minął i że informacja do PIP wychodzi 15.10."
+  - "Zawiera konkretną prośbę o dokument lub datę jego przekazania; nie powiela całego poprzedniego maila."
+wzorcowa:
+  adresat: "Zbigniew Ostrowski, z.ostrowski@bhp-ostrowski.pl"
+  tresc: "Panie Zbigniewie, ponownie proszę o aktualizację oceny ryzyka zawodowego na stanowisku operatora lasera fiber (wniosek nr 5 PIP). Termin minął 9.10, a 15.10 musimy przekazać PIP informację o realizacji wniosków. Proszę o dokument dziś lub o wiążącą datę jego przekazania."
+  zrodla: ["2026-10-13_1015_Ocena_ryzyka_operator_lasera_PIP.eml"]
+pulapka:
+  adresat: "Beata Grabowska"
+  tresc: "Proszę o dokument, kiedy będzie Pan mógł."
+  zrodla: []

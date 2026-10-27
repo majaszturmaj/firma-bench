@@ -1,0 +1,43 @@
+id: P04
+nazwa: Dokumenty do wezwania Urzędu Skarbowego
+poziom: L2
+kategoria: rozumowanie
+obszar: kompletność dokumentacji
+pulapki: [T03]
+dokumenty_kluczowe: [PIS-U01, ZAM-K04-045, FV-2026-07-018, WZ-2026-0711, BANK-2026-08-13, EML-K04-01, EML-K04-02, EML-P11-01]
+polecenie: >
+  Przygotuj zestawienie do odpowiedzi na wezwanie z Urzędu Skarbowego (L.dz. 412/2026): czego żąda urząd,
+  do kiedy, które z żądanych dokumentów mamy (podaj pliki) i czego brakuje.
+format_odpowiedzi:
+  termin: "data złożenia dokumentów (RRRR-MM-DD)"
+  dokumenty: "lista obiektów {wymagany: nazwa żądanego dokumentu, jest: true/false, plik: nazwa pliku lub null}"
+  brakujace: "lista brakujących dokumentów"
+  uwagi: "ryzyka i zalecenia"
+  zrodla: "lista nazw plików"
+sprawdzenia:
+  - {id: termin_16_10, typ: rowne, pole: termin, wartosc: 2026-10-16, waga: 3, krytyczne: true}
+  - {id: brak_protokolu, typ: zawiera, pole: brakujace, wzorce: ['protok'], waga: 3, krytyczne: true}
+  - {id: protokol_nie_ma, typ: element_listy, pole: dokumenty, klucz: wymagany, wzorzec: 'protok', pole_elementu: jest, wartosc: false, waga: 2}
+  - {id: zamowienie, typ: zawiera, pole: dokumenty, wzorce: ['ZAM[_/]2026[_/]045'], waga: 1}
+  - {id: wz, typ: zawiera, pole: dokumenty, wzorce: ['WZ[_/]2026[_/]0711'], waga: 1}
+  - {id: zaplata, typ: zawiera, pole: dokumenty, wzorce: ['Potwierdzenie_uznania', '261 ?252'], waga: 1}
+  - {id: wzor_niepodpisany, typ: zawiera, pole: [uwagi, brakujace], wzorce: ['wz[oó]r', 'niepodpisan', 'nie (został|zostal) podpisan', 'Świebodzic'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [PIS-U01], waga: 1}
+wzorcowa:
+  termin: "2026-10-16"
+  dokumenty:
+    - {wymagany: "zamówienie lub umowa", jest: true, plik: "ZAM_2026_045_Filtrena.pdf"}
+    - {wymagany: "dokumenty WZ", jest: true, plik: "WZ_2026_0711.pdf"}
+    - {wymagany: "protokół odbioru", jest: false, plik: null}
+    - {wymagany: "potwierdzenie zapłaty", jest: true, plik: "Potwierdzenie_uznania_2026-08-13_Filtrena.pdf"}
+    - {wymagany: "korespondencja handlowa", jest: true, plik: "2026-07-15_1532_Dostawa_ram_RS-900_ZAM_2026_045.eml"}
+  brakujace: ["podpisany protokół odbioru (w mailu z 15.07 jest tylko niepodpisany wzór)"]
+  uwagi: "Filtrena obiecała podpisać protokół po montażu w Świebodzicach; zamówienie wymagało protokołu przed fakturą."
+  zrodla: ["2026-10-05_Wezwanie_0299-SPV.4011.112.2026.pdf"]
+pulapka:
+  termin: "2026-10-12"
+  dokumenty:
+    - {wymagany: "protokół odbioru", jest: true, plik: "Protokol_odbioru_RS-900_wzor.docx"}
+  brakujace: []
+  uwagi: "Komplet."
+  zrodla: []

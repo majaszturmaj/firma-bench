@@ -1,0 +1,89 @@
+{
+ "zrodlo": "Mag_Testy commit 2741765, benchmark/wyniki_hapilot",
+ "przebiegi": [
+  {
+   "przebieg": "2026-10-21_proba8_best-local",
+   "system": "Hapilot",
+   "wersja": "v0.3.1",
+   "profil": "best-local",
+   "model": "qwen3.6-27b-q4km",
+   "data": "2026-10-21",
+   "zadania": {
+    "W01": {
+     "wynik": 0.125,
+     "sukces": false,
+     "czas_s": 71.47,
+     "narzedzia": [
+      "rag_search",
+      "python"
+     ]
+    },
+    "W04": {
+     "wynik": 0.9091,
+     "sukces": true,
+     "czas_s": 71.69,
+     "narzedzia": [
+      "rag_search",
+      "rag_search",
+      "llm_synthesis"
+     ]
+    },
+    "R03": {
+     "wynik": 0.5556,
+     "sukces": false,
+     "czas_s": 41.7,
+     "narzedzia": [
+      "rag_search",
+      "llm_synthesis"
+     ]
+    },
+    "D01": {
+     "wynik": 1.0,
+     "sukces": true,
+     "czas_s": 31.27,
+     "narzedzia": [
+      "rag_search",
+      "python"
+     ]
+    },
+    "D03": {
+     "wynik": 0.2857,
+     "sukces": false,
+     "czas_s": 85.63,
+     "narzedzia": [
+      "rag_search",
+      "python",
+      "llm_synthesis"
+     ]
+    },
+    "G05": {
+     "wynik": 0.5,
+     "sukces": false,
+     "czas_s": 35.13,
+     "narzedzia": [
+      "rag_search",
+      "llm_synthesis"
+     ]
+    },
+    "B03": {
+     "wynik": 0.4545,
+     "sukces": false,
+     "czas_s": 46.05,
+     "narzedzia": [
+      "rag_search",
+      "llm_synthesis"
+     ]
+    },
+    "N01": {
+     "wynik": 1.0,
+     "sukces": true,
+     "czas_s": 16.33,
+     "narzedzia": [
+      "rag_search",
+      "llm_synthesis"
+     ]
+    }
+   }
+  }
+ ]
+}

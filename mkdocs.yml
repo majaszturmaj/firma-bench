@@ -1,0 +1,79 @@
+site_name: FIRMA-bench
+site_description: Benchmark zadań biurowych i administracyjnych w języku polskim — 82 zadania na dokumentach fikcyjnej firmy
+site_author: Maja Szturmaj
+repo_name: majaszturmaj/firma-bench
+repo_url: https://github.com/majaszturmaj/firma-bench
+edit_uri: ""
+docs_dir: docs
+extra_css:
+  - stylesheets/extra.css
+strict: true
+
+theme:
+  name: material
+  language: pl
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle: {icon: material/weather-night, name: Tryb ciemny}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle: {icon: material/weather-sunny, name: Tryb jasny}
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])'
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Start: index.md
+  - Firma:
+      - Profil firmy: firma.md
+      - Korpus dokumentów: korpus.md
+      - Pułapki: pulapki.md
+  - Zadania:
+      - kategorie/index.md
+      - Wyszukiwanie faktów: kategorie/wyszukiwanie.md
+      - Rozumowanie: kategorie/rozumowanie.md
+      - Analiza danych: kategorie/analiza_danych.md
+      - Redagowanie pism: kategorie/pisma.md
+      - Redakcja i streszczanie: kategorie/redakcja.md
+      - Bezpieczeństwo: kategorie/bezpieczenstwo.md
+      - Niepewność i brak danych: kategorie/niepewnosc.md
+      - Zadania złożone: kategorie/zlozone.md
+  - Metodologia: metodologia.md
+  - Wyniki:
+      - Modele: wyniki.md
+      - Agenty: agenty.md
+  - Dane: dane.md
+
+not_in_nav: |
+  /zadania/*.md
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn

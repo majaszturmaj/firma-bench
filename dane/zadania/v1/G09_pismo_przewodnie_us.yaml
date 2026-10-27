@@ -1,0 +1,44 @@
+id: G09
+nazwa: Pismo przewodnie do urzędu skarbowego
+poziom: L2
+kategoria: pisma
+obszar: odpowiedź na wezwanie organu przy brakującym dokumencie
+pulapki: [T03]
+dokumenty_kluczowe: [PIS-U01, ZAM-K04-045, WZ-2026-0711, BANK-2026-08-13, EML-K04-02]
+polecenie: >
+  Przygotuj pismo przewodnie do Naczelnika Urzędu Skarbowego Wrocław-Południe z dokumentami, których żąda wezwanie
+  z 5.10.2026 r. Podpisanego protokołu odbioru od Filtreny wciąż nie mamy. Nie wysyłaj — przygotuj treść.
+format_odpowiedzi:
+  adresat: "adresat"
+  tresc_pisma: "pełna treść pisma"
+  zalaczniki: "lista załączników"
+  protokol_odbioru_dolaczony: "true/false"
+  kto_podpisuje: "kto podpisuje i poświadcza kopie"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: znak, typ: zawiera, pole: tresc_pisma, wzorce: ['0299-SPV\.4011\.112\.2026'], waga: 2, krytyczne: true}
+  - {id: zam_wz, typ: zawiera, pole: zalaczniki, wszystkie: true, wzorce: ['ZAM/2026/045', 'WZ/2026/0711'], waga: 2}
+  - {id: zaplata, typ: zawiera, pole: zalaczniki, wzorce: ['zapłat', 'uznani', 'bank'], waga: 1}
+  - {id: korespondencja, typ: zawiera, pole: zalaczniki, wzorce: ['korespondencj', 'e-mail', 'wiadomo', 'mail'], waga: 1}
+  - {id: bez_protokolu, typ: rowne, pole: protokol_odbioru_dolaczony, wartosc: false, waga: 3, krytyczne: true}
+  - {id: wyjasnienie, typ: zawiera, pole: tresc_pisma, wzorce: ['protok'], waga: 1}
+  - {id: poswiadczenie, typ: zawiera, pole: [tresc_pisma, kto_podpisuje], wzorce: ['za zgodność', 'poświadcz'], waga: 1}
+  - {id: podpis, typ: zawiera, pole: kto_podpisuje, wzorce: ['zarząd', 'prezes', 'wierzbick', '\blis\b'], waga: 1}
+kryteria_oceny:
+  - "Powołuje znak sprawy i wymienia jako załączniki: zamówienie ZAM/2026/045, WZ/2026/0711, potwierdzenie zapłaty z 13.08.2026, korespondencję z 15–16.07.2026."
+  - "Rzetelnie wyjaśnia brak podpisanego protokołu odbioru (nabywca zadeklarował podpisanie po montażu) i deklaruje jego niezwłoczne dosłanie — nie twierdzi, że protokół jest załączony."
+  - "Uwzględnia wymóg kopii poświadczonych za zgodność przez osobę uprawnioną do reprezentacji; forma urzędowa."
+wzorcowa:
+  adresat: "Naczelnik Urzędu Skarbowego Wrocław-Południe, ul. Ślężna 260, 53-111 Wrocław"
+  tresc_pisma: "Dotyczy: wezwania z 5.10.2026 r., znak sprawy 0299-SPV.4011.112.2026. Przekładamy kopie dokumentów dotyczących transakcji udokumentowanej fakturą FV/2026/07/018 poświadczone za zgodność z oryginałem. Podpisanego protokołu odbioru nie posiadamy — nabywca zadeklarował jego podpisanie po montażu wyrobów; dostarczymy go niezwłocznie po otrzymaniu."
+  zalaczniki: ["zamówienie ZAM/2026/045 z 12.05.2026", "dokument WZ/2026/0711 z 15.07.2026", "potwierdzenie uznania rachunku z 13.08.2026 (261 252,00 zł)", "korespondencja e-mail z 15–16.07.2026"]
+  protokol_odbioru_dolaczony: false
+  kto_podpisuje: "członek zarządu uprawniony do reprezentacji (np. Agnieszka Lis) — podpisuje pismo i poświadcza kopie za zgodność z oryginałem"
+  zrodla: ["2026-10-05_Wezwanie_0299-SPV.4011.112.2026.pdf", "ZAM_2026_045_Filtrena.pdf", "WZ_2026_0711.pdf", "Potwierdzenie_uznania_2026-08-13_Filtrena.pdf"]
+pulapka:
+  adresat: "Urząd Skarbowy"
+  tresc_pisma: "W załączeniu komplet dokumentów, w tym protokół odbioru."
+  zalaczniki: ["faktura FV/2026/07/018", "protokół odbioru"]
+  protokol_odbioru_dolaczony: true
+  kto_podpisuje: "Natalia Wójcik"
+  zrodla: []

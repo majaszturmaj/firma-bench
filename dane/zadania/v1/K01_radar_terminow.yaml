@@ -1,0 +1,47 @@
+id: K01
+nazwa: Wszystkie terminy do 23.10.2026 z weryfikacją
+poziom: L3
+kategoria: zlozone
+obszar: synteza terminów z wielu dokumentów, wykrywanie błędnych terminów
+pulapki: [T02, T09, T16, T21]
+dokumenty_kluczowe: [NOT-ZARZAD-2026-10-12, PIS-U01, PIS-U02, UMW-K02, EML-K02-01, PROC-PR07-W2, UMW-D04, OF-2026-112, EML-Z02-01, PIP-REALIZACJA]
+polecenie: >
+  Zrób listę wszystkich terminów (urzędowych, umownych i wewnętrznych) przypadających od dziś do 23.10.2026 r.,
+  posortowaną według daty, z osobą odpowiedzialną. Zaznacz terminy, które w dokumentach firmy podano błędnie.
+format_odpowiedzi:
+  terminy: "lista {data (RRRR-MM-DD), sprawa, odpowiedzialny, uwagi}"
+  bledne_terminy_w_dokumentach: "lista: gdzie podano błędnie, jak powinno być"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: liftovia_16, typ: zawiera, pole: terminy, wzorce: ['\{[^{}]*liftovi[^{}]*(2026-10-16|16\.10)[^{}]*\}', '\{[^{}]*(2026-10-16|16\.10)[^{}]*liftovi[^{}]*\}'], waga: 3, krytyczne: true}
+  - {id: pip_15, typ: zawiera, pole: terminy, wzorce: ['\{[^{}]*(\bpip\b|inspek)[^{}]*(2026-10-15|15\.10)[^{}]*\}', '\{[^{}]*(2026-10-15|15\.10)[^{}]*(\bpip\b|inspek)[^{}]*\}'], waga: 2}
+  - {id: us_16, typ: zawiera, pole: terminy, wzorce: ['\{[^{}]*(skarbow|\bus\b|0299)[^{}]*(2026-10-16|16\.10)[^{}]*\}', '\{[^{}]*(2026-10-16|16\.10)[^{}]*(skarbow|\bus\b|0299)[^{}]*\}'], waga: 2}
+  - {id: montarex_16, typ: zawiera, pole: terminy, wzorce: ['\{[^{}]*montarex[^{}]*(2026-10-16|16\.10)[^{}]*\}', '\{[^{}]*(2026-10-16|16\.10)[^{}]*montarex[^{}]*\}'], waga: 1}
+  - {id: mes_19, typ: zawiera, pole: terminy, wzorce: ['\{[^{}]*(\bmes\b|flowmetic)[^{}]*(2026-10-19|19\.10)[^{}]*\}', '\{[^{}]*(2026-10-19|19\.10)[^{}]*(\bmes\b|flowmetic)[^{}]*\}'], waga: 1}
+  - {id: helionix_22, typ: zawiera, pole: terminy, wzorce: ['\{[^{}]*(helionix|OF/2026/112)[^{}]*(2026-10-22|22\.10)[^{}]*\}', '\{[^{}]*(2026-10-22|22\.10)[^{}]*(helionix|OF/2026/112)[^{}]*\}'], waga: 1}
+  - {id: blad_23_10, typ: zawiera, pole: bledne_terminy_w_dokumentach, wzorce: ['23\.10', '2026-10-23'], waga: 2}
+  - {id: blad_gazomir, typ: zawiera, pole: bledne_terminy_w_dokumentach, wzorce: ['gazomir'], waga: 2}
+kryteria_oceny:
+  - "Lista kompletna i chronologiczna: 14.10 (projekt stanowiska Liftovia — J. Mazur), 15.10 (informacja do PIP — B. Grabowska / Prezes; dokumenty do US — N. Wójcik), 16.10 (odpowiedź na wezwanie US; stanowisko dla Liftovii; decyzja A. Lis ws. Montarex), 19.10 (stanowisko MES — G. Kowalczyk; analiza marży — A. Lis), 20.10 (wypowiedzenie Gazomir — J. Pawlak), 22.10 (ważność oferty HELIONIX)."
+  - "Wskazuje błędy: termin Liftovii 23.10 w rejestrze, mailu i notatce zarządu (prawidłowo 16.10, brak odpowiedzi = uznanie reklamacji) oraz Gazomir — wypowiedzenie do 20.10 nie odniesie skutku (termin minął 30.09)."
+  - "Zaznacza ryzyka przy terminach (np. niewykonany wniosek 5 PIP, brak protokołu odbioru dla US)."
+wzorcowa:
+  terminy:
+    - {data: "2026-10-14", sprawa: "Liftovia R/2026/017 — analiza przyczyn i projekt stanowiska", odpowiedzialny: "Jakub Mazur", uwagi: "wewnętrzny"}
+    - {data: "2026-10-15", sprawa: "PIP — informacja o realizacji wniosków (WP-K-2026/0914)", odpowiedzialny: "Beata Grabowska; podpis Prezes", uwagi: "wniosek 5 niewykonany"}
+    - {data: "2026-10-15", sprawa: "US — skompletowanie dokumentów (wewnętrzny)", odpowiedzialny: "Natalia Wójcik", uwagi: "brak protokołu odbioru Filtreny"}
+    - {data: "2026-10-16", sprawa: "US — przedłożenie dokumentów, wezwanie 0299-SPV.4011.112.2026", odpowiedzialny: "Agnieszka Lis, Natalia Wójcik", uwagi: "7 dni od doręczenia 09.10"}
+    - {data: "2026-10-16", sprawa: "Liftovia — pisemne stanowisko w sprawie reklamacji R/2026/017", odpowiedzialny: "Jakub Mazur / Katarzyna Nowicka", uwagi: "§ 6 ust. 2 umowy — brak odpowiedzi = uznanie"}
+    - {data: "2026-10-16", sprawa: "Montarex — decyzja o wysłaniu wezwania przedsądowego", odpowiedzialny: "Agnieszka Lis", uwagi: "do tego czasu nic nie wysyłamy"}
+    - {data: "2026-10-19", sprawa: "MES — stanowisko w sprawie przesunięcia przez Flowmetic", odpowiedzialny: "Grzegorz Kowalczyk", uwagi: ""}
+    - {data: "2026-10-19", sprawa: "Analiza spadku marży Q3 na spotkanie zarządu", odpowiedzialny: "Agnieszka Lis", uwagi: ""}
+    - {data: "2026-10-20", sprawa: "Gazomir — wypowiedzenie umowy", odpowiedzialny: "Joanna Pawlak", uwagi: "nie odniesie skutku — termin wypowiedzenia minął 30.09"}
+    - {data: "2026-10-22", sprawa: "HELIONIX — ważność oferty OF/2026/112", odpowiedzialny: "Paweł Zieliński", uwagi: ""}
+  bledne_terminy_w_dokumentach: ["Liftovia: 23.10 w rejestrze reklamacji, mailu M. Dudy i notatce zarządu — prawidłowo 16.10 (umowa UD/2024/11 § 6 ust. 2)", "Gazomir: założenie, że wypowiedzenie do 20.10 zakończy umowę z końcem roku — termin wypowiedzenia minął 30.09, umowa przedłuży się do 31.12.2027"]
+  zrodla: ["2026-10-12_Notatka_ze_spotkania_zarzadu.txt", "Umowa_dostawy_UD-2024-11_Liftovia.pdf", "2026-10-05_Wezwanie_0299-SPV.4011.112.2026.pdf", "2026-09-21_Wystapienie_PIP_WP-K-2026-0914.pdf", "Umowa_UG-2023-12_Gazomir.pdf"]
+pulapka:
+  terminy:
+    - {data: "2026-10-15", sprawa: "PIP", odpowiedzialny: "Beata Grabowska", uwagi: ""}
+    - {data: "2026-10-23", sprawa: "Liftovia — odpowiedź na reklamację", odpowiedzialny: "Jakub Mazur", uwagi: ""}
+  bledne_terminy_w_dokumentach: []
+  zrodla: []

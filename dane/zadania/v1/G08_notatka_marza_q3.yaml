@@ -1,0 +1,40 @@
+id: G08
+nazwa: Notatka dla zarządu o spadku marży w III kwartale
+poziom: L3
+kategoria: pisma
+obszar: raport analityczny z wielu źródeł, rekomendacje
+pulapki: []
+dokumenty_kluczowe: [SPRZEDAZ-2026, KPI-Q3-2026, NADGODZINY-2026, DOSTAWY-STALI-2026, NOT-ZARZAD-2026-08-31, UMW-K01, NOTA-K01-NO-2026-08, NOT-ZARZAD-2026-10-12]
+polecenie: >
+  Przygotuj dla zarządu notatkę o przyczynach spadku marży brutto w III kwartale 2026 r. — z liczbami i z
+  rekomendacjami działań.
+format_odpowiedzi:
+  tresc_notatki: "pełna treść notatki"
+  przyczyny: "lista przyczyn z liczbami"
+  rekomendacje: "lista rekomendacji"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: marza, typ: zawiera, pole: [tresc_notatki, przyczyny], wzorce: ['19[,.]6'], waga: 1}
+  - {id: porownanie, typ: zawiera, pole: [tresc_notatki, przyczyny], wzorce: ['23[,.]8', '4[,.]2 ?p'], waga: 1}
+  - {id: materialy, typ: zawiera, pole: [tresc_notatki, przyczyny], wzorce: ['1[ .]?962[ .]?000', '\b57[ .]?000', '4[ .]?385', '\b1[12]([,.]\d+)?\s?%'], waga: 2, krytyczne: true}
+  - {id: blachy, typ: zawiera, pole: [tresc_notatki, przyczyny], wzorce: ['4[ .]?385', '\b1[12]([,.]\d+)?\s?%'], waga: 2}
+  - {id: nadgodziny, typ: zawiera, pole: [tresc_notatki, przyczyny], wzorce: ['46[ .]?332', '800 ?(h|godz)'], waga: 2}
+  - {id: laser, typ: zawiera, pole: [tresc_notatki, przyczyny], wzorce: ['18[ .]?400', '\bM01\b', 'przest[oó]j'], waga: 1}
+  - {id: kara, typ: zawiera, pole: [tresc_notatki, przyczyny], wzorce: ['4[ .]?632'], waga: 1}
+  - {id: indeksacja, typ: zawiera, pole: rekomendacje, wzorce: ['indeksacj', 'wnios\w* o zmian\w* cen', 'zmian\w* cen', 'podwyż'], waga: 2}
+  - {id: regres, typ: zawiera, pole: rekomendacje, wzorce: ['2[ .]?273', 'stalvero', 'not\w* obciąż', 'kar\w* umown'], waga: 1}
+kryteria_oceny:
+  - "Kwantyfikuje spadek (24,1% → 23,8% → 19,6%; −4,2 p.p. kw/kw) i główne przyczyny: ceny blach (+11%), nadgodziny (800 h, 46 332 zł), kara AGRANDO 4 632 zł, przestój lasera M01 (serwis 18 400 zł), niższe przychody."
+  - "Rekomendacje wynikają z dokumentów: wniosek o indeksację cen do AGRANDO (§ 3 ust. 2), nota dla Stalvero, kontrola terminów dostaw."
+  - "Rozróżnia fakty z dokumentów od szacunków; nie wymyśla liczb."
+  - "Forma zwięzłej notatki dla zarządu (punktowo, max ok. 1 strona)."
+wzorcowa:
+  tresc_notatki: "Marża brutto spadła z 23,8% w II kw. do 19,6% w III kw. (−4,2 p.p.; 1 161 440 zł → 864 360 zł)."
+  przyczyny: ["ceny blach S355 od Stalvero wzrosły z 3 950 do 4 385 zł/t (+11%) od lipca, bez zmiany cen u AGRANDO", "nadgodziny 800 h w lipcu–sierpniu — koszt nadgodzin w Q3 46 332 zł (Q2: 7 614 zł)", "kara umowna AGRANDO 4 632 zł za opóźnioną partię KR-220 (przyczyna: dostawa blach)", "przestój lasera M01 11–13.08, serwis 18 400 zł netto", "niższe przychody: 4,41 mln zł wobec 4,88 mln zł w Q2"]
+  rekomendacje: ["złożyć wniosek o indeksację cen do AGRANDO (§ 3 ust. 2 umowy)", "obciążyć Stalvero karą umowną 2 273,18 zł za ZS/2026/0188", "monitorować terminowość dostaw blach"]
+  zrodla: ["Sprzedaz_i_marza_2026.xlsx", "KPI_Q3_2026.pdf", "Nadgodziny_2026.xlsx", "Dostawy_blach_2026.xlsx"]
+pulapka:
+  tresc_notatki: "Marża spadła z powodu sezonowości."
+  przyczyny: ["sezonowość"]
+  rekomendacje: ["obniżyć wynagrodzenia"]
+  zrodla: []

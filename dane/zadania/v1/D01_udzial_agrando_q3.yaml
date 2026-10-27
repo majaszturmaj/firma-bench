@@ -1,0 +1,34 @@
+id: D01
+nazwa: Udział AGRANDO w sprzedaży III kwartału
+poziom: L1
+kategoria: analiza_danych
+obszar: arkusz sprzedaży, obliczenia procentowe
+pulapki: [T04]
+dokumenty_kluczowe: [SPRZEDAZ-2026, RAPORT-SPRZ-Q3]
+polecenie: >
+  Ile wyniosła sprzedaż do AGRANDO w III kwartale 2026 r., jaki to udział w przychodach kwartału i jak zmieniła
+  się sprzedaż do tego klienta w porównaniu z II kwartałem (kwotowo i procentowo)?
+format_odpowiedzi:
+  sprzedaz_q3_zl: "liczba"
+  udzial_q3_procent: "liczba"
+  zmiana_vs_q2_zl: "liczba (ujemna, jeżeli spadek)"
+  zmiana_vs_q2_procent: "liczba (ujemna, jeżeli spadek)"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: sprzedaz, typ: rowne, pole: sprzedaz_q3_zl, wartosc: 1458860, waga: 2, krytyczne: true}
+  - {id: udzial, typ: zawiera, pole: udzial_q3_procent, wzorce: ['\b33[,.](1|08)'], waga: 2}
+  - {id: zmiana_zl, typ: rowne, pole: zmiana_vs_q2_zl, wartosc: -113820, dopuszczalne: [113820], waga: 2}
+  - {id: zmiana_proc, typ: zawiera, pole: zmiana_vs_q2_procent, wzorce: ['\b7[,.]2'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [SPRZEDAZ-2026, RAPORT-SPRZ-Q3], tryb: dowolny, waga: 1}
+wzorcowa:
+  sprzedaz_q3_zl: 1458860
+  udzial_q3_procent: 33.1
+  zmiana_vs_q2_zl: -113820
+  zmiana_vs_q2_procent: -7.2
+  zrodla: ["Sprzedaz_i_marza_2026.xlsx", "Raport_sprzedazy_Q3_2026.pdf"]
+pulapka:
+  sprzedaz_q3_zl: 1572680
+  udzial_q3_procent: 32.2
+  zmiana_vs_q2_zl: 113820
+  zmiana_vs_q2_procent: 7.8
+  zrodla: []

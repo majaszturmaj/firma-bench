@@ -1,0 +1,46 @@
+id: R01
+nazwa: Kara od AGRANDO i regres do Stalvero
+poziom: L2
+kategoria: rozumowanie
+obszar: kary umowne, liczenie dni roboczych, łańcuch przyczyn
+pulapki: []
+dokumenty_kluczowe: [NOTA-K01-NO-2026-08, UMW-K01, ZAM-K01-014, UMW-D01, EML-D01-01, DOSTAWY-STALI-2026, NOT-ZARZAD-2026-08-31, PROC-PZ03-W2]
+polecenie: >
+  AGRANDO obciążyło nas notą NO/2026/08. Sprawdź, czy kwota kary zgadza się z umową, i ustal, czy oraz na jaką
+  kwotę możemy obciążyć karą umowną Stalvero za opóźnioną dostawę blach, przez którą nie zdążyliśmy z partią
+  dla AGRANDO. Czy już to zrobiliśmy i kto musi zaakceptować taką notę?
+format_odpowiedzi:
+  kara_agrando_zgodna_z_umowa: "true/false"
+  kara_agrando_zl: "liczba"
+  wyliczenie_agrando: "sposób wyliczenia"
+  kara_stalvero_zl: "liczba — kwota, którą możemy naliczyć Stalvero"
+  wyliczenie_stalvero: "sposób wyliczenia (stawka, podstawa, liczba dni)"
+  kara_stalvero_juz_naliczona: "true/false"
+  kto_akceptuje_note: "kto u nas akceptuje notę obciążeniową dla dostawcy"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: agrando_zgodna, typ: rowne, pole: kara_agrando_zgodna_z_umowa, wartosc: true, waga: 2}
+  - {id: agrando_kwota, typ: rowne, pole: kara_agrando_zl, wartosc: 4632, waga: 1}
+  - {id: stalvero_kwota, typ: rowne, pole: kara_stalvero_zl, wartosc: 2273.18, waga: 3, krytyczne: true}
+  - {id: stalvero_wyliczenie, typ: zawiera, pole: wyliczenie_stalvero, wszystkie: true, wzorce: ['\b8\b', '142[ .]?074', '0[,.]2'], waga: 2}
+  - {id: nienaliczona, typ: rowne, pole: kara_stalvero_juz_naliczona, wartosc: false, waga: 1}
+  - {id: akceptacja, typ: zawiera, pole: kto_akceptuje_note, wzorce: ['\blis\b', 'członk\w* zarządu ds\.? finans', 'dyrektor\w* finans'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-D01], waga: 1}
+wzorcowa:
+  kara_agrando_zgodna_z_umowa: true
+  kara_agrando_zl: 4632
+  wyliczenie_agrando: "§ 7 ust. 1 umowy UR/2025/03: 0,2% × 386 000,00 zł × 6 dni zwłoki (24.07 → 30.07) = 4 632,00 zł; limit 10% nieprzekroczony"
+  kara_stalvero_zl: 2273.18
+  wyliczenie_stalvero: "§ 5 ust. 1 umowy UZ/2025/01: 0,2% × 142 074,00 zł (ZS/2026/0188) × 8 dni roboczych zwłoki (termin 13.07, dostawa 23.07) = 2 273,18 zł"
+  kara_stalvero_juz_naliczona: false
+  kto_akceptuje_note: "Agnieszka Lis, Członek Zarządu ds. finansowych (PZ-03 pkt 3.3)"
+  zrodla: ["Umowa_dostaw_UZ-2025-01_Stalvero.pdf", "Dostawy_blach_2026.xlsx", "NO_2026_08_Agrando.pdf"]
+pulapka:
+  kara_agrando_zgodna_z_umowa: false
+  kara_agrando_zl: 3860
+  wyliczenie_agrando: "0,2% × 386 000 × 5 dni"
+  kara_stalvero_zl: 2841.48
+  wyliczenie_stalvero: "0,2% × 142 074 × 10 dni kalendarzowych"
+  kara_stalvero_juz_naliczona: true
+  kto_akceptuje_note: "Joanna Pawlak"
+  zrodla: []

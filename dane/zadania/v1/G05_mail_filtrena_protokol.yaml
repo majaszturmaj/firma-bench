@@ -1,0 +1,38 @@
+id: G05
+nazwa: E-mail do Filtreny w sprawie protokołu odbioru
+poziom: L2
+kategoria: pisma
+obszar: korespondencja z klientem pod presją terminu urzędowego
+pulapki: [T03]
+dokumenty_kluczowe: [EML-K04-02, ZAM-K04-045, PIS-U01, WZ-2026-0711]
+polecenie: >
+  Napisz w imieniu Pawła Zielińskiego e-mail do Filtreny z prośbą o pilne przesłanie podpisanego protokołu odbioru
+  ram RS-900. Protokół musimy mieć przed upływem terminu odpowiedzi na wezwanie urzędu skarbowego.
+  Nie wysyłaj — przygotuj treść.
+format_odpowiedzi:
+  adresat: "imię, nazwisko i e-mail adresata"
+  temat: "temat wiadomości"
+  tresc: "treść wiadomości"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: adresat, typ: zawiera, pole: adresat, wzorce: ['baran'], waga: 2, krytyczne: true}
+  - {id: zamowienie, typ: zawiera, pole: [tresc, temat], wzorce: ['ZAM/2026/045'], waga: 1}
+  - {id: dokumenty, typ: zawiera, pole: [tresc, temat], wzorce: ['WZ/2026/0711', 'FV/2026/07/018'], waga: 1}
+  - {id: termin, typ: zawiera, pole: tresc, wzorce: ['1[56]\.10', '1[56] paźdz', '2026-10-1[56]', '\bjutr', 'czwart', 'piątk'], waga: 2, krytyczne: true}
+  - {id: protokol, typ: zawiera, pole: [tresc, temat], wzorce: ['protok\w* odbioru'], waga: 2}
+  - {id: ustalenia, typ: zawiera, pole: tresc, wzorce: ['świebodzic', 'montaż'], waga: 1}
+  - {id: podpis, typ: zawiera, pole: tresc, wzorce: ['zieliński', 'zielinski'], waga: 1}
+kryteria_oceny:
+  - "Uprzejmy, konkretny e-mail do W. Barana; jasna prośba o podpisany protokół odbioru z terminem przed 16.10.2026."
+  - "Odwołuje się do zamówienia ZAM/2026/045, dostawy WZ/2026/0711 i ustalenia z 16.07 (podpis po montażu w Świebodzicach)."
+  - "Nie ujawnia zbędnie szczegółów postępowania podatkowego ani nie straszy klienta; podpis P. Zielińskiego."
+wzorcowa:
+  adresat: "Wojciech Baran, w.baran@filtrena.pl"
+  temat: "Protokół odbioru ram RS-900 — ZAM/2026/045 (pilne)"
+  tresc: "Dzień dobry Panie Wojciechu, wracam do sprawy protokołu odbioru 12 ram RS-900 dostarczonych 15.07.2026 (ZAM/2026/045, WZ/2026/0711, FV/2026/07/018). Ustalaliśmy, że podpiszą go Państwo po montażu w Świebodzicach. Bardzo proszę o przesłanie podpisanego protokołu najpóźniej do 15.10.2026 — jest nam pilnie potrzebny do dokumentacji. Pozdrawiam, Paweł Zieliński"
+  zrodla: ["2026-07-16_0905_ODP_Dostawa_ram_RS-900.eml", "ZAM_2026_045_Filtrena.pdf"]
+pulapka:
+  adresat: "zakupy@filtrena.pl"
+  temat: "Protokół"
+  tresc: "Prosimy o protokół do końca października."
+  zrodla: []

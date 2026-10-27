@@ -1,0 +1,40 @@
+id: R14
+nazwa: Termin potwierdzenia zamówienia AGRANDO przy święcie
+poziom: L2
+kategoria: rozumowanie
+obszar: liczenie dni roboczych, milczące przyjęcie zamówienia
+pulapki: []
+dokumenty_kluczowe: [UMW-K01]
+polecenie: >
+  Załóżmy, że AGRANDO przyśle zamówienie we wtorek 10.11.2026 r. rano, z żądanym terminem dostawy 27.11.2026 r.
+  Do kiedy musimy je potwierdzić albo zgłosić zastrzeżenia, co się stanie, jeżeli nie odpowiemy, i czy musimy
+  zgodzić się na ten termin dostawy?
+format_odpowiedzi:
+  termin_odpowiedzi: "RRRR-MM-DD — ostatni dzień na potwierdzenie"
+  skutek_braku_odpowiedzi: "tekst"
+  wyprzedzenie_zgodne_z_umowa: "true/false — czy zamówienie złożono z wymaganym wyprzedzeniem"
+  mozna_nie_przyjac_terminu: "true/false"
+  uzasadnienie: "wyliczenie i postanowienia umowy"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: termin, typ: rowne, pole: termin_odpowiedzi, wartosc: 2026-11-13, waga: 3, krytyczne: true}
+  - {id: milczenie, typ: zawiera, pole: skutek_braku_odpowiedzi, wzorce: ['przyję', 'akceptac', 'zaakceptowan'], waga: 2}
+  - {id: wyprzedzenie, typ: rowne, pole: wyprzedzenie_zgodne_z_umowa, wartosc: false, waga: 2}
+  - {id: odmowa_terminu, typ: rowne, pole: mozna_nie_przyjac_terminu, wartosc: true, waga: 1}
+  - {id: swieto, typ: zawiera, pole: uzasadnienie, wzorce: ['11\.11', '11 listopada', 'święt', 'niepodległ'], waga: 1}
+  - {id: cztery_tygodnie, typ: zawiera, pole: uzasadnienie, wzorce: ['4 tygodni', 'czter\w* tygodni', '28 dni', '17 dni'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-K01], waga: 1}
+wzorcowa:
+  termin_odpowiedzi: "2026-11-13"
+  skutek_braku_odpowiedzi: "Brak potwierdzenia w terminie oznacza przyjęcie zamówienia na warunkach w nim określonych (§ 2 ust. 2), także z terminem 27.11"
+  wyprzedzenie_zgodne_z_umowa: false
+  mozna_nie_przyjac_terminu: true
+  uzasadnienie: "2 dni robocze od otrzymania: 11.11 (Narodowe Święto Niepodległości) jest dniem wolnym, więc 12.11 i 13.11; zamówienie złożone 17 dni przed dostawą, a § 2 ust. 1 wymaga co najmniej 4 tygodni wyprzedzenia — można zgłosić zastrzeżenie i zaproponować inny termin przed 13.11"
+  zrodla: ["Umowa_ramowa_UR-2025-03_Agrando.pdf"]
+pulapka:
+  termin_odpowiedzi: "2026-11-12"
+  skutek_braku_odpowiedzi: "zamówienie wygasa"
+  wyprzedzenie_zgodne_z_umowa: true
+  mozna_nie_przyjac_terminu: false
+  uzasadnienie: "2 dni kalendarzowe"
+  zrodla: []

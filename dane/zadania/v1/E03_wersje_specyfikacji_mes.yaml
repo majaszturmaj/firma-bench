@@ -1,0 +1,38 @@
+id: E03
+nazwa: Zmiany w kolejnych wersjach specyfikacji FlowMES
+poziom: L2
+kategoria: redakcja
+obszar: porównanie wersji dokumentu
+pulapki: [T24, T08]
+dokumenty_kluczowe: [MES-SPEC-V1, MES-SPEC-V2, MES-SPEC-V3, MES-CR]
+polecenie: >
+  Co zmieniało się w kolejnych wersjach specyfikacji wymagań FlowMES (v1 → v2 → v3) i które wersje zostały przez nas
+  zaakceptowane?
+format_odpowiedzi:
+  zmiany_v2: "lista zmian w v2 względem v1"
+  zmiany_v3: "lista zmian w v3 względem v2"
+  v2_zaakceptowana: "true/false"
+  v3_zaakceptowana: "true/false"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: v2, typ: zawiera, pole: zmiany_v2, wszystkie: true, wzorce: ['\bR5\b', '\bR10\b', '\bR8\b|OEE'], waga: 2}
+  - {id: v3, typ: zawiera, pole: zmiany_v3, wszystkie: true, wzorce: ['\bR7\b', 'chmur'], waga: 2}
+  - {id: v3_kopie, typ: zawiera, pole: zmiany_v3, wzorce: ['kopi\w* zapasow', '\bR9\b', '\bNAS\b'], waga: 1}
+  - {id: v3_nieakceptowana, typ: rowne, pole: v3_zaakceptowana, wartosc: false, waga: 2, krytyczne: true}
+  - {id: v2_akceptowana, typ: rowne, pole: v2_zaakceptowana, wartosc: true, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [MES-SPEC-V3], waga: 1}
+kryteria_oceny:
+  - "Poprawnie wskazuje zmiany: v2 — R5 (CR-01), R10, doprecyzowanie R8 (OEE); v3 — R7 (CR-02), środowisko produkcyjne i kopie zapasowe w chmurze Flowmetic."
+  - "Odróżnia wersje zaakceptowane (v1 28.04, v2 02.06) od v3 „do akceptacji”; nie wymyśla zmian."
+wzorcowa:
+  zmiany_v2: ["dodano R5 — eksport CSV do biura rachunkowego (CR-01)", "doprecyzowano R8 — raporty OEE dla M01–M06", "dodano R10 — dostępność min. 99%"]
+  zmiany_v3: ["dodano R7 — rejestracja czasu pracy operatorów (CR-02, w trakcie akceptacji)", "architektura: środowisko produkcyjne w chmurze Flowmetic, kopie zapasowe u Wykonawcy (zamiast serwera lokalnego i NAS — R9)"]
+  v2_zaakceptowana: true
+  v3_zaakceptowana: false
+  zrodla: ["Specyfikacja_wymagan_FlowMES_v1.docx", "Specyfikacja_wymagan_FlowMES_v2.docx", "Specyfikacja_wymagan_FlowMES_v3.docx"]
+pulapka:
+  zmiany_v2: ["dodano R7"]
+  zmiany_v3: ["poprawki redakcyjne"]
+  v2_zaakceptowana: true
+  v3_zaakceptowana: true
+  zrodla: []

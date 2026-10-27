@@ -1,0 +1,42 @@
+id: D09
+nazwa: Marża brutto w złotych i udział materiałów
+poziom: L2
+kategoria: analiza_danych
+obszar: rachunek marży, wskaźniki procentowe
+pulapki: []
+dokumenty_kluczowe: [SPRZEDAZ-2026, KPI-Q3-2026, DOSTAWY-STALI-2026]
+polecenie: >
+  Podaj marżę brutto w złotych za II i III kwartał 2026 r. i o ile spadła. Jaki był udział kosztów materiałów
+  w przychodach w obu kwartałach i co najbardziej obniżyło marżę?
+format_odpowiedzi:
+  marza_q2_zl: "liczba"
+  marza_q3_zl: "liczba"
+  spadek_marzy_zl: "liczba"
+  udzial_materialow_q2_procent: "liczba"
+  udzial_materialow_q3_procent: "liczba"
+  glowny_czynnik: "tekst z uzasadnieniem liczbowym"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: marza_q2, typ: rowne, pole: marza_q2_zl, wartosc: 1161440, waga: 2}
+  - {id: marza_q3, typ: rowne, pole: marza_q3_zl, wartosc: 864360, waga: 2, krytyczne: true}
+  - {id: spadek, typ: rowne, pole: spadek_marzy_zl, wartosc: 297080, dopuszczalne: [-297080], waga: 1}
+  - {id: mat_q2, typ: zawiera, pole: udzial_materialow_q2_procent, wzorce: ['^\s*"?39([,.]0\d*)?\b', '\b39([,.]0\d*)?\s?%'], waga: 1}
+  - {id: mat_q3, typ: zawiera, pole: udzial_materialow_q3_procent, wzorce: ['\b44[,.][45]\d*', '^\s*"?44\b', '\b44\s?%'], waga: 1}
+  - {id: czynnik, typ: zawiera, pole: glowny_czynnik, wzorce: ['materiał', 'blach', 'stal'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [SPRZEDAZ-2026], waga: 1}
+wzorcowa:
+  marza_q2_zl: 1161440
+  marza_q3_zl: 864360
+  spadek_marzy_zl: 297080
+  udzial_materialow_q2_procent: 39.0
+  udzial_materialow_q3_procent: 44.5
+  glowny_czynnik: "Wzrost udziału materiałów z 39,0% do 44,5% przychodów — koszt materiałów wzrósł o 57 000 zł (ceny blach 3 950 → 4 385 zł/t), mimo spadku przychodów o 470 000 zł; dodatkowo nadgodziny 46 332 zł"
+  zrodla: ["Sprzedaz_i_marza_2026.xlsx", "KPI_Q3_2026.pdf"]
+pulapka:
+  marza_q2_zl: 1089320
+  marza_q3_zl: 1161440
+  spadek_marzy_zl: 0
+  udzial_materialow_q2_procent: 44.5
+  udzial_materialow_q3_procent: 39.0
+  glowny_czynnik: "niższa robocizna"
+  zrodla: []

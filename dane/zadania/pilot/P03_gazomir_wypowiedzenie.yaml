@@ -1,0 +1,39 @@
+id: P03
+nazwa: Wypowiedzenie umowy z Gazomir
+poziom: L2
+kategoria: rozumowanie
+obszar: terminy umowne i automatyczne przedłużenie
+pulapki: [T09]
+dokumenty_kluczowe: [UMW-D04, EML-D04-01, NOT-ZARZAD-2026-10-12, NOT-ZARZAD-2026-09-28, PROC-PZ03-W2]
+polecenie: >
+  Od 1 stycznia 2027 r. chcemy przejść do innego dostawcy gazów technicznych. Joanna chce wysłać Gazomirowi
+  wypowiedzenie do 20 października. Czy to zadziała? Do kiedy obowiązuje umowa i jakie są konsekwencje?
+format_odpowiedzi:
+  mozliwa_zmiana_od_stycznia_2027: "true/false"
+  ostatni_dzien_na_wypowiedzenie: "data (RRRR-MM-DD)"
+  umowa_obowiazuje_do: "data (RRRR-MM-DD), uwzględniając przedłużenie"
+  konsekwencje_wczesniejszego_rozwiazania: "tekst"
+  rekomendacja: "tekst"
+  zrodla: "lista nazw plików"
+aliasy_dokumentow:
+  UMW-D04: ["UG/2023/12"]
+sprawdzenia:
+  - {id: niemozliwe, typ: rowne, pole: mozliwa_zmiana_od_stycznia_2027, wartosc: false, waga: 3, krytyczne: true}
+  - {id: termin_30_09, typ: rowne, pole: ostatni_dzien_na_wypowiedzenie, wartosc: 2026-09-30, waga: 2}
+  - {id: do_2027, typ: rowne, pole: umowa_obowiazuje_do, wartosc: 2027-12-31, waga: 2}
+  - {id: oplata_dzierzawa, typ: zawiera, pole: konsekwencje_wczesniejszego_rozwiazania, wzorce: ['dzierżaw'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-D04], waga: 2}
+wzorcowa:
+  mozliwa_zmiana_od_stycznia_2027: false
+  ostatni_dzien_na_wypowiedzenie: "2026-09-30"
+  umowa_obowiazuje_do: "2027-12-31"
+  konsekwencje_wczesniejszego_rozwiazania: "Opłata za dzierżawę zbiornika za pozostały okres umowy (§ 5)."
+  rekomendacja: "Wypowiedzieć do 30.09.2027 ze skutkiem na 31.12.2027 albo negocjować z Gazomirem."
+  zrodla: ["Umowa_UG-2023-12_Gazomir.pdf"]
+pulapka:
+  mozliwa_zmiana_od_stycznia_2027: true
+  ostatni_dzien_na_wypowiedzenie: "2026-12-31"
+  umowa_obowiazuje_do: "2026-12-31"
+  konsekwencje_wczesniejszego_rozwiazania: "brak"
+  rekomendacja: "Wysłać wypowiedzenie do 20.10."
+  zrodla: ["2026-10-13_1450_Gazy_techniczne_zmiana_dostawcy.eml"]

@@ -1,0 +1,50 @@
+id: G01
+nazwa: Informacja do PIP o realizacji wniosków
+poziom: L3
+kategoria: pisma
+obszar: pismo do organu, rzetelne przedstawienie stanu realizacji
+pulapki: [T21]
+dokumenty_kluczowe: [PIS-U02, PIP-REALIZACJA, EML-P10-01]
+polecenie: >
+  Przygotuj pismo do Okręgowego Inspektoratu Pracy z informacją o realizacji wniosków z wystąpienia
+  z 21.09.2026 r. Pismo podpisze Prezes Zarządu. Nie wysyłaj go — przygotuj treść do podpisu.
+format_odpowiedzi:
+  adresat: "adresat pisma"
+  znak_sprawy: "znak wystąpienia"
+  termin_wyslania: "RRRR-MM-DD — do kiedy pismo musi zostać wysłane"
+  tresc_pisma: "pełna treść pisma"
+  wniosek_5_wykonany: "true/false"
+  kto_podpisuje: "imię, nazwisko, funkcja"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: znak, typ: zawiera, pole: [znak_sprawy, tresc_pisma], wzorce: ['WP-K-2026/0914'], waga: 1}
+  - {id: termin, typ: rowne, pole: termin_wyslania, wartosc: 2026-10-15, waga: 1}
+  - {id: dowody, typ: zawiera, pole: tresc_pisma, wszystkie: true, wzorce: ['zaświadcze', 'oznakowani', 'list\w* obecności|szkoleni', 'ewidencj|list\w* płac|nadgodzin'], waga: 2}
+  - {id: daty, typ: zawiera, pole: tresc_pisma, wszystkie: true, wzorce: ['29\.09|29 wrze', '25\.09|25 wrze', '0?6\.10|6 paźdz', '0?9\.10|9 paźdz'], waga: 1}
+  - {id: wniosek_5, typ: rowne, pole: wniosek_5_wykonany, wartosc: false, waga: 3, krytyczne: true}
+  - {id: nie_wszystkie, typ: nie_zawiera, pole: tresc_pisma, wzorce: ['(?<!nie )wszystkie (wnioski|zalecenia)[^.]{0,30}(wykonan|zrealizowan)', 'wniosek (nr )?5[^.]{0,40}(?<!nie )(został|zostało) (wykonan|zrealizowan)'], waga: 2, krytyczne: true}
+  - {id: ocena_ryzyka, typ: zawiera, pole: tresc_pisma, wzorce: ['ocen\w* ryzyka'], waga: 1}
+  - {id: stan_5, typ: zawiera, pole: tresc_pisma, wzorce: ['nie wykonano', 'niewykonan', 'w trakcie', 'w toku', 'w realizacji', 'nie został\w* (jeszcze )?(wykonan|zrealizowan|zakończon|dostarczon|przekazan)', 'zostanie (wykonan|zrealizowan|zaktualizowan)', 'planowan', 'do dnia'], waga: 1}
+  - {id: adresat, typ: zawiera, pole: adresat, wzorce: ['inspektorat', 'inspekcj', '\bPIP\b'], waga: 1}
+  - {id: podpis, typ: zawiera, pole: kto_podpisuje, wzorce: ['wierzbick', 'prezes'], waga: 1}
+kryteria_oceny:
+  - "Forma urzędowa: adresat (OIP Wrocław-Południe), odwołanie do znaku WP-K-2026/0914 i daty wystąpienia, data, podpis Prezesa Zarządu."
+  - "Dla wniosków 1–4 podaje daty wykonania i dowody zgodnie z dokumentami; nie dopisuje faktów spoza dokumentów."
+  - "Rzetelnie przedstawia wniosek 5 jako niewykonany i wskazuje sposób oraz planowany termin realizacji — bez sugerowania, że został wykonany."
+  - "Język poprawny, rzeczowy i zwięzły; pismo nadaje się do podpisu bez poprawek merytorycznych."
+wzorcowa:
+  adresat: "Okręgowy Inspektorat Pracy Wrocław-Południe, ul. Komandorska 300, 53-345 Wrocław"
+  znak_sprawy: "WP-K-2026/0914"
+  termin_wyslania: "2026-10-15"
+  tresc_pisma: "W odpowiedzi na wystąpienie z 21.09.2026 r. (znak WP-K-2026/0914) informuję o realizacji wniosków: 1) dwóch pracowników skierowano na badania okresowe — wykonano 29.09.2026 (zaświadczenia lekarskie); 2) drogi i wyjścia ewakuacyjne w hali B oznakowano 25.09.2026 (protokół odbioru oznakowania); 3) szkolenie okresowe BHP dla 3 operatorów przeprowadzono 06.10.2026 (lista obecności i zaświadczenia); 4) ewidencję czasu pracy skorygowano i rozliczono nadgodziny za lipiec–sierpień 09.10.2026 (korekta list płac); 5) aktualizacja oceny ryzyka zawodowego na stanowisku operatora lasera fiber jest w trakcie realizacji — nie została wykonana w terminie 09.10.2026; zostanie zakończona przez zewnętrzną służbę BHP, o czym niezwłocznie poinformujemy."
+  wniosek_5_wykonany: false
+  kto_podpisuje: "Tomasz Wierzbicki, Prezes Zarządu"
+  zrodla: ["2026-09-21_Wystapienie_PIP_WP-K-2026-0914.pdf", "Realizacja_wnioskow_PIP.xlsx"]
+pulapka:
+  adresat: "Państwowa Inspekcja Pracy"
+  znak_sprawy: "WP-K-2026/0914"
+  termin_wyslania: "2026-10-21"
+  tresc_pisma: "Informujemy, że wszystkie wnioski zostały zrealizowane w terminie."
+  wniosek_5_wykonany: true
+  kto_podpisuje: "Beata Grabowska"
+  zrodla: []

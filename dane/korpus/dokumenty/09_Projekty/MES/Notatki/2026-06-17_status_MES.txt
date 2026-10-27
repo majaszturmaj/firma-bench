@@ -1,0 +1,14 @@
+NOTATKA – status projektu MES
+Data spotkania: 17.06.2026
+Obecni: Grzegorz Kowalczyk, Rafał Kaczmarek, Kamil Rutkowski (Flowmetic)
+Notatkę sporządził: Grzegorz Kowalczyk
+
+Ustalenia:
+- E2: eksport CSV (R5) gotowy w 60%
+- terminale operatorskie: dostawa w lipcu
+- kolejny status w sierpniu
+
+Ryzyka:
+- termin dostawy terminali operatorskich (dostawca zewnętrzny Flowmetic) – możliwe przesunięcie testów E2.
+
+Następne spotkanie: sierpień 2026 (termin do uzgodnienia).

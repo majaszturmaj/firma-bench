@@ -1,0 +1,42 @@
+id: R10
+nazwa: Dlaczego DCWP wezwało nas do informacji o wskaźnikach
+poziom: L2
+kategoria: rozumowanie
+obszar: obowiązki sprawozdawcze, liczenie terminów od doręczenia
+pulapki: [T23]
+dokumenty_kluczowe: [PIS-IP-01, UE-UMOWA, PIS-IP-02, REJESTR-PISM-2026]
+polecenie: >
+  Dlaczego DCWP w ogóle wezwało nas do przekazania informacji o wskaźnikach za 2025 r.? Do kiedy mieliśmy
+  odpowiedzieć na wezwanie i czy zdążyliśmy? Do kiedy musimy złożyć informację za 2026 r.?
+format_odpowiedzi:
+  przyczyna_wezwania: "tekst"
+  termin_informacji_za_2025: "RRRR-MM-DD — termin wynikający z umowy"
+  informacja_2025_zlozona_w_terminie: "true/false"
+  termin_odpowiedzi_na_wezwanie: "RRRR-MM-DD"
+  odpowiedz_w_terminie: "true/false"
+  termin_informacji_za_2026: "RRRR-MM-DD"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: przyczyna, typ: zawiera, pole: przyczyna_wezwania, wzorce: ['nie (złoż|przekaz|wysła)', 'nieprzekazani', 'niezłożeni', 'brak informacji', 'nie dotrzyma'], waga: 2, krytyczne: true}
+  - {id: termin_2025, typ: rowne, pole: termin_informacji_za_2025, wartosc: 2026-01-31, waga: 1}
+  - {id: niezlozona, typ: rowne, pole: informacja_2025_zlozona_w_terminie, wartosc: false, waga: 2}
+  - {id: termin_wezwania, typ: rowne, pole: termin_odpowiedzi_na_wezwanie, wartosc: 2026-09-28, waga: 2, krytyczne: true}
+  - {id: w_terminie, typ: rowne, pole: odpowiedz_w_terminie, wartosc: true, waga: 1}
+  - {id: termin_2026, typ: rowne, pole: termin_informacji_za_2026, wartosc: 2027-01-31, waga: 2}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UE-UMOWA], waga: 1}
+wzorcowa:
+  przyczyna_wezwania: "Nie złożyliśmy informacji rocznej o wskaźnikach za 2025 r., wymaganej § 9 ust. 3 umowy do 31 stycznia 2026 r."
+  termin_informacji_za_2025: "2026-01-31"
+  informacja_2025_zlozona_w_terminie: false
+  termin_odpowiedzi_na_wezwanie: "2026-09-28"
+  odpowiedz_w_terminie: true
+  termin_informacji_za_2026: "2027-01-31"
+  zrodla: ["Umowa_o_dofinansowanie_FEDS.01.03-IP.01-0123-23_wyciag.pdf", "2026-09-10_Wezwanie_DCWP_wskazniki_2025.pdf", "2026-09-25_Odpowiedz_do_DCWP_W-104-2026.pdf"]
+pulapka:
+  przyczyna_wezwania: "rutynowa kontrola"
+  termin_informacji_za_2025: "2026-03-31"
+  informacja_2025_zlozona_w_terminie: true
+  termin_odpowiedzi_na_wezwanie: "2026-09-24"
+  odpowiedz_w_terminie: false
+  termin_informacji_za_2026: "2027-03-31"
+  zrodla: []

@@ -1,0 +1,34 @@
+id: W09
+nazwa: Dofinansowanie i okres trwałości projektu UE
+poziom: L1
+kategoria: wyszukiwanie
+obszar: umowa o dofinansowanie
+pulapki: []
+dokumenty_kluczowe: [UE-UMOWA, PIS-IP-01]
+polecenie: >
+  Ile wynosi dofinansowanie projektu lasera fiber (kwota i procent wydatków kwalifikowalnych), do kiedy trwa
+  okres trwałości projektu i do kiedy musimy przechowywać jego dokumentację?
+format_odpowiedzi:
+  dofinansowanie_zl: "liczba"
+  dofinansowanie_procent: "liczba"
+  trwalosc_do: "RRRR-MM-DD"
+  dokumentacja_do: "RRRR-MM-DD"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: kwota, typ: rowne, pole: dofinansowanie_zl, wartosc: 1200000, waga: 2, krytyczne: true}
+  - {id: procent, typ: rowne, pole: dofinansowanie_procent, wartosc: 50, waga: 1}
+  - {id: trwalosc, typ: rowne, pole: trwalosc_do, wartosc: 2028-03-14, waga: 2}
+  - {id: dokumentacja, typ: rowne, pole: dokumentacja_do, wartosc: 2033-12-31, waga: 2}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UE-UMOWA], waga: 1}
+wzorcowa:
+  dofinansowanie_zl: 1200000
+  dofinansowanie_procent: 50
+  trwalosc_do: "2028-03-14"
+  dokumentacja_do: "2033-12-31"
+  zrodla: ["Umowa_o_dofinansowanie_FEDS.01.03-IP.01-0123-23_wyciag.pdf", "2026-09-10_Wezwanie_DCWP_wskazniki_2025.pdf"]
+pulapka:
+  dofinansowanie_zl: 2400000
+  dofinansowanie_procent: 100
+  trwalosc_do: "2027-12-31"
+  dokumentacja_do: "2028-03-14"
+  zrodla: []

@@ -1,0 +1,48 @@
+id: E01
+nazwa: Zadania z notatki zarządu z 12.10 i błędne ustalenia
+poziom: L2
+kategoria: redakcja
+obszar: ekstrakcja informacji, weryfikacja z dokumentami źródłowymi
+pulapki: [T02, T09, T12]
+dokumenty_kluczowe: [NOT-ZARZAD-2026-10-12, UMW-K02, UMW-D04, PROC-PR07-W2, EML-D03-01]
+polecenie: >
+  Wypisz z notatki ze spotkania zarządu z 12.10.2026 r. wszystkie zadania: temat, kto i do kiedy. Zaznacz
+  ustalenia, które są sprzeczne z umowami lub innymi dokumentami firmy, i wyjaśnij dlaczego.
+format_odpowiedzi:
+  zadania: "lista {temat, kto, termin (RRRR-MM-DD albo null)}"
+  bledne_ustalenia: "lista: ustalenie, dlaczego błędne, jak powinno być"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: gazomir_termin, typ: element_listy, pole: zadania, klucz: temat, wzorzec: 'gazomir|gaz', pole_elementu: termin, wartosc: 2026-10-20, waga: 1}
+  - {id: montarex_termin, typ: element_listy, pole: zadania, klucz: temat, wzorzec: 'montarex', pole_elementu: termin, wartosc: 2026-10-16, waga: 1}
+  - {id: mes_termin, typ: element_listy, pole: zadania, klucz: temat, wzorzec: 'mes|flowmetic', pole_elementu: termin, wartosc: 2026-10-19, waga: 1}
+  - {id: pip_termin, typ: element_listy, pole: zadania, klucz: temat, wzorzec: '\bpip\b|inspek|zalece', pole_elementu: termin, wartosc: 2026-10-15, waga: 1}
+  - {id: liftovia_termin, typ: element_listy, pole: zadania, klucz: temat, wzorzec: 'liftovi', pole_elementu: termin, wartosc: 2026-10-14, waga: 1}
+  - {id: montarex_lis, typ: zawiera, pole: zadania, wzorce: ['\{[^{}]*montarex[^{}]*\blis\b[^{}]*\}', '\{[^{}]*\blis\b[^{}]*montarex[^{}]*\}'], waga: 1}
+  - {id: gazomir_pawlak, typ: zawiera, pole: zadania, wzorce: ['\{[^{}]*gaz[^{}]*pawlak[^{}]*\}', '\{[^{}]*pawlak[^{}]*gaz[^{}]*\}'], waga: 1}
+  - {id: blad_liftovia, typ: zawiera, pole: bledne_ustalenia, wzorce: ['16\.10', '16 paźdz', '2026-10-16'], waga: 2, krytyczne: true}
+  - {id: blad_gazomir, typ: zawiera, pole: bledne_ustalenia, wzorce: ['30\.09', '30 wrze', '2027'], waga: 2}
+  - {id: gazomir_wskazany, typ: zawiera, pole: bledne_ustalenia, wzorce: ['gazomir'], waga: 1}
+  - {id: hipoteza_montazu, typ: zawiera, pole: bledne_ustalenia, wzorce: ['montaż', 'PV-7016', 'farb', 'KT-OK12', 'kart\w* technologiczn'], waga: 1}
+kryteria_oceny:
+  - "Wyodrębnia wszystkie zadania z notatki z właściwymi osobami i terminami (lub null, gdy brak terminu)."
+  - "Wskazuje błędny termin odpowiedzi Liftovii (23.10 zamiast 16.10 wg § 6 ust. 2 umowy) i błędne założenie co do Gazomir (termin wypowiedzenia minął 30.09, umowa przedłuży się do 31.12.2027)."
+  - "Nie przypisuje notatce treści, których w niej nie ma."
+wzorcowa:
+  zadania:
+    - {temat: "Reklamacja Liftovia R/2026/017 — analiza przyczyn i projekt stanowiska", kto: "Jakub Mazur", termin: "2026-10-14"}
+    - {temat: "Wezwanie US — kompletowanie dokumentów", kto: "Natalia Wójcik", termin: "2026-10-15"}
+    - {temat: "Wezwanie US — protokół odbioru od Filtreny", kto: "Paweł Zieliński", termin: null}
+    - {temat: "Montarex — decyzja o wysłaniu wezwania przedsądowego", kto: "Agnieszka Lis", termin: "2026-10-16"}
+    - {temat: "Gazomir — wypowiedzenie umowy", kto: "Joanna Pawlak", termin: "2026-10-20"}
+    - {temat: "PIP — informacja o realizacji zaleceń", kto: "Beata Grabowska", termin: "2026-10-15"}
+    - {temat: "MES — stanowisko w sprawie przesunięcia przez Flowmetic", kto: "Grzegorz Kowalczyk", termin: "2026-10-19"}
+    - {temat: "Analiza spadku marży Q3", kto: "Agnieszka Lis", termin: "2026-10-19"}
+  bledne_ustalenia: ["Liftovia: termin odpowiedzi 23.10 „wg rejestru” jest błędny — umowa UD/2024/11 § 6 ust. 2: 14 dni od otrzymania (2.10) → 16.10; po terminie reklamacja uważana za uznaną", "Gazomir: wypowiedzenie do 20.10 nie zadziała — termin wypowiedzenia minął 30.09.2026, umowa przedłuży się do 31.12.2027", "Liftovia: hipoteza uszkodzeń przy montażu pomija komunikat Pulverion o wadliwej partii PV-7016-2608 i nieaktualną kartę KT-OK12"]
+  zrodla: ["2026-10-12_Notatka_ze_spotkania_zarzadu.txt", "Umowa_dostawy_UD-2024-11_Liftovia.pdf", "Umowa_UG-2023-12_Gazomir.pdf"]
+pulapka:
+  zadania:
+    - {temat: "Reklamacja Liftovia", kto: "Katarzyna Nowicka", termin: "2026-10-23"}
+    - {temat: "Gazomir", kto: "Joanna Pawlak", termin: "2026-10-20"}
+  bledne_ustalenia: []
+  zrodla: []

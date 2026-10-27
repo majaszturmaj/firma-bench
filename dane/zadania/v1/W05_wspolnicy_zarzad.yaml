@@ -1,0 +1,34 @@
+id: W05
+nazwa: Wspólnicy i zarząd spółki
+poziom: L1
+kategoria: wyszukiwanie
+obszar: dane korporacyjne
+pulapki: []
+dokumenty_kluczowe: [KRS-ODPIS, UMOWA-SPOLKI]
+polecenie: >
+  Kto jest wspólnikiem FIRMA Sp. z o.o., ile ma udziałów i czy zasiada w zarządzie? Czy spółka ma prokurenta?
+format_odpowiedzi:
+  wspolnicy: "lista obiektów {osoba, udzialy (liczba), w_zarzadzie (true/false)}"
+  prokurent: "imię i nazwisko albo null, jeżeli spółka nie ma prokurenta"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: tomasz, typ: element_listy, pole: wspolnicy, klucz: osoba, wzorzec: 'tomasz', pole_elementu: udzialy, wartosc: 300, waga: 2}
+  - {id: agnieszka, typ: element_listy, pole: wspolnicy, klucz: osoba, wzorzec: 'agnieszka', pole_elementu: udzialy, wartosc: 100, waga: 1}
+  - {id: marek, typ: element_listy, pole: wspolnicy, klucz: osoba, wzorzec: 'marek', pole_elementu: udzialy, wartosc: 100, waga: 2}
+  - {id: marek_poza_zarzadem, typ: element_listy, pole: wspolnicy, klucz: osoba, wzorzec: 'marek', pole_elementu: w_zarzadzie, wartosc: false, waga: 2, krytyczne: true}
+  - {id: lis_w_zarzadzie, typ: element_listy, pole: wspolnicy, klucz: osoba, wzorzec: 'agnieszka', pole_elementu: w_zarzadzie, wartosc: true, waga: 1}
+  - {id: brak_prokury, typ: pusty, pole: prokurent, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [KRS-ODPIS], waga: 1}
+wzorcowa:
+  wspolnicy:
+    - {osoba: "Tomasz Wierzbicki", udzialy: 300, w_zarzadzie: true}
+    - {osoba: "Agnieszka Lis", udzialy: 100, w_zarzadzie: true}
+    - {osoba: "Marek Wierzbicki", udzialy: 100, w_zarzadzie: false}
+  prokurent: null
+  zrodla: ["KRS_odpis_aktualny_2026-02-27.pdf"]
+pulapka:
+  wspolnicy:
+    - {osoba: "Tomasz Wierzbicki", udzialy: 300, w_zarzadzie: true}
+    - {osoba: "Marek Wierzbicki", udzialy: 200, w_zarzadzie: true}
+  prokurent: "Agnieszka Lis"
+  zrodla: []

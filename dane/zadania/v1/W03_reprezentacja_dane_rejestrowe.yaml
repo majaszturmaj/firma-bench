@@ -1,0 +1,43 @@
+id: W03
+nazwa: Dane rejestrowe i reprezentacja przy umowie na 80 000 zł
+poziom: L1
+kategoria: wyszukiwanie
+obszar: dane rejestrowe, zasady reprezentacji spółki
+pulapki: [T18]
+dokumenty_kluczowe: [KRS-ODPIS, UMOWA-SPOLKI, INSTR-OBIEG]
+polecenie: >
+  Przygotowuję umowę z nowym dostawcą na 80 000 zł netto. Podaj dane FIRMY do komparycji umowy (KRS, NIP,
+  REGON, kapitał zakładowy) i napisz, kto musi podpisać umowę po naszej stronie.
+format_odpowiedzi:
+  krs: "numer KRS"
+  nip: "NIP"
+  regon: "REGON"
+  kapital_zakladowy_zl: "liczba"
+  kto_podpisuje: "kto i w jakim składzie podpisuje umowę"
+  podstawa: "źródło zasady reprezentacji"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: krs, typ: zawiera, pole: krs, wzorce: ['0000327814'], waga: 1}
+  - {id: nip, typ: zawiera, pole: nip, wzorce: ['839-?571-?69-?91'], waga: 1}
+  - {id: regon, typ: zawiera, pole: regon, wzorce: ['391039814'], waga: 1}
+  - {id: kapital, typ: rowne, pole: kapital_zakladowy_zl, wartosc: 250000, waga: 1}
+  - {id: dwoch_czlonkow, typ: zawiera, pole: kto_podpisuje, wzorce: ['dw[óo]ch\s+członk', '(dwaj|obaj|obu)\s+członk', 'współdział', 'łączn', 'wierzbick[^.]{0,80}\blis\b', '\blis\b[^.]{0,80}wierzbick'], waga: 3, krytyczne: true}
+  - {id: imiennie, typ: zawiera, pole: kto_podpisuje, wszystkie: true, wzorce: ['wierzbick', '\blis\b'], waga: 1}
+  - {id: prog, typ: zawiera, pole: [kto_podpisuje, podstawa], wzorce: ['50[ .]?000'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [KRS-ODPIS, UMOWA-SPOLKI, INSTR-OBIEG], tryb: dowolny, waga: 1}
+wzorcowa:
+  krs: "0000327814"
+  nip: "839-571-69-91"
+  regon: "391039814"
+  kapital_zakladowy_zl: 250000
+  kto_podpisuje: "Dwóch członków zarządu łącznie: Tomasz Wierzbicki (Prezes Zarządu) i Agnieszka Lis (Członek Zarządu)"
+  podstawa: "KRS dział 2 i § 13 umowy spółki: powyżej 50 000 zł netto wymagane współdziałanie dwóch członków zarządu; Instrukcja obiegu dokumentów pkt 3.1"
+  zrodla: ["KRS_odpis_aktualny_2026-02-27.pdf", "Umowa_spolki_tekst_jednolity_wyciag.pdf"]
+pulapka:
+  krs: "0000418806"
+  nip: "839-571-69-91"
+  regon: "391039814"
+  kapital_zakladowy_zl: 50000
+  kto_podpisuje: "Prezes Zarządu Tomasz Wierzbicki samodzielnie"
+  podstawa: "Prezes reprezentuje spółkę"
+  zrodla: []

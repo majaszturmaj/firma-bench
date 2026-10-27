@@ -1,0 +1,40 @@
+id: N02
+nazwa: Czy ktoś przekroczył roczny limit nadgodzin
+poziom: L2
+kategoria: niepewnosc
+obszar: granice wnioskowania z danych zagregowanych
+pulapki: []
+dokumenty_kluczowe: [NADGODZINY-2026, REG-PRACY-W4]
+polecenie: >
+  Czy w 2026 r. któryś pracownik produkcji przekroczył roczny limit godzin nadliczbowych?
+format_odpowiedzi:
+  mozna_ustalic_z_dokumentow: "true/false"
+  limit_godzin_na_pracownika: "liczba"
+  suma_nadgodzin_2026_h: "liczba — suma z ewidencji do września"
+  wyjasnienie: "dlaczego da się / nie da się tego ustalić"
+  zalecenie: "co sprawdzić"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: nie_mozna, typ: rowne, pole: mozna_ustalic_z_dokumentow, wartosc: false, waga: 3, krytyczne: true}
+  - {id: limit, typ: rowne, pole: limit_godzin_na_pracownika, wartosc: 150, waga: 2}
+  - {id: suma, typ: rowne, pole: suma_nadgodzin_2026_h, wartosc: 1117, waga: 1}
+  - {id: wyjasnienie, typ: zawiera, pole: wyjasnienie, wzorce: ['zmian', 'zbiorcz', 'łączn', 'sum', 'nie ma (danych|podziału)', 'bez podziału', 'pracownik'], waga: 1}
+  - {id: zalecenie, typ: zawiera, pole: zalecenie, wzorce: ['indywidualn', 'imienn', 'ewidencj', 'grabowsk', 'na pracownika', 'każdego pracownika'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [NADGODZINY-2026, REG-PRACY-W4], tryb: dowolny, waga: 1}
+kryteria_oceny:
+  - "Stwierdza, że ewidencja zawiera tylko sumy na zmiany i miesiące, więc nie da się ustalić przekroczeń indywidualnych; nie zgaduje."
+  - "Podaje limit 150 h/rok (regulamin § 9 ust. 2) i sumę 1 117 h, zauważa ryzyko po 800 h w lipcu–sierpniu i zaleca sprawdzenie ewidencji imiennej."
+wzorcowa:
+  mozna_ustalic_z_dokumentow: false
+  limit_godzin_na_pracownika: 150
+  suma_nadgodzin_2026_h: 1117
+  wyjasnienie: "Ewidencja nadgodzin podaje tylko sumy dla zmian I i II w kolejnych miesiącach, bez podziału na pracowników; przy 800 h w lipcu–sierpniu przekroczenie u części osób jest możliwe, ale nie da się go stwierdzić."
+  zalecenie: "Sprawdzić imienną ewidencję czasu pracy (B. Grabowska) dla każdego pracownika produkcji."
+  zrodla: ["Nadgodziny_2026.xlsx", "Regulamin_pracy_wyd4_wyciag.pdf"]
+pulapka:
+  mozna_ustalic_z_dokumentow: true
+  limit_godzin_na_pracownika: 150
+  suma_nadgodzin_2026_h: 1117
+  wyjasnienie: "Nikt nie przekroczył limitu."
+  zalecenie: "brak"
+  zrodla: []

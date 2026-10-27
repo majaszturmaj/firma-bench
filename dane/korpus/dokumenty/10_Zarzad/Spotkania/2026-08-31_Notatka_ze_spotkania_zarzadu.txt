@@ -1,0 +1,29 @@
+NOTATKA ZE SPOTKANIA ZARZĄDU
+Data: 31.08.2026 (poniedziałek), godz. 8:30–9:45, sala konferencyjna
+Obecni: Tomasz Wierzbicki, Agnieszka Lis, Katarzyna Nowicka, Joanna Pawlak, Beata Grabowska, Grzegorz Kowalczyk
+Protokołowała: Natalia Wójcik
+
+1. AGRANDO – nota obciążeniowa NO/2026/08
+- AGRANDO obciążyło nas karą 4 632,00 zł za 6 dni opóźnienia partii KR-220 (dostawa 30.07 zamiast 24.07). Nota zapłacona 26.08.
+- Przyczyna: opóźnienie dostawy blach S355 od Stalvero (zamówienie ZS/2026/0188, dostawa 23.07 zamiast 13.07).
+- Ustalenie: J. Pawlak sprawdzi w umowie ze Stalvero możliwość obciążenia ich karą za opóźnienie – do 11.09.
+
+2. Laser fiber M01
+- Przestój 11–13.08 (wymiana głowicy tnącej), koszt serwisu 18 400,00 zł netto.
+- Ustalenie: G. Kowalczyk rozliczy serwis do 4.09.
+
+3. Nadgodziny lipiec–sierpień
+- Nadrabianie opóźnienia serii KR-220: łącznie ok. 800 h nadgodzin w lipcu i sierpniu.
+- Ustalenie: B. Grabowska rozliczy nadgodziny w wypłacie za wrzesień.
+
+4. Skandeko – dodatkowe wymagania
+- Klient prosi „przy okazji” o kolor RAL 7016 struktura dla części stelaży i pakowanie jednostkowe.
+- Ustalenie: R. Kaczmarek przygotuje wycenę do 7.09.
+
+5. MES
+- Flowmetic przygotowuje środowisko systemu w swojej chmurze – zgodnie z decyzją prezesa z lipca (taniej niż serwer).
+
+6. Gazomir
+- Umowa na gazy „kończy się z końcem roku”. J. Pawlak rozezna rynek dostawców do 14.09.
+
+Następne spotkanie: 14.09.2026, godz. 8:30.

@@ -1,0 +1,12 @@
+# Rejestr korespondencji urzędowej i ważnych pism zewnętrznych 2026 (kancelaria, prowadzi P11) — część facts.yaml
+pisma:
+  - {l_dz: "019/2026", data: 2026-01-14, kierunek: przychodzące, strona: "ZUS", dotyczy: "Zawiadomienie o stopie procentowej składki na ubezpieczenie wypadkowe", przekazano: P10, status: "do akt"}
+  - {l_dz: "W-031/2026", data: 2026-03-27, kierunek: wychodzące, strona: "Marszałek Województwa Dolnośląskiego", dotyczy: "Wykaz o zakresie korzystania ze środowiska za 2025 r.", przekazano: P11, status: "wysłano; opłata 1 236,00 zł wniesiona 30.03"}
+  - {l_dz: "142/2026", data: 2026-04-07, kierunek: przychodzące, strona: "Urząd Marszałkowski Województwa Dolnośląskiego", dotyczy: "Potwierdzenie wpływu wykazu za 2025 r.", przekazano: P11, status: "do akt"}
+  - {l_dz: "W-097/2026", data: 2026-09-01, kierunek: wychodzące, strona: "Montarex Konstrukcje Sp. z o.o.", dotyczy: "Wezwanie do zapłaty (FV/2026/06/044, FV/2026/07/009)", przekazano: P02, status: "list polecony i e-mail; brak odpowiedzi"}
+  - {l_dz: "352/2026", data: 2026-09-07, kierunek: przychodzące, strona: "Okręgowy Inspektorat Pracy Wrocław-Południe", dotyczy: "Upoważnienie do przeprowadzenia kontroli (doręczone przy rozpoczęciu kontroli)", przekazano: P10, status: "kontrola 7–11.09"}
+  - {l_dz: "366/2026", data: 2026-09-14, kierunek: przychodzące, strona: "Dolnośląskie Centrum Wsparcia Przedsiębiorczości", dotyczy: "Wezwanie do przekazania informacji o wskaźnikach za 2025 r. (znak DCWP-MK.433.17.2026)", przekazano: P01, status: "termin 28.09"}
+  - {l_dz: "381/2026", data: 2026-09-23, kierunek: przychodzące, strona: "Okręgowy Inspektorat Pracy Wrocław-Południe", dotyczy: "Wystąpienie z 21.09.2026 r. (znak WP-K-2026/0914)", przekazano: P10, status: "informacja do 15.10"}
+  - {l_dz: "W-104/2026", data: 2026-09-25, kierunek: wychodzące, strona: "Dolnośląskie Centrum Wsparcia Przedsiębiorczości", dotyczy: "Informacja o osiągniętych wskaźnikach rezultatu za 2025 r.", przekazano: P01, status: "wysłano"}
+  - {l_dz: "391/2026", data: 2026-10-01, kierunek: przychodzące, strona: "Certivis Sp. z o.o.", dotyczy: "Plan audytu nadzoru ISO 9001:2015 w dniu 17.11.2026 r.", przekazano: P08, status: "w przygotowaniu"}
+  - {l_dz: "412/2026", data: 2026-10-09, kierunek: przychodzące, strona: "Naczelnik Urzędu Skarbowego Wrocław-Południe", dotyczy: "Wezwanie do przedłożenia dokumentów (znak 0299-SPV.4011.112.2026)", przekazano: "P02, P11", status: "termin 16.10"}

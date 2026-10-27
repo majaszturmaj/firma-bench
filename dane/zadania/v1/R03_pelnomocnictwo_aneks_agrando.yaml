@@ -1,0 +1,32 @@
+id: R03
+nazwa: Czy K. Nowicka może podpisać aneks z AGRANDO
+poziom: L2
+kategoria: rozumowanie
+obszar: pełnomocnictwa, forma zmiany umowy
+pulapki: [T22, T01]
+dokumenty_kluczowe: [PELN-1-2024, UMW-K01, KRS-ODPIS, EML-K01-02]
+polecenie: >
+  Katarzyna Nowicka chce dziś sama podpisać z AGRANDO aneks wydłużający termin płatności do 45 dni — mówi,
+  że ma pełnomocnictwo. Czy może to zrobić? Kto powinien podpisać taki aneks?
+format_odpowiedzi:
+  moze_podpisac: "true/false"
+  powody: "lista powodów"
+  kto_powinien_podpisac: "kto podpisuje aneks po naszej stronie"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: nie_moze, typ: rowne, pole: moze_podpisac, wartosc: false, waga: 3, krytyczne: true}
+  - {id: wygaslo, typ: zawiera, pole: powody, wzorce: ['31\.12\.2025', '31 grudnia 2025', 'wygas', 'utracił\w* ważność', 'nieaktualn', 'nieważn'], waga: 2}
+  - {id: umowy_ramowe, typ: zawiera, pole: powody, wzorce: ['ramow'], waga: 1}
+  - {id: terminy_platnosci, typ: zawiera, pole: powody, wzorce: ['termin\w* płatno'], waga: 1}
+  - {id: zarzad, typ: zawiera, pole: kto_powinien_podpisac, wzorce: ['zarząd', 'wierzbick', '\blis\b'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [PELN-1-2024], waga: 1}
+wzorcowa:
+  moze_podpisac: false
+  powody: ["pełnomocnictwo nr 1/2024 było ważne do 31.12.2025 i nie zostało odnowione", "nie obejmowało zawierania ani zmiany umów ramowych", "wyłączało zmianę terminów płatności"]
+  kto_powinien_podpisac: "Zarząd zgodnie z reprezentacją z KRS — Tomasz Wierzbicki i Agnieszka Lis (jak umowę UR/2025/03); aneks w formie pisemnej (§ 9 ust. 1)"
+  zrodla: ["Pelnomocnictwo_1-2024_K_Nowicka.pdf", "Umowa_ramowa_UR-2025-03_Agrando.pdf"]
+pulapka:
+  moze_podpisac: true
+  powody: ["ma pełnomocnictwo nr 1/2024 do zawierania umów do 100 000 zł"]
+  kto_powinien_podpisac: "Katarzyna Nowicka"
+  zrodla: []

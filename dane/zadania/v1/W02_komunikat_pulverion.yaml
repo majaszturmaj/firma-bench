@@ -1,0 +1,39 @@
+id: W02
+nazwa: Komunikat jakościowy Pulverion — kontakt i zalecenia
+poziom: L1
+kategoria: wyszukiwanie
+obszar: odczyt korespondencji dostawcy
+pulapki: [T12]
+dokumenty_kluczowe: [EML-D03-01]
+polecenie: >
+  Kto w firmie Pulverion odpowiada za jakość (imię, nazwisko, e-mail) i co dokładnie zalecił nam w komunikacie
+  w sprawie partii farby PV-7016-2608? Podaj też numer i datę komunikatu.
+format_odpowiedzi:
+  osoba: "imię i nazwisko oraz stanowisko"
+  email: "adres e-mail"
+  numer_komunikatu: "tekst"
+  data_komunikatu: "RRRR-MM-DD"
+  zalecenia: "lista zaleceń producenta"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: osoba, typ: zawiera, pole: osoba, wzorce: ['wiśniewsk'], waga: 2, krytyczne: true}
+  - {id: email, typ: zawiera, pole: email, wzorce: ['jakosc@pulverion\.pl'], waga: 1}
+  - {id: numer, typ: zawiera, pole: numer_komunikatu, wzorce: ['PV/KJ/09/2026'], waga: 1}
+  - {id: data, typ: rowne, pole: data_komunikatu, wartosc: 2026-09-24, waga: 1}
+  - {id: zalecenia, typ: zawiera, pole: zalecenia, wszystkie: true, wzorce: ['wstrzym', 'przyczepno|2409|siatk', 'wymian|wymieni'], waga: 3, krytyczne: true}
+  - {id: prog_70, typ: zawiera, pole: zalecenia, wzorce: ['70 ?(µm|um|mikr)'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [EML-D03-01], waga: 1}
+wzorcowa:
+  osoba: "Dorota Wiśniewska, Kierownik Działu Jakości Pulverion"
+  email: "jakosc@pulverion.pl"
+  numer_komunikatu: "PV/KJ/09/2026"
+  data_komunikatu: "2026-09-24"
+  zalecenia: ["niezwłocznie wstrzymać stosowanie farby z partii PV-7016-2608", "dla wyrobów z powłoką poniżej 70 µm wykonać próbę przyczepności metodą siatki nacięć wg PN-EN ISO 2409", "pozostała farba z partii zostanie bezpłatnie wymieniona"]
+  zrodla: ["2026-09-24_1405_Komunikat_jakosciowy_Pulverion.eml"]
+pulapka:
+  osoba: "Joanna Pawlak"
+  email: "j.pawlak@firma-blacharska.pl"
+  numer_komunikatu: "PV/WZ/2026/1187"
+  data_komunikatu: "2026-08-28"
+  zalecenia: ["sprawdzić grubość powłoki"]
+  zrodla: []

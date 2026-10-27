@@ -1,0 +1,4 @@
+/* Długie prompty i JSON zawijają się zamiast przewijać w poziomie */
+.md-typeset pre > code { white-space: pre-wrap; word-break: break-word; }
+/* Tabele wyników: ✔/✘ czytelne w obu motywach */
+.md-typeset table:not([class]) td { vertical-align: top; }

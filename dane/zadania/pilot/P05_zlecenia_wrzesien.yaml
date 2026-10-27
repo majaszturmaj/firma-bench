@@ -1,0 +1,34 @@
+id: P05
+nazwa: Liczba zleceń we wrześniu
+poziom: L2
+kategoria: analiza_danych
+obszar: analiza danych i niespójność liczb
+pulapki: [T14]
+dokumenty_kluczowe: [ZLECENIA-2026-09, RAPORT-PROD-2026-09]
+polecenie: >
+  Ile zleceń produkcyjnych utworzono we wrześniu 2026 r.? Raport miesięczny produkcji podaje inną liczbę
+  niż arkusz zleceń — wyjaśnij, skąd różnica.
+format_odpowiedzi:
+  liczba_zlecen: "liczba"
+  liczba_w_raporcie: "liczba"
+  przyczyna_roznicy: "tekst"
+  zlecenia_spoza_raportu: "lista numerów zleceń"
+  zrodla: "lista nazw plików"
+sprawdzenia:
+  - {id: liczba_131, typ: rowne, pole: liczba_zlecen, wartosc: 131, waga: 3, krytyczne: true}
+  - {id: raport_128, typ: rowne, pole: liczba_w_raporcie, wartosc: 128, waga: 1}
+  - {id: przyczyna, typ: zawiera, pole: przyczyna_roznicy, wzorce: ['7:45', 'eksport'], waga: 2}
+  - {id: trzy_zlecenia, typ: zawiera, pole: zlecenia_spoza_raportu, wzorce: ['0998', '0999', '1000'], wszystkie: true, waga: 2}
+  - {id: zrodlo, typ: cytuje, dokumenty: [ZLECENIA-2026-09], waga: 1}
+wzorcowa:
+  liczba_zlecen: 131
+  liczba_w_raporcie: 128
+  przyczyna_roznicy: "Raport powstał z eksportu z 30.09.2026 godz. 7:45; trzy zlecenia utworzono później tego dnia."
+  zlecenia_spoza_raportu: ["ZP/2026/0998", "ZP/2026/0999", "ZP/2026/1000"]
+  zrodla: ["Zlecenia_produkcyjne_2026-09.xlsx", "Raport_miesieczny_produkcji_2026-09.pdf"]
+pulapka:
+  liczba_zlecen: 128
+  liczba_w_raporcie: 128
+  przyczyna_roznicy: "Brak różnicy."
+  zlecenia_spoza_raportu: []
+  zrodla: ["Raport_miesieczny_produkcji_2026-09.pdf"]

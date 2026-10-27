@@ -1,0 +1,38 @@
+id: R04
+nazwa: Skandeko — inny kolor i pakowanie jednostkowe
+poziom: L2
+kategoria: rozumowanie
+obszar: zmiana zakresu umowy
+pulapki: [T17]
+dokumenty_kluczowe: [UMW-K06, EML-K06-01, EML-K06-02, NOT-ZARZAD-2026-08-31, RAPORT-SPRZ-Q3]
+polecenie: >
+  Skandeko pyta, czy przy najbliższym zamówieniu zrobimy 40 stelaży ST-180 w kolorze RAL 7016 struktura
+  i zapakujemy je jednostkowo — w tej samej cenie. Czy możemy się zgodzić i czego to wymaga?
+format_odpowiedzi:
+  mozna_bez_zmiany_umowy: "true/false"
+  cena_bez_zmian: "true/false — czy możemy utrzymać dotychczasową cenę"
+  wymagania: "lista wymogów umowy dla takiej zmiany"
+  status_wyceny: "czy przygotowaliśmy wycenę"
+  nastepne_kroki: "lista kroków"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: nie_bez_aneksu, typ: rowne, pole: mozna_bez_zmiany_umowy, wartosc: false, waga: 3, krytyczne: true}
+  - {id: nie_ta_sama_cena, typ: rowne, pole: cena_bez_zmian, wartosc: false, waga: 2, krytyczne: true}
+  - {id: aneks, typ: zawiera, pole: wymagania, wzorce: ['aneks'], waga: 2}
+  - {id: wycena, typ: zawiera, pole: wymagania, wzorce: ['wycen'], waga: 1}
+  - {id: brak_wyceny, typ: zawiera, pole: status_wyceny, wzorce: ['nie (została |zostala |jest )?(przygotowan|sporządzon|wykonan|gotow)', '\bbrak', 'nie powstał', 'w trakcie', 'nie ma'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-K06], waga: 1}
+wzorcowa:
+  mozna_bez_zmiany_umowy: false
+  cena_bez_zmian: false
+  wymagania: ["inny kolor lub struktura powłoki wymaga odrębnej wyceny i aneksu (§ 1 ust. 2)", "inny sposób pakowania wymaga odrębnej wyceny (§ 1 ust. 3)", "zmiana kolorystyki i pakowania — aneks w formie pisemnej pod rygorem nieważności (§ 5)"]
+  status_wyceny: "Wycena nie została przygotowana — zadanie R. Kaczmarka z 31.08 (termin 7.09) niewykonane; raport sprzedaży podaje „w trakcie wyceny”"
+  nastepne_kroki: ["przygotować wycenę koloru i pakowania", "przesłać wycenę klientowi", "zawrzeć aneks przed przyjęciem zamówienia"]
+  zrodla: ["Umowa_dostawy_UD-2026-02_Skandeko.pdf", "2026-08-31_Notatka_ze_spotkania_zarzadu.txt"]
+pulapka:
+  mozna_bez_zmiany_umowy: true
+  cena_bez_zmian: true
+  wymagania: []
+  status_wyceny: "nie dotyczy"
+  nastepne_kroki: ["przyjąć zamówienie"]
+  zrodla: []

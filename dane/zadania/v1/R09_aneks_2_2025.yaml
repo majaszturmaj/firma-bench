@@ -1,0 +1,33 @@
+id: R09
+nazwa: Aneks „2/2025” w piśmie DCWP
+poziom: L2
+kategoria: rozumowanie
+obszar: weryfikacja odwołań do dokumentów
+pulapki: [T07]
+dokumenty_kluczowe: [PIS-IP-01, UE-UMOWA, UE-ANEKS-2-2024, UE-ANEKS-3-2025]
+polecenie: >
+  DCWP w wezwaniu z 10.09.2026 r. powołuje się na § 9 ust. 3 umowy o dofinansowanie „w brzmieniu aneksu
+  nr 2/2025”. Czego dotyczy ten aneks? Wymień aneksy do umowy, które mamy w dokumentach.
+format_odpowiedzi:
+  aneks_2_2025_w_dokumentach: "true/false"
+  aneksy: "lista: numer, data, czego dotyczy"
+  wyjasnienie: "skąd się bierze obowiązek z § 9 ust. 3 i jak potraktować odwołanie w piśmie"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: brak_aneksu, typ: rowne, pole: aneks_2_2025_w_dokumentach, wartosc: false, waga: 3, krytyczne: true}
+  - {id: aneks_3_2025, typ: zawiera, pole: aneksy, wzorce: ['3/2025'], waga: 1}
+  - {id: aneks_2_2024, typ: zawiera, pole: aneksy, wzorce: ['2/2024'], waga: 1}
+  - {id: tresc_3_2025, typ: zawiera, pole: aneksy, wzorce: ['EPC', 'zatrudni'], waga: 1}
+  - {id: tresc_2_2024, typ: zawiera, pole: aneksy, wzorce: ['48[ .]?000', 'przesunię', 'kategori'], waga: 1}
+  - {id: wyjasnienie, typ: zawiera, pole: wyjasnienie, wzorce: ['pierwotn', 'umow\w* o dofinansowanie', 'omyłk', 'błęd', 'nie istnieje', '3/2025', 'nie zmienia'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UE-ANEKS-3-2025, UE-ANEKS-2-2024], tryb: dowolny, waga: 1}
+wzorcowa:
+  aneks_2_2025_w_dokumentach: false
+  aneksy: ["2/2024 z 02.10.2024 — przesunięcie 48 000 zł netto między kategoriami wydatków (bez zmiany wskaźników)", "3/2025 z 04.02.2025 — zmiana wskaźnika „Wzrost zatrudnienia” z 2 na 1 EPC"]
+  wyjasnienie: "Obowiązek informacji rocznej (do 31 stycznia) wynika z § 9 ust. 3 umowy pierwotnej, której aneksy nie zmieniały; aneksu 2/2025 nie ma w dokumentach — prawdopodobnie omyłka DCWP (chodzi o aneks 3/2025); warto to wskazać w korespondencji"
+  zrodla: ["2026-09-10_Wezwanie_DCWP_wskazniki_2025.pdf", "Aneks_2-2024.pdf", "Aneks_3-2025.pdf"]
+pulapka:
+  aneks_2_2025_w_dokumentach: true
+  aneksy: ["2/2025 — zmiana terminu informacji rocznej"]
+  wyjasnienie: "Aneks 2/2025 wprowadził obowiązek informacji."
+  zrodla: []

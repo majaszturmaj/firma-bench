@@ -1,0 +1,35 @@
+id: D03
+nazwa: Nadgodziny w lipcu i sierpniu oraz ich koszt
+poziom: L1
+kategoria: analiza_danych
+obszar: ewidencja czasu pracy, zgodność z KPI
+pulapki: []
+dokumenty_kluczowe: [NADGODZINY-2026, KPI-Q3-2026, NOT-ZARZAD-2026-08-31]
+polecenie: >
+  Ile godzin nadliczbowych przepracowano na produkcji łącznie w lipcu i sierpniu 2026 r., ile kosztowały
+  nadgodziny w całym III kwartale i z jakiego powodu było ich tak dużo? Czy koszt w zestawieniu KPI zgadza się
+  z ewidencją?
+format_odpowiedzi:
+  godziny_lipiec_sierpien: "liczba"
+  koszt_q3_zl: "liczba"
+  przyczyna: "tekst"
+  koszt_zgodny_z_kpi: "true/false"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: godziny, typ: rowne, pole: godziny_lipiec_sierpien, wartosc: 800, waga: 2, krytyczne: true}
+  - {id: koszt, typ: rowne, pole: koszt_q3_zl, wartosc: 46332, waga: 2}
+  - {id: przyczyna, typ: zawiera, pole: przyczyna, wzorce: ['KR-220', 'blach', 'opóźni'], waga: 1}
+  - {id: zgodny, typ: rowne, pole: koszt_zgodny_z_kpi, wartosc: true, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [NADGODZINY-2026], waga: 1}
+wzorcowa:
+  godziny_lipiec_sierpien: 800
+  koszt_q3_zl: 46332
+  przyczyna: "Nadrabianie opóźnienia serii KR-220 dla AGRANDO po opóźnionej dostawie blach od Stalvero"
+  koszt_zgodny_z_kpi: true
+  zrodla: ["Nadgodziny_2026.xlsx", "KPI_Q3_2026.pdf"]
+pulapka:
+  godziny_lipiec_sierpien: 858
+  koszt_q3_zl: 43200
+  przyczyna: "przestój lasera"
+  koszt_zgodny_z_kpi: false
+  zrodla: []

@@ -1,0 +1,32 @@
+id: E02
+nazwa: Ściągawka z umowy z Liftovią dla technologa
+poziom: L1
+kategoria: redakcja
+obszar: streszczenie dokumentu z zachowaniem parametrów
+pulapki: [T12]
+dokumenty_kluczowe: [UMW-K02]
+polecenie: >
+  Przygotuj dla nowego technologa ściągawkę z umowy z Liftovią: wymagania jakościowe, terminy i kary — maksymalnie
+  10 punktów, każdy z konkretną wartością.
+format_odpowiedzi:
+  punkty: "lista maksymalnie 10 punktów"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: grubosc, typ: zawiera, pole: punkty, wzorce: ['80 ?[–-] ?120'], waga: 2, krytyczne: true}
+  - {id: przyczepnosc, typ: zawiera, pole: punkty, wzorce: ['\b0 ?[–-] ?1\b', 'klas\w* 0'], waga: 1}
+  - {id: rysunki, typ: zawiera, pole: punkty, wzorce: ['rew\.? ?C'], waga: 1}
+  - {id: gwarancja, typ: zawiera, pole: punkty, wzorce: ['36 mies'], waga: 1}
+  - {id: reklamacje, typ: zawiera, pole: punkty, wzorce: ['14 dni'], waga: 1}
+  - {id: usuniecie, typ: zawiera, pole: punkty, wzorce: ['21 dni'], waga: 1}
+  - {id: kary, typ: zawiera, pole: punkty, wzorce: ['0[,.]1 ?%'], waga: 1}
+  - {id: limit, typ: zawiera, pole: punkty, wzorce: ['\b10 ?%'], waga: 1}
+  - {id: materialy, typ: zawiera, pole: punkty, wzorce: ['zmian\w* materiał', 'farb'], waga: 1}
+kryteria_oceny:
+  - "Wszystkie wartości zgodne z umową UD/2024/11 (80–120 µm, klasa 0–1, rysunki OK-12 rew. C i PK-08 rew. B, gwarancja 24/36 mies., 14 dni na stanowisko, 21 dni na usunięcie wad, kary 0,1%, limit 10%)."
+  - "Zwięzłe, praktyczne dla technologa (np. obowiązek informowania o zmianie farb, protokoły grubości dla każdej partii); nie więcej niż 10 punktów."
+wzorcowa:
+  punkty: ["Powłoka: grubość 80–120 µm (pomiar magnetyczno-indukcyjny)", "Przyczepność: klasa 0–1 wg PN-EN ISO 2409", "Rysunki obowiązujące: OK-12 rew. C, PK-08 rew. B — zawsze aktualna rewizja", "Kontrola grubości dla każdej partii, protokół na żądanie klienta", "Obowiązek niezwłocznego informowania o zmianie materiałów, w tym farb", "Gwarancja: 24 mies. na wyroby, 36 mies. na powłokę od dostawy", "Stanowisko w sprawie reklamacji: 14 dni od otrzymania — brak = uznanie", "Wymiana lub usunięcie wad: maks. 21 dni od uznania reklamacji", "Kary: 0,1% dziennie (zwłoka w dostawie lub usunięciu wad)", "Limit kar: 10% wartości netto zamówienia"]
+  zrodla: ["Umowa_dostawy_UD-2024-11_Liftovia.pdf"]
+pulapka:
+  punkty: ["Powłoka min. 50 µm", "Gwarancja 12 mies.", "Reklamacje 21 dni"]
+  zrodla: []

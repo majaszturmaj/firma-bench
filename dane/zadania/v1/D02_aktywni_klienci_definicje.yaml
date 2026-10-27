@@ -1,0 +1,39 @@
+id: D02
+nazwa: Ilu mamy aktywnych klientów — dwie definicje
+poziom: L2
+kategoria: analiza_danych
+obszar: niespójne definicje wskaźników
+pulapki: [T13]
+dokumenty_kluczowe: [RAPORT-SPRZ-Q3, KPI-Q3-2026, INSTR-KPI, UMW-K01, UMW-K02, UMW-K06]
+polecenie: >
+  Zarząd pyta, ilu mamy aktywnych klientów. Raport sprzedaży i zestawienie KPI za III kwartał podają różne
+  liczby. Skąd różnica, która liczba obowiązuje w raportowaniu KPI i którzy klienci spełniają tę definicję?
+format_odpowiedzi:
+  liczba_wg_raportu_sprzedazy: "liczba"
+  liczba_wg_kpi: "liczba"
+  przyczyna_roznicy: "tekst"
+  definicja_obowiazujaca_w_kpi: "tekst i dokument"
+  klienci_wg_definicji_kpi: "lista klientów"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: sprzedaz, typ: rowne, pole: liczba_wg_raportu_sprzedazy, wartosc: 29, waga: 1}
+  - {id: kpi, typ: rowne, pole: liczba_wg_kpi, wartosc: 3, waga: 1}
+  - {id: definicje, typ: zawiera, pole: przyczyna_roznicy, wzorce: ['definicj'], waga: 2, krytyczne: true}
+  - {id: kpi_umowa, typ: zawiera, pole: definicja_obowiazujaca_w_kpi, wzorce: ['umow\w* ramow', 'umow\w* dostaw', 'instrukcj'], waga: 1}
+  - {id: klienci, typ: zawiera, pole: klienci_wg_definicji_kpi, wszystkie: true, wzorce: ['agrando', 'liftovi', 'skandeko'], waga: 3}
+  - {id: bez_innych, typ: nie_zawiera, pole: klienci_wg_definicji_kpi, wzorce: ['varmo', 'montarex', 'filtren', 'helionix'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [INSTR-KPI], waga: 1}
+wzorcowa:
+  liczba_wg_raportu_sprzedazy: 29
+  liczba_wg_kpi: 3
+  przyczyna_roznicy: "Różne definicje: dział sprzedaży liczy klientów, którzy złożyli zamówienie w ostatnich 12 miesiącach; Instrukcja KPI — klientów z obowiązującą umową ramową lub umową dostawy"
+  definicja_obowiazujaca_w_kpi: "Instrukcja raportowania KPI wyd. 1: klient, z którym na ostatni dzień okresu obowiązuje umowa ramowa lub umowa dostawy"
+  klienci_wg_definicji_kpi: ["AGRANDO S.A. (UR/2025/03)", "Liftovia Dźwigi Sp. z o.o. (UD/2024/11)", "Skandeko Meble Sp. z o.o. (UD/2026/02)"]
+  zrodla: ["Instrukcja_raportowania_KPI.docx", "KPI_Q3_2026.pdf", "Raport_sprzedazy_Q3_2026.pdf"]
+pulapka:
+  liczba_wg_raportu_sprzedazy: 29
+  liczba_wg_kpi: 29
+  przyczyna_roznicy: "błąd w zestawieniu KPI"
+  definicja_obowiazujaca_w_kpi: "zamówienie w ostatnich 12 miesiącach"
+  klienci_wg_definicji_kpi: ["AGRANDO", "Filtrena", "Varmo"]
+  zrodla: []

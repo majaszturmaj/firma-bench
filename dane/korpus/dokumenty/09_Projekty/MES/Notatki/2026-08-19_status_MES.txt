@@ -1,0 +1,16 @@
+NOTATKA – status projektu MES
+Data: 19.08.2026
+Uczestnicy spotkania w dniu 20.08.2026: Tomasz Wierzbicki, Grzegorz Kowalczyk, Kamil Rutkowski (Flowmetic)
+Notatkę sporządził: Grzegorz Kowalczyk
+
+Ustalenia:
+- Flowmetic przygotowuje środowisko produkcyjne w swojej chmurze zgodnie z mailem prezesa z 9.07
+- R7 dopisane do specyfikacji v3; CR-02 (14 500 zł) do akceptacji
+- E2 zagrożony — opóźniona dostawa terminali
+
+Flowmetic przekazał na spotkaniu specyfikację wymagań v3 (20.08.2026) – do przeglądu i akceptacji przez G. Kowalczyka.
+
+Do zrobienia:
+- G. Kowalczyk: przegląd specyfikacji v3.
+- T. Wierzbicki: decyzja w sprawie CR-02 (rejestracja czasu pracy, 14 500 zł netto).
+- Flowmetic: nowy harmonogram dostawy terminali.

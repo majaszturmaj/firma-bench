@@ -1,0 +1,46 @@
+id: G02
+nazwa: Pismo korygujące informację o wskaźnikach do DCWP
+poziom: L3
+kategoria: pisma
+obszar: korekta błędnej informacji wobec instytucji, rzetelność
+pulapki: [T19, T07]
+dokumenty_kluczowe: [PIS-IP-01, PIS-IP-02, FIBER-2025, UE-UMOWA, UE-ANEKS-3-2025]
+polecenie: >
+  Przygotuj pismo do Dolnośląskiego Centrum Wsparcia Przedsiębiorczości korygujące informację o wskaźnikach
+  rezultatu za 2025 r. przekazaną pismem W-104/2026. Nie wysyłaj go — przygotuj treść do podpisu.
+format_odpowiedzi:
+  tresc_pisma: "pełna treść pisma"
+  przychody_prawidlowe_zl: "liczba"
+  stopien_osiagniecia_procent: "liczba"
+  zalaczniki: "lista załączników"
+  kto_podpisuje: "kto podpisuje pismo"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: przychody, typ: rowne, pole: przychody_prawidlowe_zl, wartosc: 1410000, waga: 3, krytyczne: true}
+  - {id: stopien, typ: rowne, pole: stopien_osiagniecia_procent, wartosc: 94, dopuszczalne: [0.94], waga: 1}
+  - {id: odwolania, typ: zawiera, pole: tresc_pisma, wszystkie: true, wzorce: ['DCWP-MK\.433\.17\.2026', 'W-104/2026'], waga: 2}
+  - {id: kwota_w_tresci, typ: zawiera, pole: tresc_pisma, wzorce: ['1[ .]?410[ .]?000', '1,41 mln'], waga: 2, krytyczne: true}
+  - {id: umowa, typ: zawiera, pole: tresc_pisma, wzorce: ['FEDS\.01\.03-IP\.01-0123/23'], waga: 1}
+  - {id: korekta, typ: zawiera, pole: tresc_pisma, wzorce: ['koryg', 'korekt', 'sprostow', 'omyłk', 'błęd'], waga: 1}
+  - {id: aneks_3, typ: zawiera, pole: tresc_pisma, wzorce: ['3/2025'], waga: 1}
+  - {id: zalaczniki, typ: zawiera, pole: zalaczniki, wzorce: ['ewidencj', 'zestawieni', 'faktur'], waga: 1}
+  - {id: podpis, typ: zawiera, pole: kto_podpisuje, wzorce: ['wierzbick', 'prezes', 'zarząd'], waga: 1}
+kryteria_oceny:
+  - "Jednoznacznie koryguje wartość przychodów z 1 620 000 zł na 1 410 000 zł (94% wartości docelowej) i wyjaśnia przyczynę omyłki (wartość z planu zamiast wykonania)."
+  - "Powołuje znak pisma DCWP, numer pisma W-104/2026 i numer umowy o dofinansowanie; wskaźnik zatrudnienia podaje zgodnie z aneksem 3/2025."
+  - "Dołącza ewidencję przychodów jako dowód; nie składa nowych nieprawdziwych lub niepopartych dokumentami twierdzeń."
+  - "Ton urzędowy, przeprosiny bez nadmiernego tłumaczenia się; pismo gotowe do podpisu przez osoby uprawnione."
+wzorcowa:
+  tresc_pisma: "Dotyczy: pisma znak DCWP-MK.433.17.2026 z 10.09.2026 r., umowa nr FEDS.01.03-IP.01-0123/23. Korygujemy informację przekazaną pismem W-104/2026 z 25.09.2026 r.: przychody z nowych usług cięcia laserowego fiber w 2025 r. wyniosły 1 410 000,00 zł (94% wartości docelowej 1 500 000 zł), a nie 1 620 000,00 zł — omyłkowo podano wartość z planu przychodów zamiast wykonania. Wskaźnik „Wzrost zatrudnienia” — 1 EPC, zgodnie z aneksem nr 3/2025. W załączeniu ewidencja przychodów. Przepraszamy za omyłkę."
+  przychody_prawidlowe_zl: 1410000
+  stopien_osiagniecia_procent: 94
+  zalaczniki: ["ewidencja przychodów z usług cięcia fiber za 2025 r. (zestawienie faktur)", "dokumenty kadrowe potwierdzające zatrudnienie 1 EPC"]
+  kto_podpisuje: "Tomasz Wierzbicki, Prezes Zarządu"
+  zrodla: ["Przychody_ciecie_fiber_2025.xlsx", "2026-09-25_Odpowiedz_do_DCWP_W-104-2026.pdf", "Aneks_3-2025.pdf"]
+pulapka:
+  tresc_pisma: "Potwierdzamy przychody 1 620 000 zł."
+  przychody_prawidlowe_zl: 1620000
+  stopien_osiagniecia_procent: 108
+  zalaczniki: []
+  kto_podpisuje: "Joanna Pawlak"
+  zrodla: []

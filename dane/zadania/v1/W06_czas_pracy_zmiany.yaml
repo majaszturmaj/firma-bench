@@ -1,0 +1,32 @@
+id: W06
+nazwa: Czas pracy zmian i termin wypłaty
+poziom: L1
+kategoria: wyszukiwanie
+obszar: regulamin pracy
+pulapki: []
+dokumenty_kluczowe: [REG-PRACY-W4]
+polecenie: >
+  W jakich godzinach pracują zmiany na produkcji, jaki jest okres rozliczeniowy czasu pracy i do którego dnia
+  miesiąca wypłacamy wynagrodzenia?
+format_odpowiedzi:
+  zmiany: "godziny pracy każdej zmiany i dni tygodnia"
+  okres_rozliczeniowy_miesiace: "liczba miesięcy"
+  wyplata_do_dnia: "dzień następnego miesiąca (liczba)"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: zmiana_1, typ: zawiera, pole: zmiany, wzorce: ['0?6[:.]00\D{1,6}14[:.]00', '\b0?6\D{1,3}14\b'], waga: 2, krytyczne: true}
+  - {id: zmiana_2, typ: zawiera, pole: zmiany, wzorce: ['14[:.]00\D{1,6}22[:.]00', '\b14\D{1,3}22\b'], waga: 2, krytyczne: true}
+  - {id: dni, typ: zawiera, pole: zmiany, wzorce: ['poniedział|\bpn\b', 'piąt|\bpt\b'], waga: 1}
+  - {id: okres, typ: rowne, pole: okres_rozliczeniowy_miesiace, wartosc: 1, waga: 1}
+  - {id: wyplata, typ: rowne, pole: wyplata_do_dnia, wartosc: 10, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [REG-PRACY-W4], waga: 1}
+wzorcowa:
+  zmiany: "I zmiana 6:00–14:00, II zmiana 14:00–22:00, od poniedziałku do piątku"
+  okres_rozliczeniowy_miesiace: 1
+  wyplata_do_dnia: 10
+  zrodla: ["Regulamin_pracy_wyd4_wyciag.pdf"]
+pulapka:
+  zmiany: "I zmiana 7:00–15:00, II zmiana 15:00–23:00"
+  okres_rozliczeniowy_miesiace: 4
+  wyplata_do_dnia: 15
+  zrodla: []

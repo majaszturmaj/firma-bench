@@ -1,0 +1,33 @@
+id: G06
+nazwa: Odpowiedź do Skandeko w sprawie koloru i pakowania
+poziom: L2
+kategoria: pisma
+obszar: korespondencja z klientem o zmianie zakresu
+pulapki: [T17]
+dokumenty_kluczowe: [UMW-K06, EML-K06-01, EML-K06-02]
+polecenie: >
+  Przygotuj odpowiedź do Karoliny Lindqvist-Nowak (Skandeko) w sprawie stelaży ST-180 w kolorze RAL 7016 struktura
+  z pakowaniem jednostkowym. Nie wysyłaj — przygotuj treść.
+format_odpowiedzi:
+  adresat: "imię, nazwisko, e-mail"
+  tresc: "treść odpowiedzi"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: aneks, typ: zawiera, pole: tresc, wzorce: ['aneks'], waga: 2, krytyczne: true}
+  - {id: wycena, typ: zawiera, pole: tresc, wzorce: ['wycen'], waga: 2}
+  - {id: bez_obietnicy_ceny, typ: nie_zawiera, pole: tresc, wzorce: ['(?<!nie )(potwierdzamy|wykonamy|zrealizujemy|przyjmujemy)[^.]{0,80}(w tej samej cenie|bez zmiany ceny|bez dopłat|cen\w* bez zmian)'], waga: 2, krytyczne: true}
+  - {id: umowa, typ: zawiera, pole: tresc, wzorce: ['UD/2026/02', 'umow'], waga: 1}
+  - {id: kolor_umowny, typ: zawiera, pole: tresc, wzorce: ['9005'], waga: 1}
+  - {id: adresat, typ: zawiera, pole: adresat, wzorce: ['lindqvist'], waga: 1}
+kryteria_oceny:
+  - "Wyjaśnia, że inny kolor i pakowanie jednostkowe wykraczają poza umowę UD/2026/02 i wymagają odrębnej wyceny oraz aneksu."
+  - "Nie obiecuje realizacji w dotychczasowej cenie ani terminie; proponuje konkretny następny krok (wycena, termin jej przekazania)."
+  - "Ton uprzejmy i pozytywny wobec klienta, bez żargonu prawniczego."
+wzorcowa:
+  adresat: "Karolina Lindqvist-Nowak, k.lindqvist@skandeko.pl"
+  tresc: "Dzień dobry Pani Karolino, dziękujemy za informację o kolekcji „Fjord”. Wykonanie stelaży ST-180 w RAL 7016 struktura zamiast RAL 9005 mat oraz pakowanie jednostkowe wykraczają poza umowę UD/2026/02 — wymagają odrębnej wyceny i zawarcia aneksu. Przekażemy wycenę wraz z terminem realizacji; po jej akceptacji przygotujemy aneks."
+  zrodla: ["Umowa_dostawy_UD-2026-02_Skandeko.pdf", "2026-08-26_1102_Skandeko_kolor_i_pakowanie.eml"]
+pulapka:
+  adresat: "Monika Duda"
+  tresc: "Oczywiście, wykonamy stelaże w RAL 7016 w tej samej cenie."
+  zrodla: []

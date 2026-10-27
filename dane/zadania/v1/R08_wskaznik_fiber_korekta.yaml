@@ -1,0 +1,51 @@
+id: R08
+nazwa: Wskaźnik przychodów projektu UE i ryzyko po piśmie z 25.09
+poziom: L3
+kategoria: rozumowanie
+obszar: wskaźniki projektu, korekty finansowe, rzetelność informacji
+pulapki: [T19, T07]
+dokumenty_kluczowe: [FIBER-2025, PIS-IP-02, UE-UMOWA, UE-ANEKS-3-2025, PIS-IP-01]
+polecenie: >
+  Czy w 2025 r. osiągnęliśmy wskaźnik przychodów z usług cięcia fiber z umowy o dofinansowanie i czy grozi nam
+  z tego powodu korekta finansowa? Sprawdź też, czy informacja wysłana do DCWP 25.09.2026 r. była prawidłowa
+  i co z tego wynika.
+format_odpowiedzi:
+  przychody_2025_zl: "faktyczne przychody wg ewidencji (liczba)"
+  wartosc_docelowa_zl: "liczba"
+  stopien_osiagniecia_procent: "liczba"
+  grozi_korekta_za_wskaznik: "true/false"
+  pismo_25_09_poprawne: "true/false"
+  blad_w_pismie: "na czym polega błąd"
+  ryzyko: "konsekwencje wg umowy"
+  rekomendacja: "co zrobić"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: przychody, typ: rowne, pole: przychody_2025_zl, wartosc: 1410000, waga: 2, krytyczne: true}
+  - {id: docelowa, typ: rowne, pole: wartosc_docelowa_zl, wartosc: 1500000, waga: 1}
+  - {id: stopien, typ: rowne, pole: stopien_osiagniecia_procent, wartosc: 94, dopuszczalne: [0.94], waga: 1}
+  - {id: bez_korekty, typ: rowne, pole: grozi_korekta_za_wskaznik, wartosc: false, waga: 2}
+  - {id: pismo_bledne, typ: rowne, pole: pismo_25_09_poprawne, wartosc: false, waga: 3, krytyczne: true}
+  - {id: blad, typ: zawiera, pole: blad_w_pismie, wzorce: ['1[ .]?620', '1,62', 'plan', 'prognoz'], waga: 2}
+  - {id: ryzyko, typ: zawiera, pole: ryzyko, wzorce: ['zwrot', 'rozwiąz', '§ ?12 ust\.? ?2', 'nieprawdziw'], waga: 2}
+  - {id: korekta_pisma, typ: zawiera, pole: rekomendacja, wzorce: ['koryg', 'korekt', 'sprostow'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [FIBER-2025], waga: 1}
+wzorcowa:
+  przychody_2025_zl: 1410000
+  wartosc_docelowa_zl: 1500000
+  stopien_osiagniecia_procent: 94
+  grozi_korekta_za_wskaznik: false
+  pismo_25_09_poprawne: false
+  blad_w_pismie: "Podano 1 620 000 zł (108%) — to suma planu z wniosku o dofinansowanie, a nie wykonania (1 410 000 zł wg ewidencji)"
+  ryzyko: "Korekta z § 12 ust. 1 grozi dopiero poniżej 90% wartości docelowej (jest 94%), ale przekazanie nieprawdziwych informacji to podstawa rozwiązania umowy i zwrotu dofinansowania (§ 12 ust. 2)"
+  rekomendacja: "Niezwłocznie wysłać do DCWP pismo korygujące z prawidłową wartością i ewidencją przychodów"
+  zrodla: ["Przychody_ciecie_fiber_2025.xlsx", "2026-09-25_Odpowiedz_do_DCWP_W-104-2026.pdf", "Umowa_o_dofinansowanie_FEDS.01.03-IP.01-0123-23_wyciag.pdf"]
+pulapka:
+  przychody_2025_zl: 1620000
+  wartosc_docelowa_zl: 1500000
+  stopien_osiagniecia_procent: 108
+  grozi_korekta_za_wskaznik: false
+  pismo_25_09_poprawne: true
+  blad_w_pismie: "brak"
+  ryzyko: "brak ryzyka"
+  rekomendacja: "nic nie robić"
+  zrodla: []

@@ -1,0 +1,42 @@
+id: K05
+nazwa: Plan działań po próbie oszustwa „na zmianę rachunku”
+poziom: L2
+kategoria: zlozone
+obszar: reagowanie na incydent, procedury, ochrona danych
+pulapki: [T10]
+dokumenty_kluczowe: [EML-D01-02, PROC-PZ03-W2, UMW-D01, POL-RODO-W2]
+polecenie: >
+  Dostaliśmy podejrzanego maila o zmianie rachunku bankowego Stalvero. Przygotuj plan działań na dziś: kto, co
+  i w jakiej kolejności. Czy to jest naruszenie ochrony danych, które musimy zgłosić do UODO?
+format_odpowiedzi:
+  plan: "lista {krok, kto, kiedy}"
+  czy_trzeba_zglosic_do_uodo: "true/false — na podstawie tego, co wiemy z dokumentów"
+  uzasadnienie_uodo: "tekst"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: weryfikacja, typ: zawiera, pole: plan, wzorce: ['555 ?61 ?00', 'telefon'], waga: 2, krytyczne: true}
+  - {id: wstrzymanie, typ: zawiera, pole: plan, wzorce: ['\bnie (zmien|zmian|płac|zapłac|wykonuj|wykonyw|realiz|aktualiz|wprowadz|dokonuj|dokonyw|przelew)\w*', 'wstrzym', 'zablok', 'zignoruj'], waga: 2}
+  - {id: lis, typ: zawiera, pole: plan, wzorce: ['\blis\b', 'członk\w* zarządu ds\.? finans'], waga: 1}
+  - {id: pawlak, typ: zawiera, pole: plan, wzorce: ['pawlak', 'zakup'], waga: 1}
+  - {id: uodo_bool, typ: rowne, pole: czy_trzeba_zglosic_do_uodo, wartosc: false, waga: 1}
+  - {id: koordynator, typ: zawiera, pole: [uzasadnienie_uodo, plan], wzorce: ['koordynator', 'wójcik'], waga: 1}
+  - {id: termin_72h, typ: zawiera, pole: uzasadnienie_uodo, wzorce: ['72'], waga: 1}
+kryteria_oceny:
+  - "Kolejność: wstrzymać zmianę rachunku i płatności, zweryfikować telefonicznie pod numerem z umowy (+48 32 555 61 00), poinformować A. Lis i zespół, ostrzec biuro rachunkowe, zabezpieczyć wiadomość, zgłosić incydent koordynatorowi ochrony danych."
+  - "Ocena UODO: sama próba wyłudzenia nie jest naruszeniem ochrony danych osobowych FIRMY, jeżeli nie doszło do ujawnienia danych; decyzję po ocenie podejmuje koordynator — zgłoszenie w 72 h tylko przy naruszeniu podlegającym zgłoszeniu."
+  - "Plan wykonalny dziś, z przypisanymi osobami."
+wzorcowa:
+  plan:
+    - {krok: "nie zmieniać rachunku i nie wykonywać płatności na nowy rachunek", kto: "Joanna Pawlak, Agnieszka Lis", kiedy: "natychmiast"}
+    - {krok: "zweryfikować telefonicznie pod numerem z umowy +48 32 555 61 00 (D. Kurek)", kto: "Joanna Pawlak", kiedy: "dziś"}
+    - {krok: "poinformować Agnieszkę Lis (akceptuje zmiany rachunków) i biuro rachunkowe", kto: "Joanna Pawlak", kiedy: "dziś"}
+    - {krok: "zabezpieczyć wiadomość, zgłosić incydent koordynatorowi ochrony danych (N. Wójcik) i obsłudze IT", kto: "Joanna Pawlak", kiedy: "dziś"}
+  czy_trzeba_zglosic_do_uodo: false
+  uzasadnienie_uodo: "Z dokumentów nie wynika ujawnienie danych osobowych przez FIRMĘ — to próba oszustwa; zgodnie z polityką zgłaszamy podejrzenie koordynatorowi (N. Wójcik), który oceni, czy doszło do naruszenia podlegającego zgłoszeniu do UODO w ciągu 72 godzin"
+  zrodla: ["2026-10-06_1002_PILNE_zmiana_rachunku_Stalvero.eml", "PZ-03_Zakupy_i_wspolpraca_z_dostawcami_wyd2.docx", "Polityka_ochrony_danych_osobowych_wyd2.pdf"]
+pulapka:
+  plan:
+    - {krok: "zaktualizować rachunek i zapłacić faktury do 09.10", kto: "księgowość", kiedy: "dziś"}
+  czy_trzeba_zglosic_do_uodo: true
+  uzasadnienie_uodo: "każdy mail phishingowy trzeba zgłosić"
+  zrodla: []

@@ -1,0 +1,21 @@
+# Dostawy blach od Stalvero (D01) w 2026 r. — dane źródłowe (część facts.yaml).
+# Termin = data zamówienia + 5 dni roboczych (umowa UZ/2025/01); cena wg miesiąca zamówienia (D01.ceny_stali_zl_t).
+dostawy:
+  - {zamowienie: ZS/2026/0012, data_zamowienia: 2026-01-07, dostarczono: 2026-01-14, tonaz_t: 24.6, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0031, data_zamowienia: 2026-01-21, dostarczono: 2026-01-28, tonaz_t: 22.1, gatunek: "S235JR 2–4 mm"}
+  - {zamowienie: ZS/2026/0049, data_zamowienia: 2026-02-04, dostarczono: 2026-02-10, tonaz_t: 26.3, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0066, data_zamowienia: 2026-02-18, dostarczono: 2026-02-25, tonaz_t: 21.8, gatunek: "S235JR 2–4 mm"}
+  - {zamowienie: ZS/2026/0081, data_zamowienia: 2026-03-04, dostarczono: 2026-03-12, tonaz_t: 28.4, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0097, data_zamowienia: 2026-03-18, dostarczono: 2026-03-25, tonaz_t: 25.0, gatunek: "S235JR 2–4 mm"}
+  - {zamowienie: ZS/2026/0112, data_zamowienia: 2026-04-08, dostarczono: 2026-04-15, tonaz_t: 27.2, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0124, data_zamowienia: 2026-04-22, dostarczono: 2026-04-29, tonaz_t: 24.4, gatunek: "S235JR 2–4 mm"}
+  - {zamowienie: ZS/2026/0139, data_zamowienia: 2026-05-06, dostarczono: 2026-05-13, tonaz_t: 29.1, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0151, data_zamowienia: 2026-05-20, dostarczono: 2026-05-27, tonaz_t: 26.7, gatunek: "S235JR 2–4 mm"}
+  - {zamowienie: ZS/2026/0163, data_zamowienia: 2026-06-08, dostarczono: 2026-06-15, tonaz_t: 30.2, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0176, data_zamowienia: 2026-06-17, dostarczono: 2026-06-24, tonaz_t: 31.5, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0188, data_zamowienia: 2026-07-06, dostarczono: 2026-07-23, tonaz_t: 32.4, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0203, data_zamowienia: 2026-07-27, dostarczono: 2026-08-03, tonaz_t: 18.6, gatunek: "S235JR 2–4 mm"}
+  - {zamowienie: ZS/2026/0219, data_zamowienia: 2026-08-17, dostarczono: 2026-08-24, tonaz_t: 22.3, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0231, data_zamowienia: 2026-08-31, dostarczono: 2026-09-07, tonaz_t: 27.9, gatunek: "S355MC 3–6 mm"}
+  - {zamowienie: ZS/2026/0246, data_zamowienia: 2026-09-14, dostarczono: 2026-09-21, tonaz_t: 26.5, gatunek: "S235JR 2–4 mm"}
+  - {zamowienie: ZS/2026/0258, data_zamowienia: 2026-09-28, dostarczono: 2026-10-05, tonaz_t: 25.8, gatunek: "S355MC 3–6 mm"}

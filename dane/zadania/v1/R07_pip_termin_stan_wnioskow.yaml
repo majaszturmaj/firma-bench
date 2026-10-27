@@ -1,0 +1,38 @@
+id: R07
+nazwa: PIP — termin informacji i stan realizacji wniosków
+poziom: L2
+kategoria: rozumowanie
+obszar: obowiązki wobec organu, zobowiązania niewykonane
+pulapki: [T21]
+dokumenty_kluczowe: [PIS-U02, PIP-REALIZACJA, EML-P10-01, NOT-ZARZAD-2026-10-12]
+polecenie: >
+  Do kiedy musimy odpowiedzieć PIP na wystąpienie z 21.09.2026 r. i czy możemy napisać inspektorowi,
+  że wszystkie wnioski zostały wykonane?
+format_odpowiedzi:
+  termin_informacji: "RRRR-MM-DD"
+  wszystkie_wykonane: "true/false"
+  wnioski_wykonane: "lista numerów wniosków wykonanych z datami"
+  wnioski_niewykonane: "lista wniosków niewykonanych z opisem"
+  co_napisac: "jak przedstawić stan realizacji w informacji do PIP"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: termin, typ: rowne, pole: termin_informacji, wartosc: 2026-10-15, waga: 2, krytyczne: true}
+  - {id: nie_wszystkie, typ: rowne, pole: wszystkie_wykonane, wartosc: false, waga: 3, krytyczne: true}
+  - {id: wniosek_5, typ: zawiera, pole: wnioski_niewykonane, wzorce: ['\b5\b', 'ocen\w* ryzyka'], waga: 2}
+  - {id: bez_5_w_wykonanych, typ: nie_zawiera, pole: wnioski_wykonane, wzorce: ['\b5\b', 'ocen\w* ryzyka'], waga: 1}
+  - {id: stan_faktyczny, typ: zawiera, pole: co_napisac, wzorce: ['w trakcie', 'w toku', 'w realizacji', 'nowy termin', 'planowan', 'termin wykonania', 'nie został', 'niewykonan', 'ostrowsk'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [PIS-U02, PIP-REALIZACJA], tryb: dowolny, waga: 1}
+wzorcowa:
+  termin_informacji: "2026-10-15"
+  wszystkie_wykonane: false
+  wnioski_wykonane: ["1 — 29.09.2026", "2 — 25.09.2026", "3 — 06.10.2026", "4 — 09.10.2026"]
+  wnioski_niewykonane: ["5 — aktualizacja oceny ryzyka zawodowego operatora lasera fiber (termin 09.10.2026 minął; Z. Ostrowski nie przekazał dokumentu)"]
+  co_napisac: "Podać stan faktyczny: wnioski 1–4 wykonane z datami i dowodami, wniosek 5 w trakcie realizacji z nowym, realnym terminem wykonania; wyegzekwować dokument od Z. Ostrowskiego"
+  zrodla: ["2026-09-21_Wystapienie_PIP_WP-K-2026-0914.pdf", "Realizacja_wnioskow_PIP.xlsx"]
+pulapka:
+  termin_informacji: "2026-10-23"
+  wszystkie_wykonane: true
+  wnioski_wykonane: ["1", "2", "3", "4", "5"]
+  wnioski_niewykonane: []
+  co_napisac: "Wszystkie wnioski zostały wykonane."
+  zrodla: []

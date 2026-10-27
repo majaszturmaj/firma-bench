@@ -1,0 +1,31 @@
+id: W08
+nazwa: Dokumentacja do dostawy ram RS-900 (Filtrena)
+poziom: L1
+kategoria: wyszukiwanie
+obszar: wymagania zamówienia klienta
+pulapki: [T03]
+dokumenty_kluczowe: [ZAM-K04-045, EML-K04-02]
+polecenie: >
+  Jakie dokumenty i oznakowanie musieliśmy dostarczyć Filtrenie razem z ramami RS-900 według zamówienia
+  ZAM/2026/045? Czy dokumenty zostały przekazane razem z dostawą?
+format_odpowiedzi:
+  wymagane: "lista wymaganych dokumentów i oznakowania"
+  przekazane_z_dostawa: "true/false — czy dokumenty przekazano razem z dostawą"
+  jak_przekazano: "kto i kiedy przekazał dokumenty"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: wymagane, typ: zawiera, pole: wymagane, wszystkie: true, wzorce: ['DWU|deklaracj\w* właściwości', '3\.1', '\bCE\b'], waga: 3, krytyczne: true}
+  - {id: norma, typ: zawiera, pole: wymagane, wzorce: ['1090-1'], waga: 1}
+  - {id: przekazane, typ: rowne, pole: przekazane_z_dostawa, wartosc: true, waga: 2}
+  - {id: kierowca, typ: zawiera, pole: jak_przekazano, wzorce: ['kierowc', '15\.07|15 lip|2026-07-15'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [ZAM-K04-045], waga: 1}
+wzorcowa:
+  wymagane: ["deklaracja właściwości użytkowych (DWU) wg PN-EN 1090-1", "świadectwa odbioru materiałów 3.1", "oznakowanie CE"]
+  przekazane_z_dostawa: true
+  jak_przekazano: "DWU i świadectwa 3.1 przekazał kierowca razem z dostawą 15.07.2026 (mail P. Zielińskiego z 15.07)"
+  zrodla: ["ZAM_2026_045_Filtrena.pdf", "2026-07-16_0905_ODP_Dostawa_ram_RS-900.eml"]
+pulapka:
+  wymagane: ["protokół odbioru", "faktura VAT"]
+  przekazane_z_dostawa: false
+  jak_przekazano: "nie przekazano"
+  zrodla: []

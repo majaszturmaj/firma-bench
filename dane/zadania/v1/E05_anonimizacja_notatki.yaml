@@ -1,0 +1,36 @@
+id: E05
+nazwa: Anonimizacja notatki ze spotkania zarządu
+poziom: L2
+kategoria: redakcja
+obszar: usuwanie danych osobowych z zachowaniem treści
+pulapki: []
+dokumenty_kluczowe: [NOT-ZARZAD-2026-09-28]
+polecenie: >
+  Przygotuj wersję notatki ze spotkania zarządu z 28.09.2026 r. do wykorzystania jako przykład na szkoleniu
+  zewnętrznym: zastąp imiona i nazwiska funkcjami (np. „Prezes Zarządu”, „Pełnomocnik ds. Jakości”),
+  a resztę treści zachowaj bez zmian.
+format_odpowiedzi:
+  tresc_zanonimizowana: "pełna treść notatki po anonimizacji"
+  zamiany: "lista {oryginal, zamiennik}"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: bez_nazwisk, typ: nie_zawiera, pole: tresc_zanonimizowana, wzorce: ['wierzbick', '\blis\b', 'nowick', 'mazur', 'pawlak', 'grabowsk', 'kowalczyk', 'wójcik', 'wojcik', 'ostrowsk', 'malinowsk', 'tomasz', 'agnieszk', 'katarzyn', 'jakub', 'joann', 'beat[ay]', 'grzegorz', 'natali', 'zbigniew'], waga: 3, krytyczne: true}
+  - {id: role, typ: zawiera, pole: tresc_zanonimizowana, wzorce: ['prezes', 'członk\w* zarządu', 'pełnomocnik'], waga: 1}
+  - {id: pismo, typ: zawiera, pole: tresc_zanonimizowana, wzorce: ['W-104/2026'], waga: 1}
+  - {id: termin_pip, typ: zawiera, pole: tresc_zanonimizowana, wzorce: ['15\.10'], waga: 1}
+  - {id: audyt, typ: zawiera, pole: tresc_zanonimizowana, wzorce: ['17\.11', '\bS1\b'], waga: 1}
+  - {id: firmy, typ: zawiera, pole: tresc_zanonimizowana, wszystkie: true, wzorce: ['gazomir', 'montarex'], waga: 1}
+  - {id: marza, typ: zawiera, pole: tresc_zanonimizowana, wzorce: ['20 ?%'], waga: 1}
+kryteria_oceny:
+  - "Usuwa wszystkie imiona, nazwiska i inicjały osób (także pracowników zewnętrznych: specjalisty BHP, radcy prawnego), zastępując je spójnie funkcjami."
+  - "Zachowuje całą pozostałą treść, liczby, daty, numery pism i strukturę notatki; nie dodaje komentarzy."
+wzorcowa:
+  tresc_zanonimizowana: "NOTATKA ZE SPOTKANIA ZARZĄDU. Data: 28.09.2026 (poniedziałek), godz. 8:30–10:15. Obecni: Prezes Zarządu, Członek Zarządu ds. finansowych, Kierownik Sprzedaży, Pełnomocnik ds. Jakości, Specjalistka ds. Zakupów, Specjalistka ds. Kadr, Kierownik Produkcji. Protokołowała: Asystentka Zarządu. 1. Wyniki III kwartału — marża brutto wstępnie ok. 20%; Członek Zarządu ds. finansowych przygotuje analizę. 2. Instytucja pośrednicząca — odpowiedź wysłana 25.09 (pismo W-104/2026, podpisał Prezes Zarządu). 3. Wystąpienie PIP z 21.09 (L.dz. 381/2026): 5 wniosków, informacja do 15.10; koordynuje Specjalistka ds. Kadr, ocenę ryzyka aktualizuje zewnętrzny specjalista BHP. 4. Gazomir — decyzja przełożona na październik. 5. Montarex — brak odpowiedzi; Członek Zarządu przekaże sprawę radcy prawnemu do 2.10. 6. Audyt Certivis 17.11 — Pełnomocnik ds. Jakości; do zamknięcia spostrzeżenie S1."
+  zamiany:
+    - {oryginal: "Tomasz Wierzbicki", zamiennik: "Prezes Zarządu"}
+    - {oryginal: "Agnieszka Lis", zamiennik: "Członek Zarządu ds. finansowych"}
+  zrodla: ["2026-09-28_Notatka_ze_spotkania_zarzadu.txt"]
+pulapka:
+  tresc_zanonimizowana: "Obecni: T. Wierzbicki, A. Lis, J. Mazur. Marża ok. 20%. Pismo W-104/2026. Audyt 17.11."
+  zamiany: []
+  zrodla: []

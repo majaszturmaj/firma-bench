@@ -1,0 +1,46 @@
+id: R11
+nazwa: Montarex — czy wstrzymać realizację nowych zamówień
+poziom: L2
+kategoria: rozumowanie
+obszar: OWS, zaległości płatnicze, liczenie dni opóźnienia, decyzje zarządu
+pulapki: [T25, T16]
+dokumenty_kluczowe: [OWS-W3, FV-2026-06-044, FV-2026-07-009, PIS-K05-WEZWANIE, EML-K05-02, NOT-ZARZAD-2026-10-12]
+polecenie: >
+  Montarex przysłał dziś nowe zamówienie. Czy możemy wstrzymać jego realizację do czasu zapłaty zaległości?
+  Ile wynoszą zaległości i ile dni opóźnienia ma każda faktura na dziś? Czy możemy jeszcze dziś wysłać
+  klientowi informację o wstrzymaniu?
+format_odpowiedzi:
+  mozna_wstrzymac: "true/false"
+  podstawa: "postanowienie, na którym się opieramy"
+  zaleglosc_brutto_zl: "liczba"
+  dni_opoznienia: "lista {faktura, termin_platnosci, dni}"
+  mozna_wyslac_informacje_dzis: "true/false"
+  uzasadnienie_wysylki: "dlaczego"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: mozna, typ: rowne, pole: mozna_wstrzymac, wartosc: true, waga: 2, krytyczne: true}
+  - {id: podstawa, typ: zawiera, pole: podstawa, wzorce: ['§ ?5'], waga: 1}
+  - {id: kwota, typ: rowne, pole: zaleglosc_brutto_zl, wartosc: 108178.50, waga: 2, krytyczne: true}
+  - {id: dni_044, typ: element_listy, pole: dni_opoznienia, klucz: faktura, wzorzec: '06/044', pole_elementu: dni, wartosc: 84, dopuszczalne: [83], waga: 1}
+  - {id: dni_009, typ: element_listy, pole: dni_opoznienia, klucz: faktura, wzorzec: '07/009', pole_elementu: dni, wartosc: 68, dopuszczalne: [67], waga: 1}
+  - {id: nie_dzis, typ: rowne, pole: mozna_wyslac_informacje_dzis, wartosc: false, waga: 2}
+  - {id: decyzja_lis, typ: zawiera, pole: uzasadnienie_wysylki, wzorce: ['\blis\b', '16\.10', '16 paźdz', 'zarząd', 'nic nie wysyłamy'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [OWS-W3], waga: 1}
+wzorcowa:
+  mozna_wstrzymac: true
+  podstawa: "§ 5 ust. 3 OWS wyd. 3 — przy zaległościach Sprzedający może wstrzymać realizację kolejnych zamówień; reklamacja nie zwalnia z zapłaty (§ 6 ust. 5)"
+  zaleglosc_brutto_zl: 108178.50
+  dni_opoznienia:
+    - {faktura: "FV/2026/06/044", termin_platnosci: "2026-07-22", dni: 84}
+    - {faktura: "FV/2026/07/009", termin_platnosci: "2026-08-07", dni: 68}
+  mozna_wyslac_informacje_dzis: false
+  uzasadnienie_wysylki: "Zarząd 12.10 ustalił, że do decyzji A. Lis w sprawie wezwania (do 16.10) nic nie wysyłamy do klienta — informację o wstrzymaniu uzgodnić z A. Lis"
+  zrodla: ["OWS_FIRMA_wyd3.pdf", "FV_2026_06_044.pdf", "FV_2026_07_009.pdf", "2026-10-12_Notatka_ze_spotkania_zarzadu.txt"]
+pulapka:
+  mozna_wstrzymac: false
+  podstawa: "brak podstawy — trwa reklamacja"
+  zaleglosc_brutto_zl: 83178.50
+  dni_opoznienia: []
+  mozna_wyslac_informacje_dzis: true
+  uzasadnienie_wysylki: "klient powinien wiedzieć od razu"
+  zrodla: []

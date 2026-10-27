@@ -1,0 +1,53 @@
+id: G04
+nazwa: Nota obciążeniowa dla Stalvero
+poziom: L2
+kategoria: pisma
+obszar: dokument finansowy z wyliczeniem i kwotą słownie, akceptacja wewnętrzna
+pulapki: []
+dokumenty_kluczowe: [UMW-D01, DOSTAWY-STALI-2026, EML-D01-01, PROC-PZ03-W2]
+polecenie: >
+  Przygotuj projekt noty obciążeniowej dla Stalvero za zwłokę w dostawie zamówienia ZS/2026/0188 — z wyliczeniem
+  kary i kwotą słownie. Kto musi ją zaakceptować przed wysłaniem?
+format_odpowiedzi:
+  numer_zamowienia: "tekst"
+  wartosc_dostawy_netto_zl: "liczba"
+  dni_zwloki: "liczba"
+  kwota_kary_zl: "liczba"
+  kwota_slownie: "kwota słownie"
+  podstawa: "postanowienie umowy"
+  do_akceptacji: "kto akceptuje notę"
+  tresc_noty: "treść noty"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: kwota, typ: rowne, pole: kwota_kary_zl, wartosc: 2273.18, waga: 3, krytyczne: true}
+  - {id: dni, typ: rowne, pole: dni_zwloki, wartosc: 8, waga: 2}
+  - {id: wartosc, typ: rowne, pole: wartosc_dostawy_netto_zl, wartosc: 142074, waga: 1}
+  - {id: slownie, typ: zawiera, pole: kwota_slownie, wzorce: ['dwa tysiące dwieście siedemdziesiąt trzy'], waga: 2, krytyczne: true}
+  - {id: grosze, typ: zawiera, pole: kwota_slownie, wzorce: ['18/100', 'osiemnaście'], waga: 1}
+  - {id: podstawa, typ: zawiera, pole: podstawa, wzorce: ['§ ?5', 'UZ/2025/01'], waga: 1}
+  - {id: akceptacja, typ: zawiera, pole: do_akceptacji, wzorce: ['\blis\b', 'członk\w* zarządu', 'dyrektor\w* finans'], waga: 1}
+  - {id: zamowienie, typ: zawiera, pole: [tresc_noty, numer_zamowienia], wzorce: ['ZS/2026/0188'], waga: 1}
+kryteria_oceny:
+  - "Nota zawiera strony (FIRMA i Stalvero z danymi z umowy), tytuł, podstawę (§ 5 ust. 1 umowy UZ/2025/01), wyliczenie 0,2% × 142 074,00 zł × 8 dni roboczych i kwotę 2 273,18 zł."
+  - "Kwota słownie jest poprawna gramatycznie i zgodna z kwotą liczbową."
+  - "Wskazuje akceptację Członka Zarządu ds. finansowych przed wysłaniem (PZ-03) i nie oznacza noty jako wysłanej."
+wzorcowa:
+  numer_zamowienia: "ZS/2026/0188"
+  wartosc_dostawy_netto_zl: 142074
+  dni_zwloki: 8
+  kwota_kary_zl: 2273.18
+  kwota_slownie: "dwa tysiące dwieście siedemdziesiąt trzy złote 18/100"
+  podstawa: "§ 5 ust. 1 umowy dostaw UZ/2025/01 — 0,2% wartości netto opóźnionej dostawy za każdy dzień roboczy zwłoki"
+  do_akceptacji: "Agnieszka Lis, Członek Zarządu ds. finansowych (PZ-03 pkt 3.3)"
+  tresc_noty: "Nota obciążeniowa — kara umowna za zwłokę w dostawie zamówienia ZS/2026/0188 z 06.07.2026 r. (termin 13.07.2026, dostawa 23.07.2026, 8 dni roboczych): 0,2% × 142 074,00 zł × 8 = 2 273,18 zł."
+  zrodla: ["Umowa_dostaw_UZ-2025-01_Stalvero.pdf", "Dostawy_blach_2026.xlsx"]
+pulapka:
+  numer_zamowienia: "ZS/2026/0188"
+  wartosc_dostawy_netto_zl: 142074
+  dni_zwloki: 10
+  kwota_kary_zl: 2841.48
+  kwota_slownie: "dwa tysiące osiemset czterdzieści jeden złotych 48/100"
+  podstawa: "kodeks cywilny"
+  do_akceptacji: "nie wymaga akceptacji"
+  tresc_noty: "Nota wysłana."
+  zrodla: []

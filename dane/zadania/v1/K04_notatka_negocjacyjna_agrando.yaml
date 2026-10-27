@@ -1,0 +1,45 @@
+id: K04
+nazwa: Notatka przed negocjacjami z AGRANDO
+poziom: L3
+kategoria: zlozone
+obszar: synteza relacji z klientem — warunki, spory, argumenty, ryzyka
+pulapki: [T01, T04, T22]
+dokumenty_kluczowe: [UMW-K01, FV-2026-07-041, EML-K01-01, EML-K01-02, RAPORT-SPRZ-Q3, NOTA-K01-NO-2026-08, EML-K01-03, DOSTAWY-STALI-2026, PELN-1-2024, SPRZEDAZ-2026, REJ-REKL]
+polecenie: >
+  Przed spotkaniem z Henrykiem Bieleckim (AGRANDO) przygotuj notatkę negocjacyjną: obowiązujące warunki umowy,
+  sprawy sporne i niezałatwione, nasze argumenty i ryzyka.
+format_odpowiedzi:
+  warunki_umowy: "lista kluczowych warunków umowy"
+  termin_platnosci_wiazacy_dni: "liczba"
+  sprawy_sporne: "lista"
+  argumenty: "lista naszych argumentów"
+  ryzyka: "lista"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: termin_30, typ: rowne, pole: termin_platnosci_wiazacy_dni, wartosc: 30, waga: 2, krytyczne: true}
+  - {id: rozbieznosci, typ: zawiera, pole: sprawy_sporne, wzorce: ['\b45\b', '\b60\b'], waga: 1}
+  - {id: aneks, typ: zawiera, pole: [sprawy_sporne, argumenty], wzorce: ['aneks', 'pisemn'], waga: 1}
+  - {id: indeksacja, typ: zawiera, pole: [argumenty, sprawy_sporne], wzorce: ['indeksacj', '§ ?3', 'cen\w* blach'], waga: 2}
+  - {id: kara, typ: zawiera, pole: [sprawy_sporne, argumenty, ryzyka], wzorce: ['4[ .]?632'], waga: 1}
+  - {id: okres, typ: zawiera, pole: warunki_umowy, wzorce: ['31\.03\.2027', 'marca 2027'], waga: 1}
+  - {id: udzial, typ: zawiera, pole: [ryzyka, argumenty, warunki_umowy], wzorce: ['33[,.]1', '1[ .]?458[ .]?860'], waga: 1}
+  - {id: pelnomocnictwo, typ: zawiera, pole: [ryzyka, sprawy_sporne], wzorce: ['pełnomocnictw', 'wygasł', 'nowick'], waga: 1}
+kryteria_oceny:
+  - "Warunki: UR/2025/03 do 31.03.2027, 30 dni od doręczenia faktury (wiążące), kary 0,2%/dzień do 10%, indeksacja raz na kwartał przy zmianie > 5%, zmiany tylko aneksem."
+  - "Sprawy sporne: 45 dni na fakturach i 60 dni w raporcie sprzedaży bez aneksu; nota 4 632 zł (zapłacona — zgodna z umową); niezłożony wniosek o indeksację mimo +11% cen blach; jakość (reklamacje 2026)."
+  - "Ryzyka: zależność od klienta (33,1% sprzedaży Q3), brak umocowania K. Nowickiej do zmian umowy, sezon 2027 i terminowość dostaw."
+  - "Zwięzła notatka z konkretnymi argumentami liczbowymi."
+wzorcowa:
+  warunki_umowy: ["umowa ramowa UR/2025/03, obowiązuje 01.04.2025–31.03.2027", "płatność 30 dni od doręczenia faktury (§ 5)", "kary 0,2% dziennie, maks. 10% (§ 7)", "zmiana cen raz na kwartał przy zmianie indeksu S355 > 5%, aneksem (§ 3 ust. 2)", "zmiany umowy tylko na piśmie (§ 9)"]
+  termin_platnosci_wiazacy_dni: 30
+  sprawy_sporne: ["termin płatności: faktury z 45 dniami, raport sprzedaży podaje 60 dni — brak aneksu, wiąże 30 dni", "nota NO/2026/08 4 632 zł zapłacona 26.08 — kara zgodna z umową", "ceny: blachy +11% od lipca, wniosek o indeksację niezłożony"]
+  argumenty: ["wniosek o indeksację na podstawie § 3 ust. 2 (3 950 → 4 385 zł/t)", "ewentualne wydłużenie płatności tylko aneksem i w zamian za indeksację", "terminowość od sierpnia przywrócona"]
+  ryzyka: ["AGRANDO to 33,1% sprzedaży Q3 (1 458 860 zł) — ryzyko przeniesienia zamówień", "pełnomocnictwo K. Nowickiej wygasło 31.12.2025 — zmiany umowy podpisuje zarząd", "reklamacje 2026 (R/2026/002, 006, 011)"]
+  zrodla: ["Umowa_ramowa_UR-2025-03_Agrando.pdf", "FV_2026_07_041.pdf", "Raport_sprzedazy_Q3_2026.pdf", "NO_2026_08_Agrando.pdf", "Pelnomocnictwo_1-2024_K_Nowicka.pdf"]
+pulapka:
+  warunki_umowy: ["termin płatności 60 dni"]
+  termin_platnosci_wiazacy_dni: 60
+  sprawy_sporne: []
+  argumenty: []
+  ryzyka: []
+  zrodla: []

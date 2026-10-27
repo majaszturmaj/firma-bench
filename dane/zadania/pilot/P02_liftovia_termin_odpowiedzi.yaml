@@ -1,0 +1,37 @@
+id: P02
+nazwa: Termin odpowiedzi na reklamację Liftovii
+poziom: L2
+kategoria: rozumowanie
+obszar: wersje dokumentów i terminy
+pulapki: [T02]
+dokumenty_kluczowe: [UMW-K02, PROC-PR07-W1, PROC-PR07-W2, REJ-REKL, EML-K02-01, EML-K02-02, NOT-ZARZAD-2026-10-12]
+polecenie: >
+  Do kiedy musimy odpowiedzieć Liftovii na reklamację R/2026/017 i co się stanie, jeśli nie zdążymy?
+  W rejestrze reklamacji jest wpisany termin — czy jest prawidłowy?
+format_odpowiedzi:
+  termin_odpowiedzi: "data (RRRR-MM-DD)"
+  skutek_braku_odpowiedzi: "co się stanie, jeżeli nie odpowiemy w terminie"
+  termin_w_rejestrze_poprawny: "true/false"
+  wyjasnienie: "skąd wynika termin i skąd ewentualny błąd"
+  zrodla: "lista nazw plików"
+aliasy_dokumentow:
+  UMW-K02: ["UD/2024/11"]
+  PROC-PR07-W2: ["PR-07 wyd. 2", "PR-07 wydanie 2"]
+sprawdzenia:
+  - {id: termin_16_10, typ: rowne, pole: termin_odpowiedzi, wartosc: 2026-10-16, waga: 3, krytyczne: true}
+  - {id: skutek_uznanie, typ: zawiera, pole: skutek_braku_odpowiedzi, wzorce: ['uzna'], waga: 2}
+  - {id: rejestr_bledny, typ: rowne, pole: termin_w_rejestrze_poprawny, wartosc: false, waga: 2}
+  - {id: przyczyna_bledu, typ: zawiera, pole: [wyjasnienie], wzorce: ['21 dni', 'wydani[ea] 1', 'uchylon', 'nieaktualn', 'stara'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-K02, PROC-PR07-W2], tryb: dowolny, waga: 2}
+wzorcowa:
+  termin_odpowiedzi: "2026-10-16"
+  skutek_braku_odpowiedzi: "Brak stanowiska w terminie oznacza uznanie reklamacji w całości (§ 6 ust. 2 umowy UD/2024/11)."
+  termin_w_rejestrze_poprawny: false
+  wyjasnienie: "Umowa: 14 dni od otrzymania (2.10 → 16.10); PR-07 wyd. 2 daje pierwszeństwo terminowi umownemu. W rejestrze wpisano 23.10 według uchylonego wydania 1 (21 dni)."
+  zrodla: ["Umowa_dostawy_UD-2024-11_Liftovia.pdf", "PR-07_Rozpatrywanie_reklamacji_wyd2.docx"]
+pulapka:
+  termin_odpowiedzi: "2026-10-23"
+  skutek_braku_odpowiedzi: "Klient może się zniecierpliwić."
+  termin_w_rejestrze_poprawny: true
+  wyjasnienie: "Termin 21 dni wg procedury."
+  zrodla: ["Rejestr_reklamacji.xlsx"]

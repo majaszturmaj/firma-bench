@@ -1,0 +1,35 @@
+id: G03
+nazwa: Wniosek do AGRANDO o zmianę cen
+poziom: L2
+kategoria: pisma
+obszar: pismo handlowe oparte na klauzuli umownej
+pulapki: []
+dokumenty_kluczowe: [UMW-K01, DOSTAWY-STALI-2026, ZAM-K01-014]
+polecenie: >
+  Przygotuj pisemny wniosek do AGRANDO S.A. o zmianę cen ram KR-220 i osłon OB-220 w związku ze wzrostem cen
+  blach S355. Nie wysyłaj go — przygotuj treść do podpisu.
+format_odpowiedzi:
+  adresat: "adresat (firma i adres)"
+  tresc_pisma: "pełna treść wniosku"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: umowa, typ: zawiera, pole: tresc_pisma, wzorce: ['UR/2025/03'], waga: 2, krytyczne: true}
+  - {id: paragraf, typ: zawiera, pole: tresc_pisma, wzorce: ['§ ?3'], waga: 1}
+  - {id: ceny_blach, typ: zawiera, pole: tresc_pisma, wszystkie: true, wzorce: ['4[ .]?385', '3[ .]?9[05]0'], waga: 1}
+  - {id: procent, typ: zawiera, pole: tresc_pisma, wzorce: ['\b1[12]([,.]\d+)?\s?%'], waga: 1}
+  - {id: prog_5, typ: zawiera, pole: tresc_pisma, wzorce: ['5 ?%', 'pięciu proc'], waga: 1}
+  - {id: aneks, typ: zawiera, pole: tresc_pisma, wzorce: ['aneks'], waga: 2, krytyczne: true}
+  - {id: adresat, typ: zawiera, pole: adresat, wszystkie: true, wzorce: ['agrando', 'opol|przemysłow'], waga: 1}
+kryteria_oceny:
+  - "Opiera wniosek na § 3 ust. 2 umowy UR/2025/03 i pokazuje spełnienie warunku (wzrost cen blach S355 o ok. 11% > 5% względem kwartału bazowego) z liczbami."
+  - "Proponuje zmianę cen w drodze aneksu (forma pisemna), a nie jednostronną podwyżkę."
+  - "Nie wymyśla danych, których nie ma w dokumentach (np. konkretnego indeksu rynkowego); ewentualną nową cenę przedstawia jako propozycję do uzgodnienia."
+  - "Ton partnerski wobec kluczowego klienta, poprawna forma pisma handlowego."
+wzorcowa:
+  adresat: "AGRANDO S.A., ul. Przemysłowa 21, 45-641 Opole"
+  tresc_pisma: "Na podstawie § 3 ust. 2 umowy ramowej dostaw nr UR/2025/03 wnosimy o zmianę cen jednostkowych ram KR-220 i osłon OB-220. Ceny blach S355MC wzrosły z 3 950 zł/t w II kwartale do 4 385 zł/t od lipca 2026 r., tj. o ok. 11%, a więc o więcej niż 5% w stosunku do kwartału bazowego. Proponujemy uzgodnienie nowego cennika i zawarcie aneksu do umowy."
+  zrodla: ["Umowa_ramowa_UR-2025-03_Agrando.pdf", "Dostawy_blach_2026.xlsx"]
+pulapka:
+  adresat: "Stalvero"
+  tresc_pisma: "Informujemy, że od 1 października podnosimy ceny o 11%."
+  zrodla: []

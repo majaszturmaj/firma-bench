@@ -1,0 +1,56 @@
+name: Strona dokumentacji
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-docs.txt
+      - name: Strony generowane są aktualne
+        run: |
+          python narzedzia/generuj_strone.py
+          git diff --exit-code -- docs
+      - name: Odpowiedzi wzorcowe przechodzą ocenę
+        run: |
+          python - <<'PY'
+          import glob, json, yaml
+          with open("wzorcowe.jsonl", "w") as f:
+              for p in glob.glob("dane/zadania/*/*.yaml"):
+                  t = yaml.safe_load(open(p))
+                  f.write(json.dumps({"zadanie": t["id"], "odpowiedz": json.dumps(t["wzorcowa"], ensure_ascii=False, default=str)}, ensure_ascii=False) + "\n")
+          PY
+          python narzedzia/ocen.py wzorcowe.jsonl | tail -1 | grep -q "82/82"
+      - run: mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && vars.PUBLIKUJ_STRONE == 'tak'
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && vars.PUBLIKUJ_STRONE == 'tak'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

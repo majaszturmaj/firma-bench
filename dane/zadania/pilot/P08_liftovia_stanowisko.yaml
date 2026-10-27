@@ -1,0 +1,50 @@
+id: P08
+nazwa: Stanowisko w sprawie reklamacji Liftovii
+poziom: L3
+kategoria: zlozone
+obszar: analiza przyczyn, decyzja, HITL
+pulapki: [T02, T12]
+dokumenty_kluczowe: [UMW-K02, PROC-PR07-W2, EML-K02-01, EML-K02-02, EML-K02-03, ZAL-K02-RAPORT, KT-OK12, PROT-KJ-0905-03, EML-D03-01, ZLECENIA-2026-09, AUDYT-ISO-2025]
+polecenie: >
+  Przygotuj stanowisko w sprawie reklamacji Liftovii R/2026/017: czy ją uznajemy, jaka jest przyczyna,
+  do kiedy musimy odpowiedzieć, czy problem może dotyczyć innych zleceń i kto musi zatwierdzić decyzję.
+  Dołącz projekt odpowiedzi do klienta (nie wysyłaj go).
+format_odpowiedzi:
+  decyzja: "uznać / uznać częściowo / odrzucić"
+  przyczyny: "lista przyczyn z dowodami"
+  termin_odpowiedzi: "data (RRRR-MM-DD)"
+  inne_zagrozone_zlecenia: "lista numerów zleceń i co z nimi zrobić"
+  kto_zatwierdza: "kto musi zaakceptować decyzję i dlaczego"
+  dzialania_korygujace: "lista"
+  projekt_odpowiedzi: "treść pisma do klienta"
+  zrodla: "lista nazw plików"
+sprawdzenia:
+  - {id: uznac, typ: zawiera, pole: decyzja, wzorce: ['uzna'], waga: 3, krytyczne: true}
+  - {id: nie_odrzucac, typ: nie_zawiera, pole: decyzja, wzorce: ['odrzuc', 'nie uzna'], waga: 1, krytyczne: true}
+  - {id: partia_farby, typ: zawiera, pole: przyczyny, wzorce: ['PV-7016-2608', 'Pulverion', 'parti\w* farby'], waga: 2}
+  - {id: karta_techn, typ: zawiera, pole: przyczyny, wzorce: ['KT-OK12', 'kart\w* technologiczn', '50 ?µm', '50 ?um'], waga: 2}
+  - {id: termin, typ: rowne, pole: termin_odpowiedzi, wartosc: 2026-10-16, waga: 2}
+  - {id: zlecenie_0951, typ: zawiera, pole: inne_zagrozone_zlecenia, wzorce: ['0951'], waga: 2}
+  - {id: zlecenie_0903, typ: zawiera, pole: inne_zagrozone_zlecenia, wzorce: ['0903'], waga: 1}
+  - {id: akceptacja, typ: zawiera, pole: kto_zatwierdza, wzorce: ['Lis', 'członek zarządu', 'zarząd', '10 ?000'], waga: 1}
+  - {id: korekta_kt, typ: zawiera, pole: dzialania_korygujace, wzorce: ['kart\w* technologiczn', 'KT-OK12'], waga: 1}
+  - {id: zrodlo_pulverion, typ: cytuje, dokumenty: [EML-D03-01], waga: 1}
+  - {id: zrodlo_umowa, typ: cytuje, dokumenty: [UMW-K02], waga: 1}
+wzorcowa:
+  decyzja: "uznać"
+  przyczyny: ["wadliwa partia farby Pulverion PV-7016-2608 (komunikat z 24.09 nie trafił do działu jakości)", "karta technologiczna KT-OK12 rew. B wymaga min. 50 µm, umowa 80–120 µm — protokół 58 µm uznano za zgodny", "brak próby przyczepności"]
+  termin_odpowiedzi: "2026-10-16"
+  inne_zagrozone_zlecenia: ["ZP/2026/0951 — 80 szt. OK-12 w realizacji: wstrzymać wysyłkę", "ZP/2026/0903 — 60 paneli PK-08 wysłane: poinformować klienta"]
+  kto_zatwierdza: "Agnieszka Lis, Członek Zarządu ds. finansowych — koszt powyżej 10 000 zł netto (PR-07 wyd. 2)"
+  dzialania_korygujace: ["aktualizacja karty technologicznej KT-OK12", "rejestr komunikatów dostawców", "próba przyczepności dla powłok < 70 µm"]
+  projekt_odpowiedzi: "Uznajemy reklamację R/2026/017 i proponujemy ponowne malowanie lub wymianę 140 szt. ..."
+  zrodla: ["2026-09-24_1405_Komunikat_jakosciowy_Pulverion.eml", "Umowa_dostawy_UD-2024-11_Liftovia.pdf", "KJ_2026_0905_03.pdf", "KT-OK12_rew_B.pdf"]
+pulapka:
+  decyzja: "odrzucić"
+  przyczyny: ["uszkodzenia przy montażu u klienta"]
+  termin_odpowiedzi: "2026-10-23"
+  inne_zagrozone_zlecenia: []
+  kto_zatwierdza: "Pełnomocnik ds. Jakości"
+  dzialania_korygujace: []
+  projekt_odpowiedzi: "Odrzucamy reklamację, powłoka była zgodna z kartą technologiczną."
+  zrodla: ["2026-10-05_0812_ODP_PD_Reklamacja_oslony_OK-12.eml"]

@@ -1,0 +1,39 @@
+id: R05
+nazwa: Liftovia — termin usunięcia wad, kary i koszty demontażu
+poziom: L2
+kategoria: rozumowanie
+obszar: skutki uznania reklamacji wg umowy, obliczenia
+pulapki: []
+dokumenty_kluczowe: [UMW-K02, EML-K02-01, FV-2026-09-031, PROC-PR07-W2]
+polecenie: >
+  Załóżmy, że 16.10.2026 uznamy reklamację Liftovii R/2026/017. Do kiedy najpóźniej musimy wymienić osłony
+  albo usunąć wady według umowy, ile wyniesie kara za każdy dzień zwłoki i jaki jest jej limit? Czy musimy
+  zapłacić zgłoszone przez klienta 9 800 zł za demontaż i ponowny montaż? Czy uznanie wymaga czyjejś akceptacji?
+format_odpowiedzi:
+  termin_usuniecia_wad: "RRRR-MM-DD — najpóźniejszy termin wg umowy"
+  kara_dzienna_zl: "liczba"
+  limit_kar_zl: "liczba"
+  koszty_demontazu: "czy i na jakich warunkach je pokrywamy"
+  wymaga_akceptacji_zarzadu: "true/false"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: termin, typ: rowne, pole: termin_usuniecia_wad, wartosc: 2026-11-06, waga: 3, krytyczne: true}
+  - {id: kara, typ: rowne, pole: kara_dzienna_zl, wartosc: 26.04, waga: 2}
+  - {id: limit, typ: rowne, pole: limit_kar_zl, wartosc: 2604, waga: 1}
+  - {id: udokumentowane, typ: zawiera, pole: koszty_demontazu, wzorce: ['udokumentowan'], waga: 2}
+  - {id: akceptacja, typ: rowne, pole: wymaga_akceptacji_zarzadu, wartosc: true, waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [UMW-K02], waga: 1}
+wzorcowa:
+  termin_usuniecia_wad: "2026-11-06"
+  kara_dzienna_zl: 26.04
+  limit_kar_zl: 2604
+  koszty_demontazu: "Tak, ale tylko udokumentowane koszty demontażu i ponownego montażu (§ 6 ust. 4 — wada ujawniła się po zamontowaniu); 9 800 zł to wstępna kalkulacja klienta — żądamy dokumentów"
+  wymaga_akceptacji_zarzadu: true
+  zrodla: ["Umowa_dostawy_UD-2024-11_Liftovia.pdf", "FV_2026_09_031.pdf", "PR-07_Rozpatrywanie_reklamacji_wyd2.docx"]
+pulapka:
+  termin_usuniecia_wad: "2026-10-26"
+  kara_dzienna_zl: 260.40
+  limit_kar_zl: 9800
+  koszty_demontazu: "Nie musimy — wada powstała przy montażu"
+  wymaga_akceptacji_zarzadu: false
+  zrodla: []

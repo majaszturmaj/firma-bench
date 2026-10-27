@@ -1,0 +1,35 @@
+id: D10
+nazwa: Reklamacje rozpatrzone po terminie umownym
+poziom: L3
+kategoria: analiza_danych
+obszar: porównanie rejestru z terminami z umów i OWS, wersje procedur
+pulapki: [T02]
+dokumenty_kluczowe: [REJ-REKL, UMW-K01, UMW-K02, UMW-K06, OWS-W3, PROC-PR07-W1, PROC-PR07-W2]
+polecenie: >
+  Sprawdź w rejestrze reklamacji, czy któraś z zamkniętych reklamacji (2025–2026) dostała odpowiedź po terminie
+  wynikającym z umowy z klientem albo z OWS. Kolumna „Termin odpowiedzi” w rejestrze była wypełniana według
+  wewnętrznej procedury, więc nie musi odpowiadać terminom umownym.
+format_odpowiedzi:
+  reklamacje_po_terminie: "lista {numer, klient, termin_umowny (RRRR-MM-DD), data_odpowiedzi, dni_opoznienia}"
+  podstawa_terminow: "jakie terminy obowiązują poszczególnych klientów"
+  dlaczego_rejestr_tego_nie_pokazuje: "tekst"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: r2025_010, typ: zawiera, pole: reklamacje_po_terminie, wzorce: ['2025/010'], waga: 3, krytyczne: true}
+  - {id: bez_falszywych, typ: nie_zawiera, pole: reklamacje_po_terminie, wzorce: ['\{[^{}]*r/20(25/00[1-9]|25/01[12]|26/00[1-9]|26/01[0-6])[^{}]*"dni_opoznienia": ?"?[1-9]', '\{[^{}]*"dni_opoznienia": ?"?[1-9][^{}]*r/20(25/00[1-9]|25/01[12]|26/00[1-9]|26/01[0-6])', '(\[|, )"r/20(25/00[1-9]|25/01[12]|26/00[1-9]|26/01[0-6])'], waga: 2, krytyczne: true}
+  - {id: termin_umowny, typ: element_listy, pole: reklamacje_po_terminie, klucz: numer, wzorzec: '2025/010', pole_elementu: termin_umowny, wartosc: 2025-10-14, waga: 2}
+  - {id: dni, typ: element_listy, pole: reklamacje_po_terminie, klucz: numer, wzorzec: '2025/010', pole_elementu: dni_opoznienia, wartosc: 3, waga: 1}
+  - {id: podstawa, typ: zawiera, pole: podstawa_terminow, wzorce: ['14 dni'], waga: 1}
+  - {id: rejestr, typ: zawiera, pole: dlaczego_rejestr_tego_nie_pokazuje, wzorce: ['21 dni', 'wyd\w*\.? ?1', 'wydani\w* 1', 'procedur'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [REJ-REKL], waga: 1}
+wzorcowa:
+  reklamacje_po_terminie:
+    - {numer: "R/2025/010", klient: "AGRANDO S.A.", termin_umowny: "2025-10-14", data_odpowiedzi: "2025-10-17", dni_opoznienia: 3}
+  podstawa_terminow: "AGRANDO: 14 dni od zgłoszenia (§ 6 ust. 2 UR/2025/03); Liftovia: 14 dni (§ 6 ust. 2 UD/2024/11); Skandeko: 14 dni (§ 4 ust. 2 UD/2026/02); pozostali klienci: 14 dni wg § 6 ust. 4 OWS"
+  dlaczego_rejestr_tego_nie_pokazuje: "Rejestr wpisywał termin wg PR-07 wyd. 1 (21 dni kalendarzowych) — 21.10.2025, więc odpowiedź z 17.10.2025 wyglądała na terminową"
+  zrodla: ["Rejestr_reklamacji.xlsx", "Umowa_ramowa_UR-2025-03_Agrando.pdf", "OWS_FIRMA_wyd3.pdf"]
+pulapka:
+  reklamacje_po_terminie: []
+  podstawa_terminow: "21 dni wg procedury"
+  dlaczego_rejestr_tego_nie_pokazuje: "rejestr jest poprawny"
+  zrodla: ["Rejestr_reklamacji.xlsx"]

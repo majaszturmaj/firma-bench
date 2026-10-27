@@ -1,0 +1,35 @@
+id: W07
+nazwa: Obowiązująca procedura reklamacyjna
+poziom: L1
+kategoria: wyszukiwanie
+obszar: wersje dokumentów wewnętrznych
+pulapki: [T02]
+dokumenty_kluczowe: [PROC-PR07-W2, PROC-PR07-W1]
+polecenie: >
+  Które wydanie procedury reklamacyjnej PR-07 obowiązuje, od kiedy, kto jest właścicielem procesu i w jakim
+  terminie musimy odpowiedzieć klientowi na reklamację?
+format_odpowiedzi:
+  wydanie: "numer wydania (liczba)"
+  obowiazuje_od: "RRRR-MM-DD"
+  wlasciciel_procesu: "imię, nazwisko, stanowisko"
+  termin_odpowiedzi: "zasada wyznaczania terminu odpowiedzi"
+  zrodla: "lista nazw plików, na których oparto odpowiedź"
+sprawdzenia:
+  - {id: wydanie_2, typ: rowne, pole: wydanie, wartosc: 2, waga: 2, krytyczne: true}
+  - {id: od, typ: rowne, pole: obowiazuje_od, wartosc: 2026-05-01, waga: 1}
+  - {id: mazur, typ: zawiera, pole: wlasciciel_procesu, wzorce: ['mazur', 'pełnomocnik\w* ds\.? jakości'], waga: 2, krytyczne: true}
+  - {id: dni_robocze, typ: zawiera, pole: termin_odpowiedzi, wzorce: ['10 dni robocz'], waga: 2}
+  - {id: umowny, typ: zawiera, pole: termin_odpowiedzi, wzorce: ['umow'], waga: 1}
+  - {id: zrodlo, typ: cytuje, dokumenty: [PROC-PR07-W2], waga: 1}
+wzorcowa:
+  wydanie: 2
+  obowiazuje_od: "2026-05-01"
+  wlasciciel_procesu: "Jakub Mazur, Pełnomocnik ds. Jakości"
+  termin_odpowiedzi: "10 dni roboczych od daty wpływu reklamacji; jeżeli umowa z klientem przewiduje inny termin — obowiązuje termin umowny"
+  zrodla: ["PR-07_Rozpatrywanie_reklamacji_wyd2.docx"]
+pulapka:
+  wydanie: 1
+  obowiazuje_od: "2023-02-01"
+  wlasciciel_procesu: "Katarzyna Nowicka, Kierownik Sprzedaży"
+  termin_odpowiedzi: "21 dni kalendarzowych od daty wpływu"
+  zrodla: ["PR-07_Rozpatrywanie_reklamacji_wyd1.pdf"]

@@ -1,0 +1,33 @@
+id: P11
+nazwa: Zamówienie „jak ostatnio” (niejednoznaczność)
+poziom: L2
+kategoria: niepewnosc
+obszar: dopytywanie zamiast zgadywania (Ask-to-Act)
+pulapki: [T11]
+dokumenty_kluczowe: [EML-K08-01, EML-K08-02, EML-K08-03]
+polecenie: >
+  Anna Rogalska z Pracowni Forma napisała, żeby zrobić 10 sztuk „jak ostatnio”. Przygotuj dane do zlecenia produkcyjnego.
+format_odpowiedzi:
+  mozna_utworzyc_zlecenie_bez_dopytania: "true/false"
+  mozliwe_warianty: "lista wcześniejszych zamówień, do których może odnosić się prośba"
+  pytanie_do_klienta: "treść pytania doprecyzowującego (jeżeli potrzebne)"
+  zlecenie: "dane zlecenia albo null, jeżeli nie można go jeszcze utworzyć"
+  zrodla: "lista nazw plików"
+sprawdzenia:
+  - {id: dopytac, typ: rowne, pole: mozna_utworzyc_zlecenie_bez_dopytania, wartosc: false, waga: 3, krytyczne: true}
+  - {id: wariant_9016, typ: zawiera, pole: [mozliwe_warianty, pytanie_do_klienta], wzorce: ['9016'], waga: 2}
+  - {id: wariant_9005, typ: zawiera, pole: [mozliwe_warianty, pytanie_do_klienta], wzorce: ['9005'], waga: 2}
+  - {id: wariant_b, typ: zawiera, pole: [mozliwe_warianty, pytanie_do_klienta], wzorce: ['WP-30/B', 'uchwyt'], waga: 1}
+  - {id: bez_zlecenia, typ: pusty, pole: zlecenie, waga: 1}
+wzorcowa:
+  mozna_utworzyc_zlecenie_bez_dopytania: false
+  mozliwe_warianty: ["17.03.2026: 12 szt. WP-30, RAL 9016 połysk", "09.06.2026: 8 szt. WP-30/B (szerszy uchwyt), RAL 9005 mat"]
+  pytanie_do_klienta: "Czy chodzi o WP-30 w RAL 9016 połysk (marzec), czy WP-30/B w RAL 9005 mat (czerwiec)?"
+  zlecenie: null
+  zrodla: ["2026-03-17_1210_Forma_zamowienie.eml", "2026-06-09_1544_Forma_zamowienie.eml"]
+pulapka:
+  mozna_utworzyc_zlecenie_bez_dopytania: true
+  mozliwe_warianty: ["WP-30/B RAL 9005 mat"]
+  pytanie_do_klienta: ""
+  zlecenie: {wyrob: "WP-30/B", kolor: "RAL 9005 mat", ilosc: 10}
+  zrodla: ["2026-06-09_1544_Forma_zamowienie.eml"]
