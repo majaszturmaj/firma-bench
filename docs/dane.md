@@ -17,6 +17,7 @@ dane/
 └── wyniki/             # wyniki zagregowane (per zadanie, bez odpowiedzi modeli)
 narzedzia/
 ├── ocen.py             # ocena własnych odpowiedzi
+├── pakuj.py            # pliki do pobrania (ZIP, JSONL, sumy kontrolne)
 ├── scoring.py          # implementacja sprawdzeń
 ├── generuj_strone.py   # generator tej dokumentacji
 └── eksport_wynikow.py  # eksport wyników z repozytorium eksperymentów
@@ -40,6 +41,10 @@ docs/                   # ta strona
 | `pulapka` | typowa błędna odpowiedź (nie przechodzi oceny) |
 | `aliasy_dokumentow` | dodatkowe nazwy dokumentów akceptowane w polu `zrodla` |
 | `wiedza_zewnetrzna` | `true`, gdy zadanie wymaga wiedzy spoza dokumentów (tylko R12) |
+
+## Licencja
+
+Całe repozytorium — zadania, dokumenty, fakty, opisy i skrypty — jest na licencji [MIT](https://github.com/majaszturmaj/firma-bench/blob/main/LICENSE). Pliki do pobrania: [Pobierz](pobierz.md).
 
 ## Ocena własnego modelu
 

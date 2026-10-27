@@ -1,5 +1,7 @@
 # FIRMA-bench
 
+[:material-download: Pobierz benchmark](pobierz.md){ .md-button .md-button--primary } [:material-file-document-outline: Pobierz same dokumenty](pobierz/firma-bench-dokumenty.zip){ .md-button }
+
 **Benchmark zadań biurowych i administracyjnych w języku polskim** — 82 zadania na dokumentach fikcyjnej małej firmy produkcyjnej, z odpowiedziami wzorcowymi, automatyczną oceną i wbudowanymi pułapkami.
 
 Benchmark powstał na potrzeby pracy magisterskiej *„Porównanie skuteczności komercyjnych aplikacji LLM oraz dedykowanej architektury agentowej w realizacji zadań domenowych”*. Sprawdza, czy model językowy albo system agentowy potrafi wykonać pracę, którą w małej polskiej firmie wykonuje pracownik biurowy: znaleźć informację w dokumentach, policzyć termin, przygotować pismo, wychwycić sprzeczność i — co równie ważne — powstrzymać się od działania, gdy brakuje danych albo gdy działanie wymaga zgody człowieka.
@@ -22,6 +24,7 @@ Benchmark powstał na potrzeby pracy magisterskiej *„Porównanie skuteczności
 - **[Pułapki](pulapki.md)** — 25 sytuacji, w których naiwna odpowiedź jest błędna.
 - **[Metodologia](metodologia.md)** — co dokładnie dostaje model, jak liczymy wynik, jak czytać sprawdzenia.
 - **[Wyniki](wyniki.md)** — jak poradziły sobie modele lokalne; **[testy agentowe](agenty.md)** — systemy z narzędziami.
+- **[Pobierz](pobierz.md)** — pełny pakiet, same dokumenty firmy albo zadania w JSONL (licencja MIT).
 - **[Dane i ocena własnego modelu](dane.md)** — struktura repozytorium i skrypt oceniający.
 
 ## Założenia

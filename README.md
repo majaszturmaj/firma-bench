@@ -6,6 +6,17 @@ Dokumentacja — opis firmy i dokumentów, kategorii, każdego zadania (co ma za
 
 > **Status:** repozytorium prywatne. Zadania, odpowiedzi wzorcowe i dokumenty zostaną upublicznione po zakończeniu testów modeli komercyjnych i systemów agentowych, żeby nie mogły trafić do ich wyszukiwania ani danych treningowych przed testem.
 
+## Pobieranie
+
+| Plik | Co zawiera |
+|---|---|
+| `firma-bench.zip` | pełny pakiet: zadania, dokumenty, fakty, wyniki zagregowane, skrypt oceny |
+| `firma-bench-dokumenty.zip` | tylko 95 dokumentów firmy + `dokumenty.csv` |
+| `zadania.jsonl` | 82 zadania ze wszystkimi polami (w tym odpowiedzi wzorcowe) |
+| `zadania_dla_modelu.jsonl` | 82 zadania — tylko pola, które dostaje testowany system |
+
+Pliki są na stronie dokumentacji (zakładka *Pobierz*) i w [Releases](https://github.com/majaszturmaj/firma-bench/releases); można je też zbudować lokalnie: `python narzedzia/pakuj.py` (zapis do `docs/pobierz/`). Wydanie na GitHubie powstaje automatycznie po wypchnięciu tagu `v<WERSJA>` (np. `v1.0`).
+
 ## Zawartość
 
 | Katalog | Co zawiera |
@@ -31,10 +42,15 @@ python narzedzia/ocen.py odpowiedzi.jsonl
 ```bash
 python -m venv .venv && .venv/bin/pip install -r requirements-docs.txt
 .venv/bin/python narzedzia/generuj_strone.py   # strony generowane z danych i rozumowanie/*.md
-.venv/bin/mkdocs serve                          # podgląd na http://127.0.0.1:8000
+.venv/bin/python narzedzia/pakuj.py            # pliki do pobrania (docs/pobierz/)
+.venv/bin/mkdocs serve -a 127.0.0.1:8001       # podgląd na http://127.0.0.1:8001
 ```
 
 Wyniki modeli eksportuje `narzedzia/eksport_wynikow.py` z repozytorium eksperymentów (Mag_Testy). Publikację strony włącza zmienna repozytorium `PUBLIKUJ_STRONE=tak` (workflow `.github/workflows/strona.yml`); do tego czasu workflow tylko buduje stronę i sprawdza, że odpowiedzi wzorcowe przechodzą ocenę.
+
+## Licencja
+
+[MIT](LICENSE) — dotyczy całego repozytorium: zadań, dokumentów firmy, faktów, opisów, dokumentacji i skryptów.
 
 ## Pochodzenie
 

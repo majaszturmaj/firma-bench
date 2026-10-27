@@ -1,0 +1,39 @@
+name: Wydanie
+
+# Tag v<WERSJA> (np. v1.0) tworzy wydanie na GitHubie z plikami do pobrania.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Tag zgodny z plikiem WERSJA
+        run: test "$GITHUB_REF_NAME" = "v$(cat WERSJA)"
+      - run: python narzedzia/pakuj.py --out dist
+      - name: Odpowiedzi wzorcowe przechodzą ocenę w rozpakowanym pakiecie
+        run: |
+          mkdir sprawdz && cd sprawdz && unzip -q ../dist/firma-bench.zip && cd firma-bench-*
+          python - <<'PY'
+          import json
+          with open("wzorcowe.jsonl", "w") as f:
+              for line in open("zadania.jsonl"):
+                  t = json.loads(line)
+                  f.write(json.dumps({"zadanie": t["id"], "odpowiedz": json.dumps(t["wzorcowa"], ensure_ascii=False)}, ensure_ascii=False) + "\n")
+          PY
+          python narzedzia/ocen.py wzorcowe.jsonl | tail -1 | grep -q "82/82"
+      - name: Wydanie z plikami
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* --title "FIRMA-bench $GITHUB_REF_NAME" \
+            --notes "Pliki do pobrania: pełny pakiet (firma-bench.zip), same dokumenty (firma-bench-dokumenty.zip), zadania w JSONL (zadania.jsonl, zadania_dla_modelu.jsonl) i sumy kontrolne SHA256SUMS.txt. Licencja MIT."

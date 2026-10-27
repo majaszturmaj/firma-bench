@@ -38,6 +38,8 @@ jobs:
                   f.write(json.dumps({"zadanie": t["id"], "odpowiedz": json.dumps(t["wzorcowa"], ensure_ascii=False, default=str)}, ensure_ascii=False) + "\n")
           PY
           python narzedzia/ocen.py wzorcowe.jsonl | tail -1 | grep -q "82/82"
+      - name: Pliki do pobrania
+        run: python narzedzia/pakuj.py
       - run: mkdocs build --strict
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main' && vars.PUBLIKUJ_STRONE == 'tak'
